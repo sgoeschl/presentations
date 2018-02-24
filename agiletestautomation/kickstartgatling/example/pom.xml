@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.sgoeschl.presentations.agiletestautomation.kickstartgatling</groupId>
+    <artifactId>example</artifactId>
+    <version>1.0.0</version>
+    <name>Kickstart Gatling Project / Example</name>
+    <description>Kickstart Gatling Example Project</description>
+    <url>https://github.com/sgoeschl/presentations/kickstart-gatling</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Siegfried Goeschl</name>
+            <organization>GitHub</organization>
+            <organizationUrl>https://github.com/sgoeschl</organizationUrl>
+        </developer>
+    </developers>
+
+    <properties>
+        <source.property>1.8</source.property>
+        <target.property>1.8</target.property>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <slf4j.version>1.7.22</slf4j.version>
+        <gatling.version>2.3.0</gatling.version>
+        <gatling.blueprint.extensions.version>2.2.6.0-SNAPSHOT</gatling.blueprint.extensions.version>
+        <gatling-plugin.version>2.2.4</gatling-plugin.version>
+        <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
+
+        <distributable.dir>${project.build.directory}/distributable</distributable.dir>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.github.sgoeschl.gatling</groupId>
+            <artifactId>gatling-blueprint-extensions</artifactId>
+            <version>${gatling.blueprint.extensions.version}</version>
+        </dependency>
+        <dependency>
+            <!-- See https://github.com/gatling/gatling/issues/3290 -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <!-- Gatling config files are loaded from the classpath -->
+            <resource>
+                <directory>${basedir}/conf</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-plugin.version}</version>
+                <configuration>
+                    <configFolder>${project.basedir}/conf</configFolder>
+                    <bodiesFolder>${project.basedir}/user-files/bodies</bodiesFolder>
+                    <dataFolder>${project.basedir}/user-files/data</dataFolder>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>src-distribution</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <tarLongFileMode>gnu</tarLongFileMode>
+                            <descriptors>
+                                <descriptor>src/main/assembly/src.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,307 @@
+= Come To The Dark Side - We Have AsciiDoc
+Siegfried Goeschl <siegfried.goeschl@asciifish.net>
+2018-03-26
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+ifndef::imagesdir[:imagesdir: images]
+:customcss: customcss.css
+:experimental: 
+:pdf-page-size: 9in x 6in 
+
+[%notitle]
+== Introduction
+[.stretch]
+image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
+
+<<< 
+== Joining The Dark Side
+* Currently writing a lot of stuff
+* Mostly software documentation & presentations
+* Writing documentation is bad enough
+* Using Microsoft Office makes it unbearable
+
+<<< 
+== What's Wrong With Office
+* We want our stuff under version control
+* Sharing over Slack, file system or email?
+* How to diff two office documents?
+* What if you use Linux & Open Office?
+* WHat if you don't have the latest Office 365?
+
+<<< 
+== What Are The Alternatives?
+
+<<< 
+[%notitle]
+== Lightweight Markup Language
+[.stretch]
+image::markup-languages.png[size=center]
+
+<<< 
+== Lightweight Markup Language
+* LateX
+* DocBook
+* MarkDown
+* AsciiDoc
+
+<<< 
+[%notitle]
+== LaTeX
+[.stretch]
+image::latex-logo.png[size=center]
+
+<<< 
+=== LaTeX
+* Lamport Tex
+* Widely used in academia for scientific documents
+* Math, Physics, ...
+* Never used it personally
+
+<<< 
+=== LaTeX Example
+```
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\title{A \LaTeX{} Example}
+\date{}
+\begin{document}
+\maketitle
+\section{A beautiful equation}
+\LaTeX{} is great at typesetting mathematics. The time dependent Schr{\"o}dinger equation, for instance, is simply written as
+$$i\hbar \frac{\partial}{\partial t}\Psi \left(\mathbf{r},t\right)=
+\hat{H}\Psi\left(\mathbf{r},t\right).$$
+\end{document}
+```
+
+<<< 
+[%notitle]
+=== LaTeX Output
+[.stretch]
+image::latex-output.jpg[size=center]
+
+<<< 
+[%notitle]
+== DocBook
+[.stretch]
+image::docbook-logo.png[size=center,pdfwidth=40%]
+
+<<< 
+=== More About DocBook
+* Semantic Markup Language
+* Technical Documentation & books
+* There was even Maven support
+* Quite popular in the late 90's
+* Hard to write XML (even with tooling)
+
+<<< 
+[%notitle]
+=== DocBook Maven Support
+[.stretch]
+image::maven-docbook-plugin.png[size=center]
+
+<<< 
+[%notitle]
+=== Books Written In DocBook
+[.stretch]
+image::svn-red-book.jpg[size=center,pdfwidth=30%]
+
+<<< 
+=== DocBook Example
+```
+ <?xml version="1.0" encoding="UTF-8"?>
+ <book xml:id="simple_book" xmlns="http://docbook.org/ns/docbook" version="5.0">
+   <title>Very simple book</title>
+   <chapter xml:id="chapter_1">
+     <title>Chapter 1</title>
+     <para>Hello world!</para>
+     <para>
+        I hope that your day is proceeding <emphasis>splendidly</emphasis>!
+     </para>
+   </chapter>
+   <chapter xml:id="chapter_2">
+     <title>Chapter 2</title>
+     <para>Hello again, world!</para>
+   </chapter>
+ </book>
+```
+
+<<< 
+[%notitle]
+== Markdown
+[.stretch]
+image::markdown-logo.jpg[size=center,pdfwidth=60%]
+
+<<< 
+=== More About Markdown
+* Created by John Gruber in 2004
+* Focus on readability without obvious markup
+* Conversion to HTML/XHTML
+
+<<< 
+=== Markdown Is Everywhere
+
+<<< 
+=== EMacs
+image::emacs-markdown-support.png[size=center]
+
+<<< 
+=== Vim
+image::vim-markdown-support.png[size=center,pdfwidth=80%]
+
+<<< 
+[%notitle]
+=== Vi Or Not Vi
+image::to-vi-or-not-to-vi.png[size=center,pdfwidth=100%]
+
+<<< 
+=== Sublime Editor
+image::sublime-logo.png[size=center,pdfwidth=50%]
+
+<<< 
+=== Marked 2 Preview 
+image::marked-logo.png[size=center,pdfwidth=50%]
+
+<<< 
+=== Markdown Emails With Mailmate 
+image::mailmate-logo.png[size=center,pdfwidth=50%]
+
+<<< 
+=== GitHub
+image::github-logo.png[size=center,pdfwidth=50%]
+
+<<< 
+=== IntelliJ Markdown Plugin
+image::intellij-markdown-support.png[size=center,,pdfwidth=80%]
+
+<<< 
+=== Markdown Is Awesome
+
+<<< 
+=== But Sometimes Not Good Enough
+
+<<< 
+=== Problems With Markdown
+* Original Markdown was very limited
+* No clearly defined Markdown standard
+* Missing features led to many flavours
+
+<<< 
+=== Markdown Flavours
+* CommonMark launched in 2012
+* GitHub Flavored Markdown based on CommonMark
+* MarkdownExtra usesd in common CMS
+* Doxygen Markdown Extensions
+
+<<< 
+[%notitle]
+=== No One Markdown To Rule Them All
+[.stretch]
+image::no-one-markdown-to-rule-them-all.jpg[size=center]
+
+<<< 
+[%notitle]
+== AsciiDoc
+[.stretch]
+image::asciidoc-logo.png[size=center]
+
+<<< 
+=== More About AsciiDoc
+* Bring simplicity back to DocBook
+* Supports most DocBook elements
+* Everything you need for complex documents
+* You can even write books
+
+<<< 
+[%notitle]
+=== Books Written In AsciiDoc
+[.stretch]
+image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
+
+<<< 
+=== Why I'm Using AsciiDoc
+* Similar enough to Markdown to get you going
+* Better PDF document generation
+* Importing text snippets (sub-documents)
+* Admonitions (e.g. “Note:” or “Info:” callout blocks)
+
+<<< 
+=== My Workflow
+* Sublime Text Editor
+* AsciiDoc Plugin for syntax highlighting & HTML preview
+* `asciidoctor-maven-plugin` for PDF generation
+
+<<< 
+[%notitle]
+=== Sublime & AsciiDoc
+[.stretch]
+image::sublime-asciidoc.png[size=center,pdfwidth=90%]
+
+<<< 
+[%notitle]
+=== AsciiDoctor Maven Plugin
+[.stretch]
+image::asciidoctor-maven-plugin.png[size=center,pdfwidth=90%]
+
+<<< 
+[%notitle]
+=== Sample Document Page 01
+[.stretch]
+image::asciidoc-pdf-page-01.png[size=center,pdfwidth=35%]
+
+<<< 
+[%notitle]
+=== Sample Document Page 02
+[.stretch]
+image::asciidoc-pdf-page-02.png[size=center,pdfwidth=35%]
+
+<<< 
+[%notitle]
+=== Sample Document Page 03
+[.stretch]
+image::asciidoc-pdf-page-03.png[size=center,pdfwidth=35%]
+
+<<< 
+[%notitle]
+=== Eat Your Own Dog Food
+[.stretch]
+image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
+
+<<< 
+[%notitle]
+=== Reveal.js
+[.stretch]
+image::revealjs.png[size=center,pdfwidth=90%]
+
+<<< 
+=== AsciiDoc Meets Reveal.js
+* This presentation is written in AsciiDoc
+* `Maven` and `asciidoctor-maven-plugin`
+* Creates stand-alone HTML5 presentation
+* No more Microsoft Powerpoint
+
+<<< 
+=== AsciiDoc & Reveal.js
+* Works best for textual content
+* Visual presentations are harder
+* Handouts are a bit difficult
+* Keyboard shortcuts for the presenter
+
+<<< 
+[%notitle]
+=== Reveal Speaker View
+[.stretch]
+image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
+
+<<<
+== Links Part 01
+AsciiDoctor:: https://asciidoctor.org
+AsciiDoctor PDF:: https://github.com/asciidoctor/asciidoctor-pdf
+AsciiDoctor Maven Plugin:: https://github.com/asciidoctor/asciidoctor-maven-plugin
+
+<<<
+== Links Part 02
+AsciiDoctor Reveal.js:: https://asciidoctor.org/docs/asciidoctor-revealjs/
+AsciiDoctor To PDF:: http://discuss.asciidoctor.org/AsciiDoctor-PDF-amp-slide-show-presentations-td6053.html
+AsciiDoc User Guide:: http://www.methods.co.nz/asciidoc/chunked/index.html
+RevealJS:: https://github.com/hakimel/reveal.js/

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.sgoeschl.presentation.javameetup.wehaveasciidoc</groupId>
+    <artifactId>example</artifactId>
+    <version>1.0.0</version>
+    <name>We Have AsciiDoc / Example</name>
+
+    <properties>
+        <project.slides.directory>${project.build.directory}/generated-slides</project.slides.directory>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <asciidoctor.maven.plugin.version>1.5.6</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>1.5.6</asciidoctorj.version>
+        <revealjs.version>3.1.0</revealjs.version>
+        <asciidoctor-revealjs.version>master</asciidoctor-revealjs.version>
+        <download-maven-plugin.version>1.2.1</download-maven-plugin.version>
+        <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
+    </properties>
+
+    <build>
+        <defaultGoal>process-resources</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>${asciidoctor.maven.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj-pdf</artifactId>
+                        <version>${asciidoctorj.pdf.version}</version>
+                    </dependency>
+                </dependencies>                
+                <configuration>
+                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-pdf</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>pdf</backend>
+                            <compact>true</compact>
+                            <attributes>
+                                <revnumber>${project.version}</revnumber>
+                            </attributes>                            
+                        </configuration>
+                    </execution>                         
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

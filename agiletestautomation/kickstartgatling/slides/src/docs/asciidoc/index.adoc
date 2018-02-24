@@ -1,0 +1,152 @@
+= Kickstart Your Gatling Performance Testing
+Siegfried Goeschl <siegfried.goeschl@willhaben.at>
+2018-03-01
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+ifndef::imagesdir[:imagesdir: images]
+:customcss: customcss.css
+:experimental: 
+:pdf-page-size: 9in x 6in 
+
+[%notitle]
+== Introduction
+image::gatling-logo.png[size=center]
+
+<<< 
+== Kick-start Gatling
+* Want to use Gatling for performance testing?
+* Want to use your IDE to write Scala code?
+* Want to run Gatling tests on your CI server?
+* Want to know more about (some) advanced features?
+* Confused with Scala, DSL and documentation? 
+
+<<< 
+== About Gatling & Me
+* Gatling as side project at George @ Erste Group
+* Using Gatling for internal projects @ Willhaben
+* Doing Gatling presentations and consulting
+
+<<< 
+== Welcome to Gatling
+* Open-source load and performance testing framework
+* Gatling tests are written in Scala
+* Your favorite IDE is the UI
+* You need programming experience
+* Continuous Delivery & Continuous Deployment
+
+<<< 
+== The Gatling Distribution
+* Gatling distribution aimed at throw-away tests
+* Gatling Recorder to capture a test script
+* Changes of Gatling scripts using a text editor
+* Gives you no IDE integration whatsoever
+
+<<<
+[%notitle]
+== This Sucks
+[.stretch]
+image::this-sucks.jpg[size=center,pdfwidth=80%]
+
+<<< 
+== Gatling Meets Maven
+* Import your Gatling project into your IDE
+* Re-factoring Scala code is much more fun with an IDE
+* You can still execute Gatling tests on the command line
+
+<<<
+[%notitle]
+== Too Good To Be True
+image::too-good-to-be-true.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+[%notitle]
+== GitHub Gatling Example Project
+https://github.com/sgoeschl/presentations/agiletestautomation/kickstart-gatling/example
+
+<<<
+== Software Requirements
+* IntelliJ Community Edition 2017.2
+* IntelliJ Scala Plugin 2017.2.13
+* Using scala-sdk-2.12.3
+* Apache Maven 3.2.3
+
+<<<
+[%notitle]
+== IntelliJ & Gatling
+[.stretch]
+image::intellig-gatling-screenshot.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Gatling Run Configuration
+[.stretch]
+image::intellij-gatling-configuration.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Running Gatling in IntelliJ
+[.stretch]
+image::intellij-running-gatling.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== First Gatling Test Report
+[.stretch]
+image::intellij-gatling-report.png[size=center,pdfwidth=80%]
+
+<<<
+== Gatling Advanced Tutorial
+* Step 01: Isolate processes
+* Step 02: Configure virtual users
+* Step 03: Use dynamic data with Feeders and Checks
+* Step 04: Looping
+* Step 05: Check and failure management
+
+<<<
+== Already in GitHub Gatling Example Project!
+
+<<<
+== Run In IntelliJ
+```
+-Dgatling.core.simulationClass=c.BasicSimulation
+-Dgatling.core.simulationClass=c.a.AdvancedSimulationStep01
+-Dgatling.core.simulationClass=c.a.AdvancedSimulationStep02
+-Dgatling.core.simulationClass=c.a.AdvancedSimulationStep03
+-Dgatling.core.simulationClass=c.a.AdvancedSimulationStep04
+-Dgatling.core.simulationClass=c.a.AdvancedSimulationStep05
+```
+* c. => computerdatabase.
+* c.a. => computerdatabase.advanced.
+
+<<< 
+== Gatling & CI Server
+* Put Gatling tests into separate Maven module
+* Execute test scenario using Maven command line
+* Takes different system property
+
+<<< 
+== Run On Command Line
+```
+mvn -Dgatling.simulationClass=c.a.BasicSimulation gatling:test
+mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep01 gatling:test
+mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep02 gatling:test
+mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep03 gatling:test
+mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep04 gatling:test
+mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep05 gatling:test
+```
+* c. => computerdatabase.
+* c.a. => computerdatabase.advanced.
+
+<<<
+== Confused About Gatling & Scala
+
+<<<
+== About Me
+* Independent Contractor & Consultant
+* Currently working at Willhaben
+* Doing Open Source development
+* Apache Software Foundation Member
+* Organizing Java Meetup & Devfest Vienna
+
+
