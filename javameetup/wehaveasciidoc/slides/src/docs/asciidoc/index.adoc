@@ -8,11 +8,19 @@ ifndef::imagesdir[:imagesdir: images]
 :customcss: customcss.css
 :experimental: 
 :pdf-page-size: 9in x 6in 
+:uri-project: https://github.com/sgoeschl/presentations
 
 [%notitle]
 == Introduction
 [.stretch]
 image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
+
+<<< 
+== About Me
+* Java Backend Developer
+* Java Meetup Vienna co-organizer
+* Doing some Open Source development
+* Currently doing GDPR @ Willhaben
 
 <<< 
 == Joining The Dark Side
@@ -22,12 +30,12 @@ image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
 * Using Microsoft Office makes it unbearable
 
 <<< 
-== What's Wrong With Office
-* We want our stuff under version control
+== What's Wrong With MS Office
+* Putting BLOBs under version control?
 * Sharing over Slack, file system or email?
-* How to diff two office documents?
-* What if you use Linux & Open Office?
-* WHat if you don't have the latest Office 365?
+* Diffing MS Office documents?
+* Using Linux & Open Office?
+* What if you don't have the latest MS Office 365?
 
 <<< 
 == What Are The Alternatives?
@@ -44,6 +52,7 @@ image::markup-languages.png[size=center]
 * DocBook
 * MarkDown
 * AsciiDoc
+* HTML5
 
 <<< 
 [%notitle]
@@ -104,7 +113,7 @@ image::maven-docbook-plugin.png[size=center]
 [%notitle]
 === Books Written In DocBook
 [.stretch]
-image::svn-red-book.jpg[size=center,pdfwidth=30%]
+image::svn-red-book.jpg[size=center,pdfwidth=40%]
 
 <<< 
 === DocBook Example
@@ -172,7 +181,7 @@ image::github-logo.png[size=center,pdfwidth=50%]
 
 <<< 
 === IntelliJ Markdown Plugin
-image::intellij-markdown-support.png[size=center,,pdfwidth=80%]
+image::intellij-markdown-support.png[size=center,,pdfwidth=90%]
 
 <<< 
 === Markdown Is Awesome
@@ -212,6 +221,10 @@ image::asciidoc-logo.png[size=center]
 * Everything you need for complex documents
 * You can even write books
 
++++<aside class="notes">+++
+When writing a book the markup is your least concern
++++</aside>+++
+
 <<< 
 [%notitle]
 === Books Written In AsciiDoc
@@ -220,15 +233,46 @@ image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
 
 <<< 
 === Why I'm Using AsciiDoc
-* Similar enough to Markdown to get you going
-* Better PDF document generation
-* Importing text snippets (sub-documents)
+* Similar enough to Markdown to get me going
+* Better PDF document generation for external parties
+* Using sub-documents to tame large documents
 * Admonitions (e.g. “Note:” or “Info:” callout blocks)
+* Nice handling of source code snippets
+
+<<<
+=== AsciiDoc & Source Code
+```
+= Getting Started with Java
+Author Name <author@example.org>
+
+Here's your first Java application.
+
+.HelloWorld.java
+[source,java]
+----
+public class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("Hello, world!"); <1>
+  }
+}
+----
+<1> Prints "Hello, world!" to the console.
+
+Compile this source to a class file using `javac`.
+Finally, run the compiled class file using `java`.
+```
+
+<<< 
+[%notitle]
+=== AsciiDoc & Source Code
+[.stretch]
+image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 
 <<< 
 === My Workflow
 * Sublime Text Editor
-* AsciiDoc Plugin for syntax highlighting & HTML preview
+* Sublime AsciiDoc Plugin for syntax highlighting
+* Chrome AsciiDoctor extension for live preview
 * `asciidoctor-maven-plugin` for PDF generation
 
 <<< 
@@ -269,7 +313,7 @@ image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
 
 <<< 
 [%notitle]
-=== Reveal.js
+== Reveal.js
 [.stretch]
 image::revealjs.png[size=center,pdfwidth=90%]
 
@@ -281,11 +325,12 @@ image::revealjs.png[size=center,pdfwidth=90%]
 * No more Microsoft Powerpoint
 
 <<< 
-=== AsciiDoc & Reveal.js
+=== Reveal.js
+* Presentation using HTML 5
 * Works best for textual content
-* Visual presentations are harder
-* Handouts are a bit difficult
-* Keyboard shortcuts for the presenter
+* Visual presentations are a bit harder
+* PDF Handouts can be tricky 
+* Keyboard shortcuts for presenters
 
 <<< 
 [%notitle]
@@ -293,15 +338,37 @@ image::revealjs.png[size=center,pdfwidth=90%]
 [.stretch]
 image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
 
+<<< 
+[%notitle]
+== Everyone Awake?
+image::iStock_000006160804Medium.jpg[background,size=cover,pdfwidth=80%]
+
 <<<
-== Links Part 01
+=== No More Office Documents
+* You can safely replace MS Word & Powerpoint
+* Textual content plays nicely with version control
+* Use AsciiDoc for customer-facing documentation
+* Documentation becomes part of the build process
+* Non-development colleagues might be a bit unhappy
+
+<<<
+=== Clone My GitHub Repository
+{uri-project}
+
+<<<
+=== Links Part 01
 AsciiDoctor:: https://asciidoctor.org
 AsciiDoctor PDF:: https://github.com/asciidoctor/asciidoctor-pdf
 AsciiDoctor Maven Plugin:: https://github.com/asciidoctor/asciidoctor-maven-plugin
 
 <<<
-== Links Part 02
+=== Links Part 02
 AsciiDoctor Reveal.js:: https://asciidoctor.org/docs/asciidoctor-revealjs/
 AsciiDoctor To PDF:: http://discuss.asciidoctor.org/AsciiDoctor-PDF-amp-slide-show-presentations-td6053.html
 AsciiDoc User Guide:: http://www.methods.co.nz/asciidoc/chunked/index.html
 RevealJS:: https://github.com/hakimel/reveal.js/
+
+<<<
+=== Links Part 03
+Write in AsciiDoc - Publish Everwhere:: http://mojavelinux.github.io/decks/write-in-asciidoc-publish-everywhere/mixit2015/index.html#/
+
