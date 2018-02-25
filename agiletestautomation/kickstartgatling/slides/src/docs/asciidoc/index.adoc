@@ -23,9 +23,9 @@ image::gatling-logo.png[size=center]
 
 <<< 
 == About Gatling & Me
-* Gatling as side project at George @ Erste Group
+* Doing test automation for many years
+* Gatling as side project for George @ Erste Group
 * Using Gatling for internal projects @ Willhaben
-* Doing Gatling presentations and consulting
 
 <<< 
 == Welcome to Gatling
@@ -53,6 +53,7 @@ image::this-sucks.jpg[size=center,pdfwidth=80%]
 * Import your Gatling project into your IDE
 * Re-factoring Scala code is much more fun with an IDE
 * You can still execute Gatling tests on the command line
+* Maven simplifies Continuous Delivery & Continuous Deployment
 
 <<<
 [%notitle]
@@ -69,7 +70,7 @@ https://github.com/sgoeschl/presentations/agiletestautomation/kickstart-gatling/
 * IntelliJ Community Edition 2017.2
 * IntelliJ Scala Plugin 2017.2.13
 * Using scala-sdk-2.12.3
-* Apache Maven 3.2.3
+* Apache Maven 3.2.3 & JDK 1.8
 
 <<<
 [%notitle]
@@ -104,10 +105,7 @@ image::intellij-gatling-report.png[size=center,pdfwidth=80%]
 * Step 05: Check and failure management
 
 <<<
-== Already in GitHub Gatling Example Project!
-
-<<<
-== Run In IntelliJ
+== Already Provided For You
 ```
 -Dgatling.core.simulationClass=c.BasicSimulation
 -Dgatling.core.simulationClass=c.a.AdvancedSimulationStep01
@@ -123,7 +121,7 @@ image::intellij-gatling-report.png[size=center,pdfwidth=80%]
 == Gatling & CI Server
 * Put Gatling tests into separate Maven module
 * Execute test scenario using Maven command line
-* Takes different system property
+* Command-line uses different system property!
 
 <<< 
 == Run On Command Line
@@ -139,7 +137,69 @@ mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep05 gatling:test
 * c.a. => computerdatabase.advanced.
 
 <<<
-== Confused About Gatling & Scala
+== Hard-coded Server Address
+[source,scala]
+----
+val httpConf = http
+    .baseURL("http://computer-database.gatling.io") // <1>
+    .acceptHeader("text/html,application/xhtml+xml,application/xml")
+    .doNotTrackHeader("1")
+    .acceptLanguageHeader("en-US,en;q=0.5")
+    .acceptEncodingHeader("gzip, deflate")
+    .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0)")
+----
+<1> Need to support staging environments?
+
+<<<
+== Hard-coded CSV Files
+[source,scala]
+----
+val feeder = csv("search.csv").random // <1>
+----
+<1> Need different CSV file for testing?
+
+<<<
+== Hard-coded Injection Profile
+[source,scala]
+----
+  setUp(
+    users.inject(rampUsers(10) over (10 seconds)), // <1>
+    admins.inject(rampUsers(2) over (10 seconds))
+  ).protocols(httpConf)
+----
+<1> Need different load for staging environments?
+
+<<<
+== How To Pass All That Settings
+* Command-line system properties
+* Maven profiles
+* Gatling Blueprint Extensions
+
+<<<
+== Gatling Blueprint Extensions
+* https://github.com/sgoeschl/gatling-blueprint-extensions
+* Introduces `SimulationCoordinates`
+* Hierarchical configuration support
+* Improved error handling
+* HTTP Proxy support
+
+<<<
+== Having A Closer Look
+* https://github.com/sgoeschl/gatling-blueprint-extensions/blob/master/src/main/java/org/github/sgoeschl/gatling/blueprint/extensions/SimulationCoordinates.java[Simulation Coordinates]
+* https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/example/src/test/scala/computerdatabase/gatling/functional/Test.scala[Functional Gatling Test Using Blueprint Extensions]
+
+<<<
+== Confused About Gatling & Scala?
+* Significant learning curve
+* You need to know Scala, Gatling, IDE, build tool
+
+<<<
+== Gatling Online Resources
+* https://automationrhapsody.com/performance-testing-with-gatling/
+* https://groups.google.com/forum/#!forum/gatling
+* https://gatling.io/docs/2.3/extensions/maven_plugin/
+* https://github.com/sgoeschl/gatling-blueprint-project
+* https://github.com/sgoeschl/gatling-blueprint-extensions
 
 <<<
 == About Me
