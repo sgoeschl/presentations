@@ -1,1 +1,1 @@
-Presentation show at Excutive Circle @ WeAreDevelopers 
+Sample project to convert an AsciiDoc file into a PDF using Maven and AsciiDoctor Plugin.
