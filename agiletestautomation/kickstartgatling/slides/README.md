@@ -9,4 +9,4 @@ This presentation shows how to write Gatling tests in your IDE, execute them on 
 * Test configuration 
 * Last but not least debugging your Gatling scripts.
 
-The AsiiDOc slides can be viewed at https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/slides/src/docs/asciidoc/index.adoc
+The AsiiDOoc slides can be viewed at https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/slides/src/docs/asciidoc/index.adoc
