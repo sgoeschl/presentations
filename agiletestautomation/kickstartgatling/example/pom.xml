@@ -49,7 +49,7 @@
             <version>${gatling.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.github.sgoeschl.gatling</groupId>
+            <groupId>com.github.sgoeschl.gatling</groupId>
             <artifactId>gatling-blueprint-extensions</artifactId>
             <version>${gatling.blueprint.extensions.version}</version>
         </dependency>
