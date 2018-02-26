@@ -31,8 +31,8 @@ image::gatling-logo.png[size=center]
 == Welcome to Gatling
 * Open-source load and performance testing framework
 * Gatling tests are written in Scala
-* Your favorite IDE is the UI
-* You need programming experience
+* Your favorite IDE is the UI of choice
+* Software development skill required
 * Continuous Delivery & Continuous Deployment
 
 <<< 
@@ -62,8 +62,8 @@ image::too-good-to-be-true.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
 [%notitle]
-== GitHub Gatling Example Project
-https://github.com/sgoeschl/presentations/agiletestautomation/kickstart-gatling/example
+== GitHub Kickstart Gatling Project
+https://github.com/sgoeschl/presentations/tree/master/agiletestautomation
 
 <<<
 == Software Requirements
@@ -79,6 +79,15 @@ https://github.com/sgoeschl/presentations/agiletestautomation/kickstart-gatling/
 image::intellig-gatling-screenshot.png[size=center,pdfwidth=80%]
 
 <<<
+== Gatling Run Configuration Details
+[width="100%",cols="30,70",options="header"]
+|============================================================================
+|Parameter              |Value
+|Main Class             |Engine
+|VM Options             |-Dgatling.core.simulationClass=XXX
+|============================================================================
+
+<<<
 [%notitle]
 == Gatling Run Configuration
 [.stretch]
@@ -86,7 +95,7 @@ image::intellij-gatling-configuration.png[size=center,pdfwidth=80%]
 
 <<<
 [%notitle]
-== Running Gatling in IntelliJ
+== Execute Gatling in IntelliJ
 [.stretch]
 image::intellij-running-gatling.png[size=center,pdfwidth=80%]
 
@@ -105,36 +114,21 @@ image::intellij-gatling-report.png[size=center,pdfwidth=80%]
 * Step 05: Check and failure management
 
 <<<
-== Already Provided For You
-```
--Dgatling.core.simulationClass=c.BasicSimulation
--Dgatling.core.simulationClass=c.a.AdvancedSimulationStep01
--Dgatling.core.simulationClass=c.a.AdvancedSimulationStep02
--Dgatling.core.simulationClass=c.a.AdvancedSimulationStep03
--Dgatling.core.simulationClass=c.a.AdvancedSimulationStep04
--Dgatling.core.simulationClass=c.a.AdvancedSimulationStep05
-```
-* c. => computerdatabase.
-* c.a. => computerdatabase.advanced.
+== Running Gatling Advanced Tutorial
+* Provided in GitHub Kickstart Gatling project
+* `computerdatabase.advanced.*`
 
 <<< 
 == Gatling & CI Server
 * Put Gatling tests into separate Maven module
-* Execute test scenario using Maven command line
-* Command-line uses different system property!
+* Execute performance test scenario using Maven
+* Uses `-Dgatling.simulationClass` system property
 
 <<< 
-== Run On Command Line
+== Maven Command Line
 ```
-mvn -Dgatling.simulationClass=c.a.BasicSimulation gatling:test
-mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep01 gatling:test
-mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep02 gatling:test
-mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep03 gatling:test
-mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep04 gatling:test
-mvn -Dgatling.simulationClass=c.a.AdvancedSimulationStep05 gatling:test
+mvn -Dgatling.simulationClass=XXX clean gatling:test
 ```
-* c. => computerdatabase.
-* c.a. => computerdatabase.advanced.
 
 <<<
 == Hard-coded Server Address
@@ -148,7 +142,7 @@ val httpConf = http
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0)")
 ----
-<1> Need to support staging environments?
+<1> Supporting staging environments?
 
 <<<
 == Hard-coded CSV Files
@@ -162,26 +156,25 @@ val feeder = csv("search.csv").random // <1>
 == Hard-coded Injection Profile
 [source,scala]
 ----
-  setUp(
-    users.inject(rampUsers(10) over (10 seconds)), // <1>
-    admins.inject(rampUsers(2) over (10 seconds))
-  ).protocols(httpConf)
+setUp(
+  users.inject(rampUsers(10) over (10 seconds)), // <1>
+  admins.inject(rampUsers(2) over (10 seconds))
+).protocols(httpConf)
 ----
-<1> Need different load for staging environments?
+<1> Different load for staging environments?
 
 <<<
 == How To Pass All That Settings
-* Command-line system properties
-* Maven profiles
-* Gatling Blueprint Extensions
+* Pass system properties
+* Define Maven profiles
+* Use Gatling Blueprint Extensions
 
 <<<
 == Gatling Blueprint Extensions
 * https://github.com/sgoeschl/gatling-blueprint-extensions
 * Introduces `SimulationCoordinates`
-* Hierarchical configuration support
-* Improved error handling
-* HTTP Proxy support
+* Hierarchical `environment.properties`
+* Hierarchical file resolver, e.g. `user.csv
 
 <<<
 == Having A Closer Look
@@ -189,13 +182,83 @@ val feeder = csv("search.csv").random // <1>
 * https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/example/src/test/scala/computerdatabase/gatling/functional/Test.scala[Functional Gatling Test Using Blueprint Extensions]
 
 <<<
+== User Injection Profiles
+* Defines how many users started when
+* Gatling supports *Open Models*
+    ** New users started no matter how many users are already there
+    ** Models reality and brings down your server
+
+<<<
+== At Once User
+[source,scala]
+----
+setUp(
+  scn.inject(
+    atOnceUsers(10)
+  ).protocols(httpConf)
+)
+----
+Injects a given number of users at once
+
+<<<
+== Rampup Users
+[source,scala]
+----
+setUp(
+  scn.inject(
+    rampUsers(10) over(5 seconds)
+  ).protocols(httpConf)
+)
+----
+Start 10 user within 5 seconds => 50 users
+
+<<<
+== Constant Users
+[source,scala]
+----
+setUp(
+  scn.inject(
+    constantUsersPerSec(20) during(15 seconds)
+  ).protocols(httpConf)
+)
+----
+Start 20 users / second for 15 seconds => 300 users
+
+<<<
+== Heaviside Users
+[source,scala]
+----
+setUp(
+  scn.inject(
+    heavisideUsers(1000) over(20 seconds)
+  ).protocols(httpConf)
+)
+----
+Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
+
+<<<
+== Let The User Wait
+
+<<<
+[%notitle]
+== How To Implement Wait
+[width="100%",cols="20,80",options="header"]
+|============================================================================
+|Approach               |Methods
+|Pausing                |`constantPauses`, `normalPausesWithStdDevDuration`
+|Throttling             |`reachRps`, `jumpToRps`, `holdFor`
+|============================================================================
+
+<<<
 == Confused About Gatling & Scala?
-* Significant learning curve
+* Steep learning curve
 * You need to know Scala, Gatling, IDE, build tool
+* Development know-how required
 
 <<<
 == Gatling Online Resources
 * https://automationrhapsody.com/performance-testing-with-gatling/
+* https://theperformanceengineer.com/tag/gatling/
 * https://groups.google.com/forum/#!forum/gatling
 * https://gatling.io/docs/2.3/extensions/maven_plugin/
 * https://github.com/sgoeschl/gatling-blueprint-project
