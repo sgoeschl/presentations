@@ -98,9 +98,9 @@ image::docbook-logo.png[size=center,pdfwidth=40%]
 <<< 
 === More About DocBook
 * Semantic Markup Language
-* Technical Documentation & books
-* There was even Maven support
+* Technical documentation & books
 * Quite popular in the late 90's
+* There was even Maven 1 support
 * Hard to write XML (even with tooling)
 
 <<< 
@@ -145,7 +145,7 @@ image::markdown-logo.jpg[size=center,pdfwidth=60%]
 === More About Markdown
 * Created by John Gruber in 2004
 * Focus on readability without obvious markup
-* Conversion to HTML/XHTML
+* Intended to be transformed to HTML/XHTML
 
 <<< 
 === Markdown Is Everywhere
@@ -220,10 +220,6 @@ image::asciidoc-logo.png[size=center]
 * Supports most DocBook elements
 * Everything you need for complex documents
 * You can even write books
-
-+++<aside class="notes">+++
-When writing a book the markup is your least concern
-+++</aside>+++
 
 <<< 
 [%notitle]
@@ -333,6 +329,28 @@ image::revealjs.png[size=center,pdfwidth=90%]
 * Keyboard shortcuts for presenters
 
 <<< 
+=== Reveal PDF Handouts
+* Append `?print-pdf` query parameter to URL
+  ** Does not work all the times for me
+* Using `Decktape` failed to NPM install issues
+* Currently creating hand-outs in the Maven build
+  ** Using `<<<` to enforce page breaks
+  ** Using `pdfwidth=` to re-size PDF images
+
+<<< 
+=== Maven PDF Handout
+```
+:experimental: 
+:pdf-page-size: 9in x 6in 
+
+<<< 
+[%notitle]
+=== Eat Your Own Dog Food
+[.stretch]
+image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
+```
+
+<<< 
 [%notitle]
 === Reveal Speaker View
 [.stretch]
@@ -344,10 +362,13 @@ image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
 image::iStock_000006160804Medium.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
-=== No More Office Documents
+=== Come To The Dark Side
+
+<<<
+=== We Have AsciiDoc
 * You can safely replace MS Word & Powerpoint
+* Use AsciiDoc for customer-facing PDFs
 * Textual content plays nicely with version control
-* Use AsciiDoc for customer-facing documentation
 * Documentation becomes part of the build process
 * Non-development colleagues might be a bit unhappy
 
