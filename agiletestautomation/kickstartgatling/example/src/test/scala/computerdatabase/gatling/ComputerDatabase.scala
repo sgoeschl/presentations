@@ -7,8 +7,6 @@ import io.gatling.http.Predef._
 
 object ComputerDatabase {
 
-  val headers_10: Map[String, String] = Map("Content-Type" -> "application/x-www-form-urlencoded")
-
   val home: ChainBuilder = exec(http("Home")
     .get("/"))
     .pause(ConfigurationTool.getPause)
