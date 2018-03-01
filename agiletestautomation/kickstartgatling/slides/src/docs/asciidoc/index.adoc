@@ -23,6 +23,7 @@ image::gatling-logo.png[size=center]
 
 <<<
 == About Gatling & Me
+* Software developer loving QA
 * Doing test automation for many years
 * Gatling as side project for George @ Erste Group
 * Using Gatling for internal projects @ Willhaben
@@ -221,7 +222,7 @@ setUp(
   ).protocols(httpConf)
 )
 ----
-<1> Start 10 user within 5 seconds => 50 users
+<1> Start 10 user within 5 seconds => 10 users
 
 <<<
 == Constant Users
@@ -258,6 +259,29 @@ setUp(
 |Pausing                |`constantPauses`, `normalPausesWithStdDevDuration`
 |Throttling             |`reachRps`, `jumpToRps`, `holdFor`
 |============================================================================
+
+<<<
+== Assert Global Statistics
+* Response time
+* Number of failed requests
+* Requests per second
+
+<<<
+== Asserting Response Time
+[source,scala]
+----
+// Max response time of all requests is less than 100 ms
+setUp(scn).assertions(global.responseTime.max.lt(100))
+
+// Every request has no more than 5% of failing requests
+setUp(scn).assertions(forAll.failedRequests.percent.lte(5))
+
+// Percentage of failed requests named "Index" in the group "Search" is 0 %
+setUp(scn).assertions(details("Search" / "Index").failedRequests.percent.is(0))
+
+// Rate of requests per seconds for the group "Search"
+setUp(scn).assertions(details("Search").requestsPerSec.between(100, 1000))
+----
 
 <<<
 == Confused About Gatling & Scala?
