@@ -6,28 +6,28 @@ Siegfried Goeschl <siegfried.goeschl@willhaben.at>
 :icons: font
 ifndef::imagesdir[:imagesdir: images]
 :customcss: customcss.css
-:experimental: 
-:pdf-page-size: 9in x 6in 
+:experimental:
+:pdf-page-size: 9in x 6in
 
 [%notitle]
 == Introduction
 image::gatling-logo.png[size=center]
 
-<<< 
+<<<
 == Kick-start Gatling
 * Want to use Gatling for performance testing?
 * Want to use your IDE to write Scala code?
 * Want to run Gatling tests on your CI server?
 * Want to know more about (some) advanced features?
-* Confused with Scala, DSL and documentation? 
+* Confused with Scala, DSL and documentation?
 
-<<< 
+<<<
 == About Gatling & Me
 * Doing test automation for many years
 * Gatling as side project for George @ Erste Group
 * Using Gatling for internal projects @ Willhaben
 
-<<< 
+<<<
 == Welcome to Gatling
 * Open-source load and performance testing framework
 * Gatling tests are written in Scala
@@ -35,7 +35,7 @@ image::gatling-logo.png[size=center]
 * Software development skill required
 * Continuous Delivery & Continuous Deployment
 
-<<< 
+<<<
 == The Gatling Distribution
 * Gatling distribution aimed at throw-away tests
 * Gatling Recorder to capture a test script
@@ -43,12 +43,20 @@ image::gatling-logo.png[size=center]
 * Gives you no IDE integration whatsoever
 
 <<<
+== Windows & Gatling Distribution
+[source]
+----
+./bin/gatling.sh -s computerdatabase.gatling.smoketest.Test
+----
+Windows - Java process not killed with `CTRL-C`
+
+<<<
 [%notitle]
 == This Sucks
 [.stretch]
 image::this-sucks.jpg[size=center,pdfwidth=80%]
 
-<<< 
+<<<
 == Gatling Meets Maven
 * Import your Gatling project into your IDE
 * Re-factoring Scala code is much more fun with an IDE
@@ -118,20 +126,20 @@ image::intellij-gatling-report.png[size=center,pdfwidth=80%]
 * Provided in GitHub Kickstart Gatling project
 * `computerdatabase.advanced.*`
 
-<<< 
+<<<
 == Gatling & CI Server
 * Put Gatling tests into separate Maven module
 * Execute performance test scenario using Maven
 * Uses `-Dgatling.simulationClass` system property
 
-<<< 
+<<<
 == Maven Command Line
 ```
 mvn -Dgatling.simulationClass=XXX clean gatling:test
 ```
 
-<<< 
-== Hard-coded Configuration Data?!
+<<<
+== Hard-coded Configuration?!
 
 <<<
 == Hard-coded Server Address
@@ -177,7 +185,7 @@ setUp(
 * https://github.com/sgoeschl/gatling-blueprint-extensions
 * Introduces `SimulationCoordinates`
 * Hierarchical `environment.properties`
-* Hierarchical file resolver, e.g. `user.csv
+* Hierarchical file resolver, e.g. `user.csv`
 
 <<<
 == Having A Closer Look
