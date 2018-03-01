@@ -79,7 +79,7 @@ https://github.com/sgoeschl/presentations/tree/master/agiletestautomation
 image::intellig-gatling-screenshot.png[size=center,pdfwidth=80%]
 
 <<<
-== Gatling Run Configuration Details
+== Gatling Run Configuration
 [width="100%",cols="30,70",options="header"]
 |============================================================================
 |Parameter              |Value
@@ -129,6 +129,9 @@ image::intellij-gatling-report.png[size=center,pdfwidth=80%]
 ```
 mvn -Dgatling.simulationClass=XXX clean gatling:test
 ```
+
+<<< 
+== Hard-coded Configuration Data?!
 
 <<<
 == Hard-coded Server Address
@@ -194,11 +197,11 @@ setUp(
 ----
 setUp(
   scn.inject(
-    atOnceUsers(10)
+    atOnceUsers(10) // <1>
   ).protocols(httpConf)
 )
 ----
-Injects a given number of users at once
+<1> Injects a given number of users at once
 
 <<<
 == Rampup Users
@@ -206,11 +209,11 @@ Injects a given number of users at once
 ----
 setUp(
   scn.inject(
-    rampUsers(10) over(5 seconds)
+    rampUsers(10) over(5 seconds) // <1>
   ).protocols(httpConf)
 )
 ----
-Start 10 user within 5 seconds => 50 users
+<1> Start 10 user within 5 seconds => 50 users
 
 <<<
 == Constant Users
@@ -218,11 +221,11 @@ Start 10 user within 5 seconds => 50 users
 ----
 setUp(
   scn.inject(
-    constantUsersPerSec(20) during(15 seconds)
+    constantUsersPerSec(20) during(15 seconds) // <1>
   ).protocols(httpConf)
 )
 ----
-Start 20 users / second for 15 seconds => 300 users
+<1> Start 20 users / second for 15 seconds => 300 users
 
 <<<
 == Heaviside Users
@@ -230,18 +233,17 @@ Start 20 users / second for 15 seconds => 300 users
 ----
 setUp(
   scn.inject(
-    heavisideUsers(1000) over(20 seconds)
+    heavisideUsers(1000) over(20 seconds) // <1>
   ).protocols(httpConf)
 )
 ----
-Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
+<1> Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
 
 <<<
 == Let The User Wait
 
 <<<
-[%notitle]
-== How To Implement Wait
+== Pausing & Throttling
 [width="100%",cols="20,80",options="header"]
 |============================================================================
 |Approach               |Methods
@@ -252,17 +254,22 @@ Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_s
 <<<
 == Confused About Gatling & Scala?
 * Steep learning curve
-* You need to know Scala, Gatling, IDE, build tool
 * Development know-how required
+* You need to know Scala, Gatling, IDE, build tool
 
 <<<
-== Gatling Online Resources
+== Gatling Resources 01
 * https://automationrhapsody.com/performance-testing-with-gatling/
 * https://theperformanceengineer.com/tag/gatling/
 * https://groups.google.com/forum/#!forum/gatling
 * https://gatling.io/docs/2.3/extensions/maven_plugin/
+
+<<<
+== Gatling Resources 02
 * https://github.com/sgoeschl/gatling-blueprint-project
 * https://github.com/sgoeschl/gatling-blueprint-extensions
+* https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
+* https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
 
 <<<
 == About Me
