@@ -8,8 +8,8 @@
     <version>1.0.0</version>
     <name>Kickstart Gatling Project / Example</name>
     <description>Kickstart Gatling Example Project</description>
-    <url>https://github.com/sgoeschl/presentations/kickstart-gatling</url>
-
+    <url>https://github.com/sgoeschl/presentations</url>
+    
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>

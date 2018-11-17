@@ -1,0 +1,2 @@
+[NOTE]
+This is the content of an included file

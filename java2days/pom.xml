@@ -3,20 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.sgoeschl.presentation</groupId>
+    <groupId>com.github.sgoeschl.presentation.java2days</groupId>
     <artifactId>master</artifactId>
     <version>1.0.0</version>
-    <name>Presentation</name>
+    <name>Java Meetup</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>agiletestautomation</module>
-        <module>java2days</module>
-        <module>javameetup</module>
+        <module>kickstartgatling</module>
     </modules>
 
-    <build>
-        <defaultGoal>package</defaultGoal>
-    </build>
-        
 </project>

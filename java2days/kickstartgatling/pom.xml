@@ -3,20 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.sgoeschl.presentation</groupId>
+    <groupId>com.github.sgoeschl.presentations.java2days.kickstartgatling</groupId>
     <artifactId>master</artifactId>
     <version>1.0.0</version>
-    <name>Presentation</name>
+    <name>Kickstart Gatling Project</name>
     <packaging>pom</packaging>
+    <description>Kickstart Gatling Project</description>
+    <url>https://github.com/sgoeschl/presentations</url>
 
     <modules>
-        <module>agiletestautomation</module>
-        <module>java2days</module>
-        <module>javameetup</module>
+        <module>slides</module>
     </modules>
 
-    <build>
-        <defaultGoal>package</defaultGoal>
-    </build>
-        
 </project>

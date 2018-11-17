@@ -1,0 +1,574 @@
+= Kickstart Your Gatling Performance Testing
+Siegfried Goeschl <siegfried.goeschl@willhaben.at>
+2018-11-04
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+ifndef::imagesdir[:imagesdir: images]
+:customcss: customcss.css
+:experimental:
+:pdf-page-size: 9in x 6in
+
+[%notitle]
+== Introduction
+image::gatling-logo.png[size=center]
+
+<<<
+== Introducing Gatling
+* Performance testing framework
+* Tests are written in in Sala
+* Developer-centric test tool
+* Development started in 2010
+* Gatling 3.0.0 released in 10/2018
+
+<<<
+== Under The Hood
+* Supports HTTP 1.1/2.0 & JMS protocol
+* Response validation
+    ** Regular expressions
+    ** XPath & JSONPath
+    ** CSS selectors
+
+<<<
+== Under The Hood
+* Provides Domain Specific Language (DSL)
+* Uses aynchronous non-blocking HTTP client
+* Integrates with Maven, SBT & Gradle
+* Test data feeders CSV, JSON, JDBC, Redis
+* Management-friendly HTML reports
+
+<<<
+== Why To Use Gatling?
+* Need some integration & performance tests?
+* Want to run those test on your CI server?
+* Want to write test code in your IDE?
+* Do you like peer reviews and version control?
+
+<<<
+[%notitle]
+== Getting Started
+image::athletes-athletics-black-and-white-34514.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Getting Started
+* JDK 1.8
+* Apache Maven 3.5.x
+* IntelliJ CE & Scala Plugin
+
+<<<
+== Getting Started
+* https://github.com/gatling/gatling-maven-plugin-demo
+* Import your Gatling project into your IDE
+* Re-factoring Scala code is more fun with an IDE
+* Execute Gatling tests on the command line
+* Simple CI integration using Maven
+
+<<<
+[%notitle]
+== IntelliJ & Gatling
+[.stretch]
+image::intellig-gatling-screenshot.png[size=center,pdfwidth=80%]
+
+<<<
+=== Gatling Run Configuration
+[width="100%",cols="30,70",options="header"]
+|============================================================================
+|Parameter              |Value
+|Main Class             |Engine
+|VM Options             |-Dgatling.core.simulationClass=XXX
+|============================================================================
+
+<<<
+[%notitle]
+== Gatling Run Configuration
+[.stretch]
+image::intellij-gatling-configuration.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Execute Gatling in IntelliJ
+[.stretch]
+image::intellij-running-gatling.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== First Gatling Report
+[.stretch]
+image::gatling-reports-01.png[size=center,pdfwidth=80%]
+
+<<<
+== Execute Gatling Wit Maven
+```
+mvn -Dgatling.simulationClass=computerdatabase.BasicSimulation gatling:test
+```
+
+<<<
+[%notitle]
+== Hello World
+image::hello_world.png[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling Hello World
+```java
+package postman
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+
+class HelloWorldSimulation extends Simulation {
+
+  val httpProtocol = http.baseUrl("https://postman-echo.com")
+
+  val scn = scenario("Hello World")
+    .exec(http("GET").get("/get?msg=Hello%20World"))
+
+  setUp(scn.inject(atOnceUsers(1)).protocols(httpProtocol))
+}
+```
+
+<<<
+== Gatling For Rookies
+* Script setup
+* Common HTTP configuration
+* Scenario setup
+* Load simulation setup
+* Load simulation text report
+* Writing Gatling scripts
+
+<<<
+== Script Setup
+```java
+package postman
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+
+class PostmanSimulation extends Simulation {
+```
+
+[.notes]
+--
+* Gatling tests are deriving from `Simulation`
+--
+
+<<<
+== Common HTTP Configuration
+```java
+val httpProtocol = http
+    .baseUrl("https://postman-echo.com")
+    .acceptHeader("text/html,application/xhtml+xml,;q=0.9,*/*;q=0.8")
+    .acceptEncodingHeader("gzip, deflate")
+    .acceptLanguageHeader("en-US,en;q=0.5")
+    .userAgentHeader("Gatling/3.0.0")
+```
+
+<<<
+== Scenario Setup
+```java
+val scn = scenario("Postman")
+    .exec(http("GET")
+      .get("/get?msg=Hello%20World")
+      .check(bodyBytes.transform(_.length > 200).is(true))
+    )
+    .exec(http("POST")
+      .post("/post")
+      .formParam("""foo""", """bar""")
+      .check(status in (200, 201))
+      .check(bodyBytes.exists)
+    )
+```
+
+<<<
+== Load Simulation Setup
+```java
+setUp(
+    scn.inject(atOnceUsers(1)).protocols(httpProtocol)
+)
+
+```
+
+<<<
+== Simulation Text Report
+```
+=============================================================
+2018-11-16 20:43:51                        2s elapsed
+---- Requests -----------------------------------------------
+> Global                                (OK=2      KO=0     )
+> GET                                   (OK=1      KO=0     )
+> POST                                  (OK=1      KO=0     )
+
+---- Postman ------------------------------------------------
+[#######################################################]100%
+       waiting: 0      / active: 0      / done: 1
+=============================================================
+
+```
+
+<<<
+== Simulation Text Report
+```
+---- Global Information -------------------------------------
+> request count                       2 (OK=2      KO=0     )
+> min response time                 118 (OK=118    KO=-     )
+> max response time                 604 (OK=604    KO=-     )
+> mean response time                361 (OK=361    KO=-     )
+> std deviation                     243 (OK=243    KO=-     )
+> response time 50th percentile     361 (OK=361    KO=-     )
+> response time 75th percentile     483 (OK=483    KO=-     )
+> response time 95th percentile     580 (OK=580    KO=-     )
+> response time 99th percentile     599 (OK=599    KO=-     )
+> mean requests/sec                   2 (OK=2      KO=-     )
+---- Response Time Distribution -----------------------------
+> t < 800 ms                          2 (100%)
+> 800 ms < t < 1200 ms                0 (  0%)
+> t > 1200 ms                         0 (  0%)
+> failed                              0 (  0%)
+=============================================================
+```
+
+<<<
+== Writing Gatling Scripts
+* HAR import
+* Gatling Web Proxy Recorder
+* Start from the scratch
+  ** More initial work
+  ** Cleaner test code
+
+<<<
+[%notitle]
+== Beyond Hello World
+image::crisis-ahead.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Things Not Being Told In Tutorials
+
+<<<
+== Hard-coded Server Address
+[source,java]
+----
+val httpConf = http
+    .baseURL("http://computer-database.gatling.io") // <1>
+    .acceptHeader("text/html,application/xhtml+xml,application/xml")
+    .doNotTrackHeader("1")
+    .acceptLanguageHeader("en-US,en;q=0.5")
+    .acceptEncodingHeader("gzip, deflate")
+    .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0)")
+----
+<1> Need to support staging environments?
+
+<<<
+== Hard-coded CSV Files
+[source,java]
+----
+val feeder = csv("users.csv").random // <1>
+----
+<1> Different users/credentials for staging environments?
+
+<<<
+== Hard-coded User Injection
+[source,java]
+----
+setUp(
+  users.inject(rampUsers(10) over (10 seconds)), // <1>
+  admins.inject(rampUsers(2) over (10 seconds))
+).protocols(httpConf)
+----
+<1> Different load for staging environments?
+
+<<<
+== Configuration Overload
+[source,java]
+----
+Http(getURL("identity", "oauth/token"))
+    .postForm(Seq(
+        "scope" -> identityScope, 	      // <1>
+        "grant_type" -> identityGranType,
+        "client_id" -> identityClientId,
+        "client_secret" -> identityClientSecret,
+        "resource" -> identityResource
+      ))
+----
+<1> Tons of configurable properties?
+
+<<<
+[%notitle]
+== How To Pass Settings
+[.stretch]
+image::theres-more-than-one-way-to-skin-a-cat.jpg[size=center,pdfwidth=80%]
+
+<<<
+== How To Pass All The Settings
+* System properties
+* Maven profiles
+* Custom Gatling classes
+
+<<<
+[%notitle]
+== Gatling Blueprint Project
+[.stretch]
+image::gatling-blueprint-project.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling Blueprint Project
+* Staging & multi-tenant support
+* Hierchical configuration properties
+* Hierarchical file resolver
+* Stand-alone Gatling distribution
+* Shows best practices
+
+<<<
+== Why Did I Wrote The Gatling Blueprint Project?
+
+<<<
+[%notitle]
+== Why Gatling Blueprint Project?!
+[.stretch]
+image::george-online-banking-logo.png[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Why Gatling Blueprint Project?!
+[.stretch]
+image::george-online-banking.jpg[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Why Gatling Blueprint Project?!
+image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling & Erste Group
+* I'm part of George Backend team supporting
+  ** Erste Bank Austria,
+  ** Česká spořitelna,
+  ** Slovenská sporiteľňa
+  ** Banca Comercială Română
+
+<<<
+== Gatling & Erste Group
+* Gatling used by George developers
+  ** Many moving parts & staging sites
+  ** Automated integration tests
+  ** Internal performance testing
+* Other teams use JMeter & Neoload
+
+<<<
+== Gatling & Erste Group
+* Using Gatling performance test for
+  ** Elastic server
+  ** Desaster recovery
+  ** Transaction Search
+
+<<<
+[%notitle]
+== Real Test Code
+[.stretch]
+image::read-the-source-luke.jpg[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Real Test Code
+[.stretch]
+image::gatling-production-code.png[size=center,pdfwidth=80%]
+
+<<<
+== Is Gatling For You?!
+
+<<<
+[%notitle]
+== Is Gatling For You?!
+* Gatling’s DSL is elegant & powerful
+  ** Scala & DSL learning curve
+  ** Requires solid development skills
+
+<<<
+[%notitle]
+== Is Gatling For You?!
+* Developer-friendly tool
+  ** Code only
+  ** IDE support & refactoring
+  ** Works on Windows, Linux & OS X
+
+<<<
+[%notitle]
+== Is Gatling For You?!
+image::blue-or-red-pill.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Questions?!
+image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling Resources 01
+* https://automationrhapsody.com/performance-testing-with-gatling
+* https://theperformanceengineer.com/tag/gatling
+* https://gatling.io/docs/3.0/extensions/maven_plugin
+
+<<<
+== Gatling Resources 02
+* https://github.com/sgoeschl/gatling-blueprint-project
+* https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
+* https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
+* https://groups.google.com/forum/#!forum/gatling
+
+
+<<<
+== Stuff Not Being Used
+
+<<<
+=== Gatling Blueprint Extensions
+[%notitle]
+* https://github.com/sgoeschl/gatling-blueprint-extensions
+* Introduces `SimulationCoordinates`
+* Hierarchical `environment.properties`
+* Hierarchical file resolver, e.g. `user.csv`
+
+<<<
+=== Having A Closer Look
+* https://github.com/sgoeschl/gatling-blueprint-extensions/blob/master/src/main/java/org/github/sgoeschl/gatling/blueprint/extensions/SimulationCoordinates.java[Simulation Coordinates]
+* https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/example/src/test/scala/computerdatabase/gatling/functional/Test.scala[Functional Gatling Test Using Blueprint Extensions]
+
+<<<
+=== Advanced Gatling
+
+<<<
+=== User Injection Profiles
+* Defines how many users started when
+* Gatling supports *Open Models*
+    ** New users started no matter how many users are already there
+    ** Models reality and brings down your server
+
+<<<
+=== At Once User
+[source,java]
+----
+setUp(
+  scn.inject(
+    atOnceUsers(10) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Injects a given number of users at once
+
+<<<
+=== Rampup Users
+[source,java]
+----
+setUp(
+  scn.inject(
+    rampUsers(10) over(5 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Start 10 user within 5 seconds => 10 users
+
+<<<
+=== Constant Users
+[source,java]
+----
+setUp(
+  scn.inject(
+    constantUsersPerSec(20) during(15 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Start 20 users / second for 15 seconds => 300 users
+
+<<<
+=== Heaviside Users
+[source,java]
+----
+setUp(
+  scn.inject(
+    heavisideUsers(1000) over(20 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
+
+<<<
+=== Let The User Wait
+
+<<<
+=== Pausing & Throttling
+[width="100%",cols="20,80",options="header"]
+|============================================================================
+|Approach               |Methods
+|Pausing                |`constantPauses`, `normalPausesWithStdDevDuration`
+|Throttling             |`reachRps`, `jumpToRps`, `holdFor`
+|============================================================================
+
+<<<
+== Assert Global Statistics
+* Response time
+* Number of failed requests
+* Requests per second
+
+<<<
+== Assert Global Statistics
+[source,java]
+----
+// Max response time of all requests is less than 100 ms
+setUp(scn).assertions(global.responseTime.max.lt(100))
+
+// Every request has no more than 5% of failing requests
+setUp(scn).assertions(forAll.failedRequests.percent.lte(5))
+
+// Percentage of failed requests named "Index" in the group "Search" is 0 %
+setUp(scn).assertions(details("Search" / "Index").failedRequests.percent.is(0))
+
+// Rate of requests per seconds for the group "Search"
+setUp(scn).assertions(details("Search").requestsPerSec.between(100, 1000))
+----
+
+<<<
+== Confused About Gatling & Scala?
+* Steep learning curve
+* Development know-how required
+* You need to know Scala, Gatling, IDE, build tool
+
+<<<
+== Gatling Resources 01
+* https://automationrhapsody.com/performance-testing-with-gatling/
+* https://theperformanceengineer.com/tag/gatling/
+* https://groups.google.com/forum/#!forum/gatling
+* https://gatling.io/docs/2.3/extensions/maven_plugin/
+
+<<<
+== Gatling Resources 02
+* https://github.com/sgoeschl/gatling-blueprint-project
+* https://github.com/sgoeschl/gatling-blueprint-extensions
+* https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
+* https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
+
+<<<
+== About Me
+* Independent Contractor & Consultant
+* Currently working at Willhaben
+* Doing Open Source development
+* Apache Software Foundation Member
+* Organizing Java Meetup & Devfest Vienna
+
+
+<<<
+[%notitle]
+== Torvald's Opinion About Open Source
+image::linus-torvalds-quote.png[size=center]
+
+<<<
+[%notitle]
+== Money Makes The World Go Round
+image::buy-cash-coins-8556.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling OSS vs. FrontLine
+* Gatling Open Source is under ASL 2.0
+* Gatling FrontLine is the enterprise edition
+  ** Annual license or "pay as you go"
+  ** Web-based, more bells & whistle, better reporting
+
+<<<
+[%notitle]
+== Gatling HTML Report
+image::gatling-reports-02.png[background,size=cover,pdfwidth=80%]

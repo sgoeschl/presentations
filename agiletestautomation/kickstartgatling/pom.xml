@@ -9,7 +9,7 @@
     <name>Kickstart Gatling Project</name>
     <packaging>pom</packaging>
     <description>Kickstart Gatling Project</description>
-    <url>https://github.com/sgoeschl/presentations/agiletestautomation/kickstartgatling</url>
+    <url>https://github.com/sgoeschl/presentations</url>
 
     <modules>
         <module>slides</module>
