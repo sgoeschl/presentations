@@ -19,7 +19,26 @@ image::gatling-logo.png[size=center]
 * Tests are written in in Sala
 * Developer-centric test tool
 * Development started in 2010
-* Gatling 3.0.0 released in 10/2018
+* Gatling 3.0 released in 10/2018
+
+<<<
+[%notitle]
+== What Linus Says
+image::linus-torvalds-quote.png[size=center]
+
+<<<
+[%notitle]
+== Money Makes The World Go Round
+image::buy-cash-coins-8556.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Gatling vs. FrontLine
+* Gatling Open Source is under ASL 2.0
+* Gatling FrontLine is the enterprise edition
+  ** Annual license or "pay as you go"
+  ** Web-based,
+  ** More bells & whistle
+  ** Real-time reporting
 
 <<<
 == Under The Hood
@@ -53,7 +72,8 @@ image::athletes-athletics-black-and-white-34514.jpg[background,size=cover,pdfwid
 == Getting Started
 * JDK 1.8
 * Apache Maven 3.5.x
-* IntelliJ CE & Scala Plugin
+* IntelliJ Community Edition
+* IntelliJ Scala Plugin
 
 <<<
 == Getting Started
@@ -179,13 +199,40 @@ val scn = scenario("Postman")
 ```
 
 <<<
-== Load Simulation Setup
-```java
+=== At Once User
+[source,java]
+----
 setUp(
-    scn.inject(atOnceUsers(1)).protocols(httpProtocol)
+  scn.inject(
+    atOnceUsers(10) // <1>
+  ).protocols(httpConf)
 )
+----
+<1> Injects a given number of users at once
 
-```
+<<<
+=== Rampup Users
+[source,java]
+----
+setUp(
+  scn.inject(
+    rampUsers(10) over(5 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Start 10 user within 5 seconds => 10 users
+
+<<<
+=== Constant Users
+[source,java]
+----
+setUp(
+  scn.inject(
+    constantUsersPerSec(20) during(15 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Start 20 users / second for 15 seconds => 300 users
 
 <<<
 == Simulation Text Report
@@ -262,7 +309,7 @@ val httpConf = http
 ----
 val feeder = csv("users.csv").random // <1>
 ----
-<1> Different users/credentials for staging environments?
+<1> Different users / passwords for staging environments?
 
 <<<
 == Hard-coded User Injection
@@ -300,7 +347,12 @@ image::theres-more-than-one-way-to-skin-a-cat.jpg[size=center,pdfwidth=80%]
 == How To Pass All The Settings
 * System properties
 * Maven profiles
-* Custom Gatling classes
+* Custom Scala class
+
+[.notes]
+****
+* Unhappy with those approaches so I came up with Gatling Blueprint Project & Extensions
+****
 
 <<<
 [%notitle]
@@ -317,23 +369,22 @@ image::gatling-blueprint-project.jpg[background,size=cover,pdfwidth=80%]
 * Shows best practices
 
 <<<
-== Why Did I Wrote The Gatling Blueprint Project?
+== Why Writing Gatling Blueprint Project?
 
 <<<
 [%notitle]
-== Why Gatling Blueprint Project?!
+== Why Writing Gatling Blueprint Project?
 [.stretch]
 image::george-online-banking-logo.png[size=center,pdfwidth=80%]
 
 <<<
-[%notitle]
-== Why Gatling Blueprint Project?!
+== Why Writing Gatling Blueprint Project?
 [.stretch]
 image::george-online-banking.jpg[size=center,pdfwidth=80%]
 
 <<<
 [%notitle]
-== Why Gatling Blueprint Project?!
+== Why Writing Gatling Blueprint Project?
 image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
 
 <<<
@@ -370,6 +421,11 @@ image::read-the-source-luke.jpg[size=center,pdfwidth=80%]
 == Real Test Code
 [.stretch]
 image::gatling-production-code.png[size=center,pdfwidth=80%]
+
+[.notes]
+****
+* This is real code being used for George API performance testing
+****
 
 <<<
 == Is Gatling For You?!
@@ -411,164 +467,3 @@ image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
 * https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
 * https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
 * https://groups.google.com/forum/#!forum/gatling
-
-
-<<<
-== Stuff Not Being Used
-
-<<<
-=== Gatling Blueprint Extensions
-[%notitle]
-* https://github.com/sgoeschl/gatling-blueprint-extensions
-* Introduces `SimulationCoordinates`
-* Hierarchical `environment.properties`
-* Hierarchical file resolver, e.g. `user.csv`
-
-<<<
-=== Having A Closer Look
-* https://github.com/sgoeschl/gatling-blueprint-extensions/blob/master/src/main/java/org/github/sgoeschl/gatling/blueprint/extensions/SimulationCoordinates.java[Simulation Coordinates]
-* https://github.com/sgoeschl/presentations/blob/master/agiletestautomation/kickstartgatling/example/src/test/scala/computerdatabase/gatling/functional/Test.scala[Functional Gatling Test Using Blueprint Extensions]
-
-<<<
-=== Advanced Gatling
-
-<<<
-=== User Injection Profiles
-* Defines how many users started when
-* Gatling supports *Open Models*
-    ** New users started no matter how many users are already there
-    ** Models reality and brings down your server
-
-<<<
-=== At Once User
-[source,java]
-----
-setUp(
-  scn.inject(
-    atOnceUsers(10) // <1>
-  ).protocols(httpConf)
-)
-----
-<1> Injects a given number of users at once
-
-<<<
-=== Rampup Users
-[source,java]
-----
-setUp(
-  scn.inject(
-    rampUsers(10) over(5 seconds) // <1>
-  ).protocols(httpConf)
-)
-----
-<1> Start 10 user within 5 seconds => 10 users
-
-<<<
-=== Constant Users
-[source,java]
-----
-setUp(
-  scn.inject(
-    constantUsersPerSec(20) during(15 seconds) // <1>
-  ).protocols(httpConf)
-)
-----
-<1> Start 20 users / second for 15 seconds => 300 users
-
-<<<
-=== Heaviside Users
-[source,java]
-----
-setUp(
-  scn.inject(
-    heavisideUsers(1000) over(20 seconds) // <1>
-  ).protocols(httpConf)
-)
-----
-<1> Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
-
-<<<
-=== Let The User Wait
-
-<<<
-=== Pausing & Throttling
-[width="100%",cols="20,80",options="header"]
-|============================================================================
-|Approach               |Methods
-|Pausing                |`constantPauses`, `normalPausesWithStdDevDuration`
-|Throttling             |`reachRps`, `jumpToRps`, `holdFor`
-|============================================================================
-
-<<<
-== Assert Global Statistics
-* Response time
-* Number of failed requests
-* Requests per second
-
-<<<
-== Assert Global Statistics
-[source,java]
-----
-// Max response time of all requests is less than 100 ms
-setUp(scn).assertions(global.responseTime.max.lt(100))
-
-// Every request has no more than 5% of failing requests
-setUp(scn).assertions(forAll.failedRequests.percent.lte(5))
-
-// Percentage of failed requests named "Index" in the group "Search" is 0 %
-setUp(scn).assertions(details("Search" / "Index").failedRequests.percent.is(0))
-
-// Rate of requests per seconds for the group "Search"
-setUp(scn).assertions(details("Search").requestsPerSec.between(100, 1000))
-----
-
-<<<
-== Confused About Gatling & Scala?
-* Steep learning curve
-* Development know-how required
-* You need to know Scala, Gatling, IDE, build tool
-
-<<<
-== Gatling Resources 01
-* https://automationrhapsody.com/performance-testing-with-gatling/
-* https://theperformanceengineer.com/tag/gatling/
-* https://groups.google.com/forum/#!forum/gatling
-* https://gatling.io/docs/2.3/extensions/maven_plugin/
-
-<<<
-== Gatling Resources 02
-* https://github.com/sgoeschl/gatling-blueprint-project
-* https://github.com/sgoeschl/gatling-blueprint-extensions
-* https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
-* https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
-
-<<<
-== About Me
-* Independent Contractor & Consultant
-* Currently working at Willhaben
-* Doing Open Source development
-* Apache Software Foundation Member
-* Organizing Java Meetup & Devfest Vienna
-
-
-<<<
-[%notitle]
-== Torvald's Opinion About Open Source
-image::linus-torvalds-quote.png[size=center]
-
-<<<
-[%notitle]
-== Money Makes The World Go Round
-image::buy-cash-coins-8556.jpg[background,size=cover,pdfwidth=80%]
-
-<<<
-== Gatling OSS vs. FrontLine
-* Gatling Open Source is under ASL 2.0
-* Gatling FrontLine is the enterprise edition
-  ** Annual license or "pay as you go"
-  ** Web-based, more bells & whistle, better reporting
-
-<<<
-[%notitle]
-== Gatling HTML Report
-image::gatling-reports-02.png[background,size=cover,pdfwidth=80%]
