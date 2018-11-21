@@ -6,8 +6,8 @@ Siegfried Goeschl <siegfried.goeschl@asciifish.net>
 :icons: font
 ifndef::imagesdir[:imagesdir: images]
 :customcss: customcss.css
-:experimental: 
-:pdf-page-size: 9in x 6in 
+:experimental:
+:pdf-page-size: 9in x 6in
 :uri-project: https://github.com/sgoeschl/presentations
 
 [%notitle]
@@ -15,21 +15,21 @@ ifndef::imagesdir[:imagesdir: images]
 [.stretch]
 image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
 
-<<< 
+<<<
 == About Me
 * Java Backend Developer
 * Java Meetup Vienna co-organizer
 * Doing some Open Source development
-* Currently doing GDPR @ Willhaben
+* Currently working at Erste Bank Austria
 
-<<< 
+<<<
 == Joining The Dark Side
-* Currently writing a lot of stuff
-* Mostly software documentation & presentations
+* Recently writing a lot of stuff :-(
+* Mostly documentation & presentations
 * Writing documentation is bad enough
 * Using Microsoft Office makes it unbearable
 
-<<< 
+<<<
 == What's Wrong With MS Office
 * Putting BLOBs under version control?
 * Sharing over Slack, file system or email?
@@ -37,37 +37,37 @@ image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
 * Using Linux & Open Office?
 * What if you don't have the latest MS Office 365?
 
-<<< 
+<<<
 == What Are The Alternatives?
 
-<<< 
+<<<
 [%notitle]
 == Lightweight Markup Language
 [.stretch]
 image::markup-languages.png[size=center]
 
-<<< 
+<<<
 == Lightweight Markup Language
 * LateX
 * DocBook
 * MarkDown
 * AsciiDoc
-* HTML5
+* HTML
 
-<<< 
+<<<
 [%notitle]
 == LaTeX
 [.stretch]
 image::latex-logo.png[size=center]
 
-<<< 
+<<<
 === LaTeX
 * Lamport Tex
 * Widely used in academia for scientific documents
 * Math, Physics, ...
 * Never used it personally
 
-<<< 
+<<<
 === LaTeX Example
 ```
 \documentclass[a4paper]{article}
@@ -83,19 +83,19 @@ $$i\hbar \frac{\partial}{\partial t}\Psi \left(\mathbf{r},t\right)=
 \end{document}
 ```
 
-<<< 
+<<<
 [%notitle]
 === LaTeX Output
 [.stretch]
 image::latex-output.jpg[size=center]
 
-<<< 
+<<<
 [%notitle]
 == DocBook
 [.stretch]
 image::docbook-logo.png[size=center,pdfwidth=40%]
 
-<<< 
+<<<
 === More About DocBook
 * Semantic Markup Language
 * Technical documentation & books
@@ -103,19 +103,19 @@ image::docbook-logo.png[size=center,pdfwidth=40%]
 * There was even Maven 1 support
 * Hard to write XML (even with tooling)
 
-<<< 
+<<<
 [%notitle]
 === DocBook Maven Support
 [.stretch]
 image::maven-docbook-plugin.png[size=center]
 
-<<< 
+<<<
 [%notitle]
 === Books Written In DocBook
 [.stretch]
 image::svn-red-book.jpg[size=center,pdfwidth=40%]
 
-<<< 
+<<<
 === DocBook Example
 ```
  <?xml version="1.0" encoding="UTF-8"?>
@@ -135,115 +135,124 @@ image::svn-red-book.jpg[size=center,pdfwidth=40%]
  </book>
 ```
 
-<<< 
+<<<
 [%notitle]
 == Markdown
 [.stretch]
 image::markdown-logo.jpg[size=center,pdfwidth=60%]
 
-<<< 
+<<<
 === More About Markdown
 * Created by John Gruber in 2004
 * Focus on readability without obvious markup
 * Intended to be transformed to HTML/XHTML
 
-<<< 
+<<<
 === Markdown Is Everywhere
 
-<<< 
+<<<
 === EMacs
 image::emacs-markdown-support.png[size=center]
 
-<<< 
+<<<
 === Vim
 image::vim-markdown-support.png[size=center,pdfwidth=80%]
 
-<<< 
+<<<
 [%notitle]
 === Vi Or Not Vi
 image::to-vi-or-not-to-vi.png[size=center,pdfwidth=100%]
 
-<<< 
+<<<
 === Sublime Editor
 image::sublime-logo.png[size=center,pdfwidth=50%]
 
-<<< 
-=== Marked 2 Preview 
+<<<
+=== Marked 2 Preview
 image::marked-logo.png[size=center,pdfwidth=50%]
 
-<<< 
-=== Markdown Emails With Mailmate 
+<<<
+=== Markdown Emails With Mailmate
 image::mailmate-logo.png[size=center,pdfwidth=50%]
 
-<<< 
+<<<
 === GitHub
 image::github-logo.png[size=center,pdfwidth=50%]
 
-<<< 
+<<<
 === IntelliJ Markdown Plugin
 image::intellij-markdown-support.png[size=center,,pdfwidth=90%]
 
-<<< 
+<<<
 === Markdown Is Awesome
 
-<<< 
+<<<
 === But Sometimes Not Good Enough
 
-<<< 
+<<<
 === Problems With Markdown
 * Original Markdown was very limited
 * No clearly defined Markdown standard
 * Missing features led to many flavours
 
-<<< 
+<<<
 === Markdown Flavours
 * CommonMark launched in 2012
 * GitHub Flavored Markdown based on CommonMark
 * MarkdownExtra usesd in common CMS
 * Doxygen Markdown Extensions
 
-<<< 
+<<<
 [%notitle]
 === No One Markdown To Rule Them All
 [.stretch]
 image::no-one-markdown-to-rule-them-all.jpg[size=center]
 
-<<< 
+<<<
 [%notitle]
 == AsciiDoc
 [.stretch]
 image::asciidoc-logo.png[size=center]
 
-<<< 
-=== More About AsciiDoc
+<<<
+== More About AsciiDoc
 * Bring simplicity back to DocBook
 * Supports most DocBook elements
 * Everything you need for complex documents
 * You can even write books
 
-<<< 
+<<<
 [%notitle]
-=== Books Written In AsciiDoc
+== Books Written In AsciiDoc
 [.stretch]
 image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
 
-<<< 
-=== Why I'm Using AsciiDoc
+<<<
+== Why I'm Using AsciiDoc
 * Similar enough to Markdown to get me going
 * Better PDF document generation for external parties
-* Using sub-documents to tame large documents
-* Admonitions (e.g. “Note:” or “Info:” callout blocks)
-* Nice handling of source code snippets
+* Some really nice features for documentations
 
 <<<
-=== AsciiDoc & Source Code
+== AsciiDoc Features
+
+<<<
+== Source Code Support
 ```
-= Getting Started with Java
-Author Name <author@example.org>
+[source,java]
+----
+public class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("Hello, world!"); <1>
+  }
+}
+----
+<1> Prints "Hello, world!" to the console.
+```
 
-Here's your first Java application.
-
-.HelloWorld.java
+<<<
+[%notitle]
+== Source Code Support
 [source,java]
 ----
 public class HelloWorld {
@@ -254,81 +263,169 @@ public class HelloWorld {
 ----
 <1> Prints "Hello, world!" to the console.
 
-Compile this source to a class file using `javac`.
-Finally, run the compiled class file using `java`.
+<<<
+== CSV Tables
+```
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4",options="header"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
 ```
 
-<<< 
+<<<
 [%notitle]
-=== AsciiDoc & Source Code
-[.stretch]
-image::asciidoc-java-example.png[size=center,pdfwidth=80%]
+== CSV Tables
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4",options="header"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
 
-<<< 
+<<<
+== Advanced Tables
+```
+|====
+|Date |Duration |Avg HR |Notes
+
+|22-Aug-08 .2+^.^|10:24 | 157 |
+Worked out MSHR (max sustainable
+heart rate) by going hard
+for this interval.
+
+|22-Aug-08 | 152 |
+Back-to-back with previous interval.
+
+|24-Aug-08 3+^|none
+|====
+```
+
+<<<
+[%notitle]
+== Advanced Tables
+[.stretch]
+image::asciidoc-table-example.png[size=center,pdfwidth=80%]
+
+<<<
+== Admonitions
+```
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that..
+```
+
+<<<
+== Admonitions
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that..
+
+<<<
+== Include Directive
+* Partition a large document
+* Insert snippets of source code
+* Poplulate tables from external files
+
+<<<
+== Include Directive
+```
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4",options="header"]
+[frame="topbot",grid="none"]
+|======
+\include::table.csv[]
+|======
+```
+
+<<<
+[%notitle]
+== Include Directive
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4",options="header"]
+[frame="topbot",grid="none"]
+|======
+include::table.csv[]
+|======
+
+<<<
 === My Workflow
 * Sublime Text Editor
 * Sublime AsciiDoc Plugin for syntax highlighting
 * Chrome AsciiDoctor extension for live preview
 * `asciidoctor-maven-plugin` for PDF generation
 
-<<< 
+<<<
 [%notitle]
 === Sublime & AsciiDoc
 [.stretch]
 image::sublime-asciidoc.png[size=center,pdfwidth=90%]
 
-<<< 
+<<<
 [%notitle]
 === AsciiDoctor Maven Plugin
 [.stretch]
 image::asciidoctor-maven-plugin.png[size=center,pdfwidth=90%]
 
-<<< 
+<<<
 [%notitle]
 === Sample Document Page 01
 [.stretch]
 image::asciidoc-pdf-page-01.png[size=center,pdfwidth=35%]
 
-<<< 
+<<<
 [%notitle]
 === Sample Document Page 02
 [.stretch]
 image::asciidoc-pdf-page-02.png[size=center,pdfwidth=35%]
 
-<<< 
+<<<
 [%notitle]
 === Sample Document Page 03
 [.stretch]
 image::asciidoc-pdf-page-03.png[size=center,pdfwidth=35%]
 
-<<< 
+<<<
 [%notitle]
 === Eat Your Own Dog Food
 [.stretch]
 image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
 
-<<< 
+<<<
 [%notitle]
 == Reveal.js
 [.stretch]
 image::revealjs.png[size=center,pdfwidth=90%]
 
-<<< 
+<<<
 === AsciiDoc Meets Reveal.js
 * This presentation is written in AsciiDoc
 * `Maven` and `asciidoctor-maven-plugin`
 * Creates stand-alone HTML5 presentation
 * No more Microsoft Powerpoint
 
-<<< 
+<<<
 === Reveal.js
 * Presentation using HTML 5
 * Works best for textual content
 * Visual presentations are a bit harder
-* PDF Handouts can be tricky 
+* PDF Handouts can be tricky
 * Keyboard shortcuts for presenters
 
-<<< 
+<<<
 === Reveal PDF Handouts
 * Append `?print-pdf` query parameter to URL
   ** Does not work all the times for me
@@ -337,26 +434,26 @@ image::revealjs.png[size=center,pdfwidth=90%]
   ** Using `<<<` to enforce page breaks
   ** Using `pdfwidth=` to re-size PDF images
 
-<<< 
+<<<
 === Maven PDF Handout
 ```
-:experimental: 
-:pdf-page-size: 9in x 6in 
+:experimental:
+:pdf-page-size: 9in x 6in
 
-<<< 
+<<<
 [%notitle]
 === Eat Your Own Dog Food
 [.stretch]
 image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
 ```
 
-<<< 
+<<<
 [%notitle]
 === Reveal Speaker View
 [.stretch]
 image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
 
-<<< 
+<<<
 [%notitle]
 == Everyone Awake?
 image::iStock_000006160804Medium.jpg[background,size=cover,pdfwidth=80%]
