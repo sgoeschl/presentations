@@ -47,7 +47,7 @@ image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
 image::markup-languages.png[size=center]
 
 <<<
-== Lightweight Markup Language
+== Markup Language
 * LateX
 * DocBook
 * MarkDown
@@ -237,6 +237,36 @@ image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
 == AsciiDoc Features
 
 <<<
+== Cover Page
+```
+= AsciiDoc Sample Document
+Your Name <email@company.invalid>
+v{revnumber}, {docdate}
+:sectnums:
+:title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
+```
+
+<<<
+[%notitle]
+== Cover Page
+[.stretch]
+image::asciidoc-cover-page.png[size=center,pdfwidth=50%]
+
+<<<
+== Table Of Contents
+```
+:sectnums:
+:toc:
+:toclevels: 2
+```
+
+<<<
+[%notitle]
+== Table Of Contents
+[.stretch]
+image::asciidoc-toc.png[size=center,pdfwidth=80%]
+
+<<<
 == Source Code Support
 ```
 [source,java]
@@ -253,15 +283,7 @@ public class HelloWorld {
 <<<
 [%notitle]
 == Source Code Support
-[source,java]
-----
-public class HelloWorld {
-  public static void main(String args[]) {
-    System.out.println("Hello, world!"); <1>
-  }
-}
-----
-<1> Prints "Hello, world!" to the console.
+image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 
 <<<
 == CSV Tables
@@ -279,14 +301,7 @@ A,B,C,D
 <<<
 [%notitle]
 == CSV Tables
-.CSV data, 15% each column
-[format="csv",width="60%",cols="4",options="header"]
-[frame="topbot",grid="none"]
-|======
-1,2,3,4
-a,b,c,d
-A,B,C,D
-|======
+image::asciidoc-simple-table.png[size=center,pdfwidth=80%]
 
 <<<
 == Advanced Tables
@@ -309,30 +324,24 @@ Back-to-back with previous interval.
 <<<
 [%notitle]
 == Advanced Tables
+image::asciidoc-complex-table-example.png[size=center,pdfwidth=80%]
+
+<<<
+== Admonitions
+```
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that..
+```
+
+<<<
+== Admonitions
 [.stretch]
-image::asciidoc-table-example.png[size=center,pdfwidth=80%]
-
-<<<
-== Admonitions
-```
-TIP: Pro tip...
-
-IMPORTANT: Don't forget...
-
-WARNING: Watch out for...
-
-CAUTION: Ensure that..
-```
-
-<<<
-== Admonitions
-TIP: Pro tip...
-
-IMPORTANT: Don't forget...
-
-WARNING: Watch out for...
-
-CAUTION: Ensure that..
+image::asciidoc-admonitions.png[size=center,pdfwidth=60%]
 
 <<<
 == Include Directive
@@ -341,6 +350,7 @@ CAUTION: Ensure that..
 * Poplulate tables from external files
 
 <<<
+[%notitle]
 == Include Directive
 ```
 .CSV data, 15% each column
@@ -352,17 +362,7 @@ CAUTION: Ensure that..
 ```
 
 <<<
-[%notitle]
-== Include Directive
-.CSV data, 15% each column
-[format="csv",width="60%",cols="4",options="header"]
-[frame="topbot",grid="none"]
-|======
-include::table.csv[]
-|======
-
-<<<
-=== My Workflow
+== My Workflow
 * Sublime Text Editor
 * Sublime AsciiDoc Plugin for syntax highlighting
 * Chrome AsciiDoctor extension for live preview
@@ -370,15 +370,21 @@ include::table.csv[]
 
 <<<
 [%notitle]
-=== Sublime & AsciiDoc
+=== Chrome AsciiDoctor Plugin
 [.stretch]
-image::sublime-asciidoc.png[size=center,pdfwidth=90%]
+image::google-asciidoctor.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
 === AsciiDoctor Maven Plugin
 [.stretch]
 image::asciidoctor-maven-plugin.png[size=center,pdfwidth=90%]
+
+<<<
+[%notitle]
+=== GitHub AsciiDoc
+[.stretch]
+image::github-asciidoc.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
@@ -400,7 +406,7 @@ image::asciidoc-pdf-page-03.png[size=center,pdfwidth=35%]
 
 <<<
 [%notitle]
-=== Eat Your Own Dog Food
+== Eat Your Own Dog Food
 [.stretch]
 image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
 
@@ -426,6 +432,12 @@ image::revealjs.png[size=center,pdfwidth=90%]
 * Keyboard shortcuts for presenters
 
 <<<
+[%notitle]
+=== Reveal Speaker View
+[.stretch]
+image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
+
+<<<
 === Reveal PDF Handouts
 * Append `?print-pdf` query parameter to URL
   ** Does not work all the times for me
@@ -439,54 +451,56 @@ image::revealjs.png[size=center,pdfwidth=90%]
 ```
 :experimental:
 :pdf-page-size: 9in x 6in
-
-<<<
-[%notitle]
-=== Eat Your Own Dog Food
-[.stretch]
-image::eat-your-own-dog-food.jpg[size=center,pdfwidth=85%]
 ```
 
 <<<
-[%notitle]
-=== Reveal Speaker View
-[.stretch]
-image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
+== Come To The Dark Side?!
 
 <<<
-[%notitle]
-== Everyone Awake?
-image::iStock_000006160804Medium.jpg[background,size=cover,pdfwidth=80%]
+== We Have AsciiDoc!!
 
 <<<
-=== Come To The Dark Side
+== When To Use AsciiDoc
+* When Markdown is not good enough
+* Writing longer documents
+* When you need a `Table Of Content`
+* Creating customer-facing PDFs
 
 <<<
-=== We Have AsciiDoc
-* You can safely replace MS Word & Powerpoint
-* Use AsciiDoc for customer-facing PDFs
+== AsciiDoc Benefits
+* You can safely replace MS Word
 * Textual content plays nicely with version control
 * Documentation becomes part of the build process
-* Non-development colleagues might be a bit unhappy
+* Wide-spread tool support
 
 <<<
-=== Clone My GitHub Repository
+== AsciiDoc Drawbacks
+* Yet another tool to learn
+* Non-developers might be unhappy
+
+<<<
+[%notitle]
+== Questions?
+image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Clone My GitHub Repository
 {uri-project}
 
 <<<
-=== Links Part 01
+== Links Part 01
 AsciiDoctor:: https://asciidoctor.org
 AsciiDoctor PDF:: https://github.com/asciidoctor/asciidoctor-pdf
 AsciiDoctor Maven Plugin:: https://github.com/asciidoctor/asciidoctor-maven-plugin
 
 <<<
-=== Links Part 02
+== Links Part 02
 AsciiDoctor Reveal.js:: https://asciidoctor.org/docs/asciidoctor-revealjs/
 AsciiDoctor To PDF:: http://discuss.asciidoctor.org/AsciiDoctor-PDF-amp-slide-show-presentations-td6053.html
 AsciiDoc User Guide:: http://www.methods.co.nz/asciidoc/chunked/index.html
 RevealJS:: https://github.com/hakimel/reveal.js/
 
 <<<
-=== Links Part 03
+== Links Part 03
 Write in AsciiDoc - Publish Everwhere:: http://mojavelinux.github.io/decks/write-in-asciidoc-publish-everywhere/mixit2015/index.html#/
 
