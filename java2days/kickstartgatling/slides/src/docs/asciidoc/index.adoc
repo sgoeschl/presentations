@@ -13,6 +13,13 @@ ifndef::imagesdir[:imagesdir: images]
 == Introduction
 image::gatling-logo.png[size=center]
 
+== Siegfried Goeschl
+* Senior Software Engineer
+* Writing server-side code
+* Java Meetup Vienna co-organizer
+* Doing some Open Source development
+* Currently working at Erste Bank Austria
+
 <<<
 == Introducing Gatling
 * Performance testing framework
@@ -150,10 +157,9 @@ class HelloWorldSimulation extends Simulation {
 == Gatling For Rookies
 * Script setup
 * Common HTTP configuration
-* Scenario setup
-* Load simulation setup
+* Scenario & load simulation setup
 * Load simulation text report
-* Writing Gatling scripts
+* Creating Gatling scripts
 
 <<<
 == Script Setup
@@ -199,7 +205,10 @@ val scn = scenario("Postman")
 ```
 
 <<<
-=== At Once User
+== Load Simulation Setup
+
+<<<
+== At Once User
 [source,java]
 ----
 setUp(
@@ -211,7 +220,7 @@ setUp(
 <1> Injects a given number of users at once
 
 <<<
-=== Rampup Users
+== Rampup Users
 [source,java]
 ----
 setUp(
@@ -223,7 +232,7 @@ setUp(
 <1> Start 10 user within 5 seconds => 10 users
 
 <<<
-=== Constant Users
+== Constant Users
 [source,java]
 ----
 setUp(
@@ -233,6 +242,18 @@ setUp(
 )
 ----
 <1> Start 20 users / second for 15 seconds => 300 users
+
+<<<
+== Heaviside Users
+[source,scala]
+----
+setUp(
+  scn.inject(
+    heavisideUsers(1000) over(20 seconds) // <1>
+  ).protocols(httpConf)
+)
+----
+<1> Create 1.000 users in 20 seconds using https://en.wikipedia.org/wiki/Heaviside_step_function[Heaviside step function]
 
 <<<
 == Simulation Text Report
@@ -274,12 +295,12 @@ setUp(
 ```
 
 <<<
-== Writing Gatling Scripts
-* HAR import
+== Creating Gatling Scripts
 * Gatling Web Proxy Recorder
 * Start from the scratch
   ** More initial work
   ** Cleaner test code
+* HTTP Archive Format
 
 <<<
 [%notitle]
@@ -369,11 +390,11 @@ image::gatling-blueprint-project.jpg[background,size=cover,pdfwidth=80%]
 * Shows best practices
 
 <<<
-== Why Writing Gatling Blueprint Project?
+== Why Did I Write The Gatling Blueprint Project?
 
 <<<
 [%notitle]
-== Why Writing Gatling Blueprint Project?
+== Why Did I Write The Gatling Blueprint Project?
 [.stretch]
 image::george-online-banking-logo.png[size=center,pdfwidth=80%]
 
@@ -408,7 +429,7 @@ image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
 * Using Gatling performance test for
   ** Elastic server
   ** Desaster recovery
-  ** Transaction Search
+  ** End-to-end testing
 
 <<<
 [%notitle]

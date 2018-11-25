@@ -1,0 +1,112 @@
+= AsciiDoc Sample Document
+Your Name <email@company.invalid>
+v{revnumber}, {docdate}
+:sectnums:
+:sourcedir: includes
+:title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
+:toc:
+:toclevels: 2
+:url-home: http://people.apache.org/~sgoeschl/index.html
+:url-blog: http://www.senilesoftwareengineer.org
+
+<<<
+
+// ==========================================================================
+== Overview
+// ==========================================================================
+
+This document contains the commonly used AsciiDoc functionality to create custer-facing PDF documents
+
+* The cover page contains dynamic data
+	** The version number above is taken from the Maven pom.xml
+	** The document date uses the built-in `docdate` attribute
+* You can checkout my {url-home}[Homepage] and {url-blog}[Blog]
+	** The URLs are defined only once as attributes, makes them easy to change :-)
+
+// ==========================================================================
+== Source Code Snippet
+// ==========================================================================
+
+This snippet is include from a file  - no more copying & wasting working code samples
+
+[source,java]
+----
+include::{sourcedir}/helloworld.java[]
+----
+<1> Prints "Hello, world!" to the console.
+
+// ==========================================================================
+== Table Support
+// ==========================================================================
+
+It is handy to process CSV data since it is easy to update
+
+=== CSV Tables
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4",options="header"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
+
+=== Complex Tables
+
+Of course you can caome up with complex tables ...
+
+|====
+|Date |Duration |Avg HR |Notes
+
+|22-Aug-08 .2+^.^|10:24 | 157 |
+Worked out MSHR (max sustainable
+heart rate) by going hard
+for this interval.
+
+|22-Aug-08 | 152 |
+Back-to-back with previous interval.
+
+|24-Aug-08 3+^|none
+|====
+
+
+// ==========================================================================
+== Admonitions
+// ==========================================================================
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that..
+
+
+// ==========================================================================
+== Attributes
+// ==========================================================================
+
+.Built-in
+asciidoctor-version:: {asciidoctor-version}
+safe-mode-name:: {safe-mode-name}
+docdate:: {docdate}
+docdir:: {docdir}
+docfile:: {docfile}
+imagesdir:: {imagesdir}
+
+// ==========================================================================
+== Appendix
+// ==========================================================================
+
+=== Change History
+
+[options="header", width="100%", cols="10,13,55,22"]
+|================================================================================================================================================================================
+| Version | When            | What                                                                                       | Who
+| 1.0.0   | 2018-11-23      | Initial version                                                                            | Siegfried Goeschl
+|================================================================================================================================================================================
+
+=== Glossary
+
+include::includes/include.adoc.txt[]
