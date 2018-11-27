@@ -3,7 +3,7 @@ package postman
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
-class HelloWorld extends Simulation {
+class HelloWorldSimulation extends Simulation {
 
   val httpProtocol = http.baseUrl("https://postman-echo.com")
 

@@ -15,7 +15,7 @@ image::gatling-logo.png[size=center]
 
 == Siegfried Goeschl
 * Senior Software Engineer
-* Writing server-side code for ages
+* Writing server-side code
 * Java Meetup Vienna co-organizer
 * Apache Software Foundation member
 * Currently working at Erste Bank Austria
@@ -488,8 +488,7 @@ image::george-online-banking-logo.png[size=center,pdfwidth=80%]
 
 [.notes]
 ****
-* I had a problem
-* And the problem was called George
+* I had a problem - it was called George
 ****
 
 <<<
@@ -507,11 +506,6 @@ image::george-online-banking.jpg[size=center,pdfwidth=80%]
 [%notitle]
 == Introducing George
 image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
-
-[.notes]
-****
-* And it will be rolled to a lot of European countries ....
-****
 
 <<<
 == George & Gatling
@@ -596,13 +590,13 @@ image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
 <<<
 == Gatling Resources 01
 * https://gatling.io
-* https://automationrhapsody.com/performance-testing-with-gatling
-* https://theperformanceengineer.com/tag/gatling
 * https://gatling.io/docs/3.0/extensions/maven_plugin
+* https://github.com/sgoeschl/gatling-blueprint-project
+* https://automationrhapsody.com/performance-testing-with-gatling
 
 <<<
 == Gatling Resources 02
-* https://github.com/sgoeschl/gatling-blueprint-project
+* https://theperformanceengineer.com/tag/gatling
 * https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
 * https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
 * https://groups.google.com/forum/#!forum/gatling
