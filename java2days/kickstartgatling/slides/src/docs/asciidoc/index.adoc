@@ -13,6 +13,7 @@ ifndef::imagesdir[:imagesdir: images]
 == Introduction
 image::gatling-logo.png[size=center]
 
+<<<
 == Siegfried Goeschl
 * Senior Software Engineer
 * Writing server-side code
@@ -39,9 +40,10 @@ image::gatling-logo.png[size=center]
 == What Linus Says
 image::linus-torvalds-quote.png[size=center]
 
-+++<aside class="notes">+++
-Having said that a commercial license could generate more revenue keeping the Open Source version alive.
-+++</aside>+++
+[.notes]
+****
+* Having said that a commercial license could generate more revenue keeping the Open Source version alive.
+****
 
 <<<
 [%notitle]
@@ -73,15 +75,16 @@ image::buy-cash-coins-8556.jpg[background,size=cover,pdfwidth=80%]
 * Test data feeders CSV, JSON, JDBC, Redis
 * Management-friendly HTML reports
 
-+++<aside class="notes">+++
-No more 1:1 mapping between virtual users and worker threads.
-+++</aside>+++
+[.notes]
+****
+* No more 1:1 mapping between virtual users and worker threads.
+****
 
 <<<
 == When To Use Gatling?
+* Want to write test code in your IDE?
 * Need some integration & performance tests?
 * Want to run those test on your CI server?
-* Want to write test code in your IDE?
 * Do you care about reviews and version control?
 
 <<<
@@ -96,17 +99,11 @@ image::athletes-athletics-black-and-white-34514.jpg[background,size=cover,pdfwid
 * IntelliJ Community Edition
 * IntelliJ Scala Plugin
 
-[.notes]
-****
-* No need for commercial IDE - IntelliJ CE works nicely.
-* You can also use SBT & Gradle if you know your way around.
-****
-
 <<<
 == Getting Started
 * https://github.com/gatling/gatling-maven-plugin-demo
-* Import your Gatling project into your IDE
-* Re-factoring Scala code is more fun with an IDE
+* Import the Maven project into your IDE
+* Write and debug Scala code there
 * Execute Gatling tests on the command line
 * Simple CI integration using Maven
 
@@ -114,6 +111,7 @@ image::athletes-athletics-black-and-white-34514.jpg[background,size=cover,pdfwid
 ****
 * The official Gatling distributable is not suited for development.
 * The Gatling Maven archetype project does not use Maven Gatling plugin.
+** You can also use SBT & Gradle if you know your way around.
 ****
 
 <<<
@@ -166,7 +164,7 @@ image::gatling-reports-01.png[size=center,pdfwidth=80%]
 
 [.notes]
 ****
-* Your first Gatling HTML report
+* The report is generated in the `target/gatling` folder
 ****
 
 <<<
@@ -179,6 +177,7 @@ mvn -Dgatling.simulationClass=computerdatabase.BasicSimulation gatling:test
 ****
 * Start Gatling from the Maven command line.
 * Please note that different system properties are used!!!
+* Perfect way to integrate with Jenkins
 ****
 
 <<<
@@ -378,7 +377,7 @@ image::crisis-ahead.jpg[background,size=cover,pdfwidth=80%]
 == Things Not Being Told In Tutorials
 
 <<<
-== Please Note That The Following Problems Are Not Specififc To Gatling!
+== Please Note That The Following Problems Are Not Specific To Gatling!
 
 <<<
 == Hard-coded Server Address
@@ -470,12 +469,34 @@ image::gatling-blueprint-project.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
 == Gatling Blueprint Project
+* https://github.com/sgoeschl/gatling-blueprint-project
 * Staging & multi-tenant support
-* Hierarchical configuration properties
-* Hierarchical file resolver
+* Hierarchical configuration & file resolver
 * Pretty-printing & filtering of JSON responses
 * Stand-alone Gatling distribution
-* Implementing best practices
+* Implementing some best practices
+
+[.notes]
+****
+* Gatling Blueprint Project - a recipe of how to do things with Gatling
+* Use it like a cooking recipe - try it and change it to your personal taste
+****
+
+<<<
+[%notitle]
+== Simulation Coordinates
+[.stretch]
+image::the-matrix.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Simulation Coordinates
+[width="100%",cols="25,75"]
+|=======
+| Tenant          | The tenant to test (AT, CZ, SK)
+| Application     | Application to simulate (web, mobile)
+| Site            | Staging site to be tested (dev, prod)
+| Scope           | Scope of test (smoke, performance)
+|=======
 
 <<<
 == Why Did I Write The Gatling Blueprint Project?
@@ -508,12 +529,18 @@ image::george-online-banking.jpg[size=center,pdfwidth=80%]
 image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
 
 <<<
-== George & Gatling
-* I was part of George International Team supporting
-  ** Erste Bank Austria,
-  ** Česká spořitelna,
-  ** Slovenská sporiteľňa
-  ** Banca Comercială Română
+==  George International Team
+* Erste Bank Austria,
+* Česká spořitelna,
+* Slovenská sporiteľňa
+* Banca Comercială Română
+
+[.notes]
+****
+* I was part of George International Team for 2 years
+* George is Erste Bank Austria's Online Banking
+* It became a group-wide solution for Online Banking
+****
 
 <<<
 == George & Gatling
@@ -531,8 +558,8 @@ image::george-online-banking-countries.png[background,size=cover,pdfwidth=80%]
 <<<
 == When Are We Using Gatling?
 * Integration tests across tenants & sites
-* End-to-end performance testing
-* Elastic server migration & tuning
+* Developer driven performance testing
+* Elastic Search server migration & tuning
 * Desaster recovery tests
 * Detecting changes between releases
 
@@ -561,21 +588,19 @@ image::gatling-production-code.png[size=center,pdfwidth=80%]
 == Is Gatling For You?!
 
 <<<
-[%notitle]
 == Is Gatling For You?!
 * Gatling’s DSL is elegant & powerful
   ** Programming power at your finger tips
 * Scala & DSL learning curve
   ** Requires solid development skills
+* Works on Windows, Linux & OS X
 
 <<<
-[%notitle]
 == Is Gatling For You?!
 * Developer-friendly tool
-  ** Code only
-  ** IDE support & refactoring
-  ** You can set breakpoints &
-  ** Works on Windows, Linux & OS X
+* Code only, IDE support & refactoring
+* Integrates nicely into your build process
+* Do you need to onboard your test team?
 
 <<<
 [%notitle]

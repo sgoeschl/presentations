@@ -16,10 +16,11 @@ ifndef::imagesdir[:imagesdir: images]
 image::come-to-the-darkside-we-have-asciidoc.jpg[size=center]
 
 <<<
-== About Me
-* Java Backend Developer
+== Siegfried Goeschl
+* Senior Software Engineer
+* Writing server-side code
 * Java Meetup Vienna co-organizer
-* Doing some Open Source development
+* Apache Software Foundation member
 * Currently working at Erste Bank Austria
 
 <<<
@@ -267,20 +268,6 @@ image::asciidoc-cover-page.png[size=center,pdfwidth=50%]
 image::asciidoc-toc.png[size=center,pdfwidth=80%]
 
 <<<
-== Source Code Support
-```
-[source,java]
-----
-public class HelloWorld {
-  public static void main(String args[]) {
-    System.out.println("Hello, world!"); <1>
-  }
-}
-----
-<1> Prints "Hello, world!" to the console.
-```
-
-<<<
 [%notitle]
 == Source Code Support
 image::asciidoc-java-example.png[size=center,pdfwidth=80%]
@@ -359,6 +346,19 @@ image::asciidoc-admonitions.png[size=center,pdfwidth=60%]
 |======
 \include::table.csv[]
 |======
+```
+<<<
+== Source Code Support
+```
+[source,java]
+----
+public class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("Hello, world!"); // <1>
+  }
+}
+----
+<1> Prints "Hello, world!" to the console.
 ```
 
 <<<
