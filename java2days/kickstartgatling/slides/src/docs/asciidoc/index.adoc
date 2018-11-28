@@ -617,11 +617,15 @@ image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
 * https://gatling.io
 * https://gatling.io/docs/3.0/extensions/maven_plugin
 * https://github.com/sgoeschl/gatling-blueprint-project
-* https://automationrhapsody.com/performance-testing-with-gatling
+* https://github.com/sgoeschl/presentations
 
 <<<
 == Gatling Resources 02
+* https://automationrhapsody.com/performance-testing-with-gatling
 * https://theperformanceengineer.com/tag/gatling
 * https://www.blazemeter.com/blog/how-to-set-up-a-gatling-tests-implementation-environment
 * https://www.blazemeter.com/blog/how-to-set-up-and-run-your-gatling-tests-with-eclipse
+
+<<<
+== Gatling Resources 03
 * https://groups.google.com/forum/#!forum/gatling
