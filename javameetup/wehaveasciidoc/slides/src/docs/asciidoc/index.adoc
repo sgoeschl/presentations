@@ -243,7 +243,6 @@ image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
 = AsciiDoc Sample Document
 Your Name <email@company.invalid>
 v{revnumber}, {docdate}
-:sectnums:
 :title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
 ```
 
@@ -266,11 +265,6 @@ image::asciidoc-cover-page.png[size=center,pdfwidth=50%]
 == Table Of Contents
 [.stretch]
 image::asciidoc-toc.png[size=center,pdfwidth=80%]
-
-<<<
-[%notitle]
-== Source Code Support
-image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 
 <<<
 == CSV Tables
@@ -360,6 +354,11 @@ public class HelloWorld {
 ----
 <1> Prints "Hello, world!" to the console.
 ```
+
+<<<
+[%notitle]
+== Source Code Support
+image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 
 <<<
 == My Workflow
@@ -454,10 +453,7 @@ image::revealjs-speaker-view.png[size=center,pdfwidth=90%]
 ```
 
 <<<
-== Come To The Dark Side?!
-
-<<<
-== We Have AsciiDoc!!
+== Want To Join The Dark Side?!
 
 <<<
 == When To Use AsciiDoc
