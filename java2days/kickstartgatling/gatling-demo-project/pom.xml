@@ -5,15 +5,16 @@
 
   <groupId>io.gatling</groupId>
   <artifactId>gatling-maven-plugin-demo</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1.1</version>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gatling.version>${project.version}</gatling.version>
-    <gatling-plugin.version>3.0.0</gatling-plugin.version>
+    <gatling.version>3.0.1.1</gatling.version>
     <scala-maven-plugin.version>3.4.4</scala-maven-plugin.version>
+    <gatling-maven-plugin.version>3.0.1</gatling-maven-plugin.version>
+    <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -35,7 +36,7 @@
       <plugin>
         <groupId>io.gatling</groupId>
         <artifactId>gatling-maven-plugin</artifactId>
-        <version>${gatling-plugin.version}</version>
+        <version>${gatling-maven-plugin.version}</version>
       </plugin>
     </plugins>
   </build>
