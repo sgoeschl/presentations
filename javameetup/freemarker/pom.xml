@@ -3,15 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.sgoeschl.presentation.javameetup</groupId>
+    <groupId>com.github.sgoeschl.presentation.javameetup.freemarker</groupId>
     <artifactId>master</artifactId>
     <version>1.0.0</version>
-    <name>Java Meetup</name>
+    <name>Apache FreeMarker</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>freemarker</module>
-        <module>wehaveasciidoc</module>
+        <module>slides</module>
     </modules>
 
 </project>

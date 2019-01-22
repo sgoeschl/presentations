@@ -1,0 +1,380 @@
+= The Resurrection Of JVM Template Engines
+Siegfried Goeschl <siegfried.goeschl@asciifish.net>
+2019-01-18
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+ifndef::imagesdir[:imagesdir: images]
+:customcss: customcss.css
+:experimental:
+:pdf-page-size: 9in x 6in
+:uri-project: https://github.com/sgoeschl/presentations
+
+[%notitle]
+== Introduction
+[.stretch]
+image::front-page.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Siegfried Goeschl
+* Senior Software Engineer
+* Writing server-side code
+* Java Meetup Vienna co-organizer
+* Apache Software Foundation member
+* Currently working at Erste Bank Austria
+
+<<<
+== Once Upon A Time
+* HTML was generated on the server side
+* We had various JVM template engines
+* Browser only rendered the HTML page
+  ** Using some JavaScript snippets
+
+<<<
+[%notitle]
+== Backend Developers Ruled The Internet
+[.stretch]
+image::dinosaurs.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== Things Changed Somehow
+* Frontend developers appeared
+* JavaScript and frameworks rule the Internet now
+* There are even new job descriptions
+
+<<<
+[%notitle]
+== Full-Stack Developers
+[.stretch]
+image::full-stack-developer-02.png[background,size=cover,pdfwidth=80%]
+
+<<<
+[%notitle]
+== Are JVM Template Engines Extinct?
+[.stretch]
+image::dodo-bird.jpg[size=center,pdfwidth=80%]
+
+<<<
+[%notitle]
+== JVM Template Engines Are Alive & Kicking
+[.stretch]
+image::action-adult-field-1086113.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== JVM Template Engines
+* Java Server Pages
+* https://github.com/neuland/jade4j[Jade4J]
+* https://www.thymeleaf.org[Thymeleaf]
+* https://freemarker.apache.org[Apache FreeMarker]
+* http://velocity.apache.org[Apache Velocity]
+* https://github.com/PebbleTemplates/pebble[Pebble]
+
+[.notes]
+****
+* Thymeleaf is focused on HTML templating and favored in the Spring community
+* Pebble is used in Gatling to create request bodies
+* Apache Velocity was mostly inactive the last few years
+* Apache FreeMarker is out there but hardly visible
+* Jade4J is little known & focused on HTML templating
+****
+
+<<<
+[%notitle]
+== Microservices
+[.stretch]
+image::microservices.png[size=center,pdfwidth=%]
+
+<<<
+== Microservice Frameworks
+* http://spring.io/projects/spring-boot[Spring Boot] supports most of JVM template engines
+  ** Thymleaf, FreeMarker, Groovy, Jade4j
+  ** Velocity support was dropped in Spring 4.3
+* http://micronaut.io[Micronaut] currently supports Velocity only
+  ** Thymeleaf & Freemarker on master branch
+
+[.notes]
+****
+* Micronaut is developed by OCI which also develop Grails, was released in October 2018
+****
+
+<<<
+[%notitle]
+== George Labs & Loki
+[.stretch]
+image::george-in-the-house.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+[%notitle]
+== George Labs & Loki
+[.stretch]
+image::loki.jpg[size=center,pdfwidth=80%]
+
+<<<
+== George Labs & Loki
+* Loki is an internal test application
+  ** Registering mobile devices
+  ** Getting OAuth2 tokens
+* OAuth2 tokens are useful for test automation :-)
+* Test code morphed into Spring Boot application
+* A Web UI was somehow missing
+
+<<<
+== Spring Boot & FreeMarker
+
+<<<
+=== Maven POM
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-freemarker</artifactId>
+</dependency>
+```
+
+<<<
+=== Spring Controller
+```java
+@Controller
+public class ViewController {
+
+    @GetMapping("/ui/users")
+    public String findUsers(Map<String, Object> model,
+            @RequestParam(name = "tenant") String tenant,
+            @RequestParam(name = "site") String site,
+            @RequestParam(name = "user") String user) {
+        model.put("users", findUsers(tenant, site, user));
+        return "users";
+    }
+```
+
+<<<
+[%notitle]
+=== Template Folder
+[.stretch]
+image::template-folder.png[size=center,pdfwidth=80%]
+
+<<<
+=== FTL Header & Includes
+```html
+<#ftl output_format="HTML" strip_whitespace=true>
+<#import "/spring.ftl" as spring/>
+<#import "common.ftl" as common/>
+```
+
+<<<
+=== FTL Macros
+```html
+<#macro head>
+    <head>
+        <title>Locker Enrollment Client</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://m.b.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+</#macro>
+```
+
+<<<
+=== HTML Body
+```html
+<!DOCTYPE html>
+<html lang="en">
+<@common.head/>
+<body>
+<@common.navbar/>
+<div class="container-fluid">
+    <@common.errorMessages/>
+    <@writeUserTable users=users/>
+</div>
+</body>
+</html>
+```
+
+<<<
+=== FTL Looping
+```html
+<#macro writeUserTable users>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>User ID</th>
+        </tr>
+        <#list users as user>
+            <tr>
+                <td>${user?counter}</td>
+                <td>${user.userId}</td>
+            </tr>
+        </#list>
+    </table>
+</#macro>
+```
+
+[%notitle]
+=== How It Looks
+[.stretch]
+image::loki-user-list.png[size=cover,pdfwidth=80%]
+
+[%notitle]
+=== How It Looks
+[.stretch]
+image::loki-request-token.png[size=cover,pdfwidth=80%]
+
+<<<
+== What Else Can You Do With Template Engines?
+
+[%notitle]
+== Magic?!
+[.stretch]
+image::adult-bed-bedroom-1282293.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== freemarker-cli
+* Need to transform some structured text?
+* Transformation too boring to be done manually?
+* Happening not often enough to write a dedicated program or script?
+
+<<<
+== Real-World Examples
+[.stretch]
+image::black-and-white-connect-hand-164531.jpg[size=center,pdfwidth=80%]
+
+<<<
+== The Problem I
+* George API exposes various REST endpoints
+* Endpoints are documented with Swagger
+* Banks require firewall white-listing
+* *Provide the available REST endpoints and HTTP methods as CSV file?!*
+
+<<<
+=== The Solution I
+* Swagger provides endpoint documentation as JSON document
+* Use https://github.com/json-path/JsonPath[JsonPath] to parse JSON
+* Write out the CSV
+
+<<<
+=== The Command Line I
+```
+groovy freemarker-cli.groovy
+  -t templates/json/csv/swagger-endpoints.ftl
+  site/sample/json/swagger-spec.json
+```
+
+<<<
+=== The Artifacts I
+* https://github.com/sgoeschl/freemarker-cli/blob/master/site/sample/json/swagger-spec.json[Swagger JSON^]
+* https://github.com/sgoeschl/freemarker-cli/blob/master/templates/json/csv/swagger-endpoints.ftl[FreeMarker^]
+
+<<<
+[%notitle]
+=== The Result I
+[format="csv", options="header", separator=";"]
+|===
+ENDPOINT;METHOD;DESCRIPTION
+/api/pets;GET;Returns all pets
+/api/pets;POST;Creates a new pet
+/api/pets/{id};GET;Returns a user
+/api/pets/{id};DELETE;Deletes a single pet
+|===
+
+<<<
+== The Problem II
+* You write your documentation in Markdown
+* You need to include parts of Excel data
+* *Conversion from Excel to Markdown?!*
+
+<<<
+=== The Solution II
+* Use https://poi.apache.org[Apache POI] to parse the the Excel file
+* Write out the Markdown
+
+<<<
+=== The Command Line II
+```
+groovy freemarker-cli.groovy
+  -t templates/excel/html/transform.ftl
+  site/sample/excel/test.xls
+```
+
+<<<
+=== The Artifacts II
+* https://github.com/sgoeschl/freemarker-cli/tree/master/site/sample/excel[Excel^]
+* https://github.com/sgoeschl/freemarker-cli/blob/master/templates/excel/md/transform.ftl[FreeMarker^]
+
+<<<
+[%notitle]
+=== The Result II
+[.stretch]
+image::excel-to-markdown.png[size=cover,pdfwidth=80%]
+
+<<<
+== The Problem III
+* George has CSV, Excel & JSON transaction export
+* George Micros team evaluates PDF export
+* *How to prototype PDF transaction export quickly?!*
+
+<<<
+=== The Solution III
+* Get an OAuth2 token (remember Loki?)
+* Trigger a CSV transaction export over REST API
+* Parse the CSV using https://commons.apache.org/proper/commons-csv[Apache Commons CSV]
+* Two options to transform CSV to PDF
+  ** From HTML to PDF using https://wkhtmltopdf.org[wkhtml2pdf]
+  ** From XML-FOto PDF using https://xmlgraphics.apache.org/fop[Apache FOP]
+
+<<<
+=== The Command Line III
+```
+groovy freemarker-cli.groovy
+  -t templates/csv/fo/transactions.ftl
+  site/sample/csv/transactions.csv > transactions.fo
+
+fop -fo transactions.fo transactions.pdf
+```
+
+<<<
+[%notitle]
+=== The Result III
+[.stretch]
+image::transaction-export-fop.png[size=cover,pdfwidth=80%]
+
+<<<
+[%notitle]
+=== The Result III
+[.stretch]
+image::transaction-export-wkhtmltopdf.png[size=cover,pdfwidth=80%]
+
+<<<
+== Wrapping It Up
+
+<<<
+== When To Use?
+* Email generation
+* Simple Web UI
+* Code generation
+* Ad-hoc file transformations
+
+<<<
+== Why choosing FreeMarker?
+* General purpose template engine
+* Used in commercial applications
+  ** Alfresco, Liferay, Magnolia
+* Native IntelliJ integration
+
+<<<
+== Why choosing FreeMarker?
+* Mature & actively maintained
+* Extensive documentation
+* Helpful error messages
+
+<<<
+[%notitle]
+== Questions?
+image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
+
+<<<
+== References
+
+* https://freemarker.apache.org/index.html[Apache FreeMarker]
+* https://github.com/sgoeschl/freemarker-cli[Apache FreeMarker CLI]
+* https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial#a10847966[Spring Boot FreeMarker Tutorial]
+* http://www.vogella.com/tutorials/FreeMarker/article.html[Using FreeMarker Templates Tutorial]
+* https://github.com/sgoeschl/presentations/blob/master/javameetup/freemarker/slides/src/docs/asciidoc/index.adoc[Presentation]
