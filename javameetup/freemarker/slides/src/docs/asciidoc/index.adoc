@@ -22,6 +22,7 @@ image::front-page.jpg[background,size=cover,pdfwidth=80%]
 * Java Meetup Vienna co-organizer
 * Apache Software Foundation member
 * Currently working at Erste Bank Austria
+* https://github.com/sgoeschl/presentations
 
 <<<
 == Once Upon A Time
@@ -331,6 +332,11 @@ fop -fo transactions.fo transactions.pdf
 ```
 
 <<<
+=== The Artifacts III
+* https://github.com/sgoeschl/freemarker-cli/blob/master/site/sample/csv/transactions.csv[CSV^]
+* https://github.com/sgoeschl/freemarker-cli/blob/master/templates/csv/fo/transactions.ftl[FreeMarker^]
+
+<<<
 [%notitle]
 === The Result III
 [.stretch]
@@ -346,24 +352,32 @@ image::transaction-export-wkhtmltopdf.png[size=cover,pdfwidth=80%]
 == Wrapping It Up
 
 <<<
-== When To Use?
+== When To Use JVM Template Engines?
 * Email generation
 * Simple Web UI
 * Code generation
 * Ad-hoc file transformations
 
 <<<
+[%notitle]
+=== Belongs To Your Tool Chest
+[.stretch]
+image::assortment-black-and-white-black-and-white-220639.jpg[size=cover,pdfwidth=80%]
+
+<<<
 == Why choosing FreeMarker?
 * General purpose template engine
-* Used in commercial applications
-  ** Alfresco, Liferay, Magnolia
-* Native IntelliJ integration
+  ** Think of CSV, Markdown, ...
+* Wide-spread usage
+  ** Alfresco, Liferay, Magnolia, Netbeans
+* Excellent IntelliJ integration
 
 <<<
 == Why choosing FreeMarker?
 * Mature & actively maintained
 * Extensive documentation
-* Helpful error messages
+* Extensive error messages
+* Zero dependencies
 
 <<<
 [%notitle]
