@@ -1,0 +1,33 @@
+#############################################################################
+# Spring Boot Logging
+#############################################################################
+
+logging:
+  level:
+    root: INFO
+  file: server.log
+
+#############################################################################
+# Spring Boot Management
+#############################################################################
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: auditevents, env, httptrace, info, health, logfile
+
+#############################################################################
+# Spring Boot Server
+#############################################################################
+
+server:
+  tomcat:
+    max-connections: 200
+    min-spare-threads: 4
+    max-threads: 8
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json

@@ -220,6 +220,19 @@ image::loki-user-list.png[size=cover,pdfwidth=80%]
 image::loki-request-token.png[size=cover,pdfwidth=80%]
 
 <<<
+=== FreeMarker Integration
+
+=== FTL Auto Reloading
+
+[source]
+----
+spring.freemarker.cache=false # <1>
+spring.freemarker.prefer-file-system-access=true # <2>
+----
+<1> Disbale FTL caching
+<2> Use the FTLs from `src/main/resources/templates`
+
+<<<
 == What Else Can You Do With Template Engines?
 
 [%notitle]
