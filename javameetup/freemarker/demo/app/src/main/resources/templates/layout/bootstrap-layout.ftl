@@ -1,4 +1,4 @@
-<#macro page>
+<#macro page menu=0>
     <html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <title>Spring Boot FreeMarker Demo</title>
@@ -9,16 +9,7 @@
     <body>
     <#include "menu.ftl"/>
     <div class="container-fluid">
-        <#if errorMessage??>
-            <div class="alert alert-danger">
-                <strong>${errorMessage}</strong>
-            </div>
-        </#if>
-        <#if successMessage??>
-            <div class="alert alert-success">
-                <strong>${successMessage}</strong>
-            </div>
-        </#if>
+        <#include "messages.ftl"/>
         <#nested/>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

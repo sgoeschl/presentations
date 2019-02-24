@@ -24,11 +24,17 @@ public class MainConfiguration {
     @Value("${my.server.resource.cache.ttl:10000}")
     private int resourceCacheTimeToLifeInMs;
 
+    @Value("${my.server.resttemplate.connect-timeout:2000}")
+    private int restTemplateConnectTimeout;
+
+    @Value("${my.server.resttemplate.read-timeout:20000}")
+    private int restTemplateReadTimeout;
+
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
-                .setConnectTimeout(Duration.ofSeconds(HTTP_CONNECT_TIMOUT))
-                .setReadTimeout(Duration.ofSeconds(HTTP_READ_TIMOUT))
+                .setConnectTimeout(Duration.ofMillis(restTemplateConnectTimeout))
+                .setReadTimeout(Duration.ofMillis(restTemplateReadTimeout))
                 .build();
     }
 

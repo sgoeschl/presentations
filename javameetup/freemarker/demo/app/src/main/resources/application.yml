@@ -40,6 +40,9 @@ server:
 
 my:
   server:
+    resttemplate:
+      connect-timeout: 2000
+      read-timeout: 20000
     resource:
       cache:
         ttl: 10000
