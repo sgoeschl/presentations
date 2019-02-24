@@ -3,9 +3,8 @@
 <@layout.page>
     <div class="p-1"></div>
     <div class="alert alert-danger">
-        <strong>An error has occured - please contact your the developers with the information below ...</strong>
+        <strong>An error has occured - please contact the developers with the information below ...</strong>
     </div>
-    <h3>Error Details</h3>
     <table class="table table-striped">
         <#if path??>
             <tr>
@@ -15,7 +14,7 @@
         </#if>
         <#if RequestParameters?has_content>
             <tr>
-                <td>Query</td>
+                <td>Parameters</td>
                 <td>
                     <#list RequestParameters as name, value>
                         ${name}=${value}&nbsp;
@@ -44,7 +43,7 @@
         <#if trace??>
             <tr>
                 <td>Stack Trace</td>
-                <td>${trace}</td>
+                <td><small>${trace}</small></td>
             </tr>
         </#if>
     </table>
