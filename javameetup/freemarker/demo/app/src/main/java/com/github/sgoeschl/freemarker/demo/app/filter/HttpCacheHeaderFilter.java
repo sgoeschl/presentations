@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.github.sgoeschl.freemarker.demo.app.filter;
 
 import org.springframework.http.HttpHeaders;
@@ -13,10 +29,10 @@ import java.util.Date;
 
 public class HttpCacheHeaderFilter extends OncePerRequestFilter {
 
-    private final int seconds;
+    private final int millis;
 
-    public HttpCacheHeaderFilter(int seconds) {
-        this.seconds = seconds;
+    public HttpCacheHeaderFilter(int millis) {
+        this.millis = millis;
     }
 
     @Override
@@ -25,7 +41,7 @@ public class HttpCacheHeaderFilter extends OncePerRequestFilter {
             HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (seconds > 0) {
+        if (millis > 0) {
             response.addHeader(HttpHeaders.EXPIRES, expiresHttpHeader());
         }
 
@@ -33,6 +49,10 @@ public class HttpCacheHeaderFilter extends OncePerRequestFilter {
     }
 
     private String expiresHttpHeader() {
-        return new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss zzz").format(new Date(System.currentTimeMillis() + seconds * 1000));
+        return simpleDateFormat().format(new Date(System.currentTimeMillis() + millis));
+    }
+
+    private static SimpleDateFormat simpleDateFormat() {
+        return new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss zzz");
     }
 }

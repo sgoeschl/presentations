@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.github.sgoeschl.freemarker.demo.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,16 +29,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import java.time.Duration;
+import static java.time.Duration.ofMillis;
 
 @Configuration
+
 public class MainConfiguration {
 
-    private static final int HTTP_CONNECT_TIMOUT = 2;
-    private static final int HTTP_READ_TIMOUT = 5;
-
-    @Value("${my.server.resource.cache.ttl:10000}")
-    private int resourceCacheTimeToLifeInMs;
+    @Value("${my.server.page.static.cache-ttl:10000}")
+    private int staticPageCacheTimeToLive;
 
     @Value("${my.server.resttemplate.connect-timeout:2000}")
     private int restTemplateConnectTimeout;
@@ -33,8 +47,8 @@ public class MainConfiguration {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
-                .setConnectTimeout(Duration.ofMillis(restTemplateConnectTimeout))
-                .setReadTimeout(Duration.ofMillis(restTemplateReadTimeout))
+                .setConnectTimeout(ofMillis(restTemplateConnectTimeout))
+                .setReadTimeout(ofMillis(restTemplateReadTimeout))
                 .build();
     }
 
@@ -48,10 +62,13 @@ public class MainConfiguration {
         return new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     }
 
+    /**
+     * Show to set HTTP cache headers for more or less static FTL pages.
+     */
     @Bean
     public FilterRegistrationBean<OncePerRequestFilter> httpCacheHeaderFilter() {
         final FilterRegistrationBean<OncePerRequestFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new HttpCacheHeaderFilter(resourceCacheTimeToLifeInMs / 1_000));
+        registrationBean.setFilter(new HttpCacheHeaderFilter(staticPageCacheTimeToLive / 1_000));
         registrationBean.addUrlPatterns("/");
         return registrationBean;
     }

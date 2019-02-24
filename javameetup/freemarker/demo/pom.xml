@@ -25,4 +25,8 @@
         <module>app</module>
     </modules>
 
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+    </build>
+
 </project>
