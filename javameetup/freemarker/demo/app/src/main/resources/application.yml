@@ -23,16 +23,20 @@ management:
 #############################################################################
 
 server:
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+  error:
+    include-stacktrace: always
+    whitelabel:
+      enabled: false
   tomcat:
     max-connections: 200
     min-spare-threads: 4
     max-threads: 8
     resource:
-      cache-ttl:
-  compression:
-    enabled: true
-    min-response-size: 1024
-    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+      cache-ttl: 60000
 
 #############################################################################
 # Spring Boot FreeMarker Demo

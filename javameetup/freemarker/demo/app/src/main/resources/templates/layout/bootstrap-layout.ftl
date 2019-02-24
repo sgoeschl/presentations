@@ -8,6 +8,7 @@
     </head>
     <body>
     <#include "menu.ftl"/>
+    <div class="p-1"></div>
     <div class="container-fluid">
         <#include "messages.ftl"/>
         <#nested/>

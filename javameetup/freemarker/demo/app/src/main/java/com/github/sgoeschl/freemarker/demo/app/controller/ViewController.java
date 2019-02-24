@@ -44,6 +44,11 @@ public class ViewController {
         return "index";
     }
 
+    @GetMapping("/ui/exception")
+    public String exception() {
+        throw new RuntimeException("You clicked on the 'Exception' link to simulate an error ...");
+    }
+
     @GetMapping("/ui/actuator")
     public String logile(
             Map<String, Object> model,

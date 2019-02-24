@@ -7,6 +7,8 @@
         <li class="nav-item">
             <a class="nav-link" href="/ui/actuator?endpoint=logfile">Logfile</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ui/exception">Exception</a>
+        </li>
     </ul>
 </nav>
-<div class="p-1"></div>
