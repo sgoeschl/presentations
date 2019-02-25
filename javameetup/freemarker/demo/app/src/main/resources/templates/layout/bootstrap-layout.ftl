@@ -1,4 +1,4 @@
-<#macro page menu=0>
+<#macro page>
     <html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <title>Spring Boot FreeMarker Demo</title>
