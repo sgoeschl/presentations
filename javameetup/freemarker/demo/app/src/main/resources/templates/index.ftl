@@ -2,7 +2,7 @@
 
 <@layout.page>
     <h2>Spring Boot FreeMarker Demo</h2>
-    <p>Demo project to provide a production ready Spring Boot FreeMarker sample project</p>
+    <p>Demo project to provide a production-ready Spring Boot FreeMarker sample project</p>
     <ul>
         <li>Auto-reloading of FreeMarker templates</li>
         <li>Integration of <a href="https://getbootstrap.com">Bootstrap 4</a> for a pleasant UI experience</li>
