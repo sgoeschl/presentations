@@ -21,11 +21,10 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- compile depenency versions -->
-        <version.spring.boot>2.1.2</version.spring.boot>
+        <version.spring.boot>2.1.3</version.spring.boot>
         <version.junit>4.12</version.junit>
         <version.spring-web>5.1.2.RELEASE</version.spring-web>
         <version.validation>2.0.1.Final</version.validation>
-        <version.json-path>2.4.0</version.json-path>
     </properties>
 
     <dependencyManagement>
