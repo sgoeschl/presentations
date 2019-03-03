@@ -19,7 +19,7 @@ public class SpringRestService implements RestService {
 
     private static final Logger LOG = LoggerFactory.getLogger(RestService.class);
 
-    @Value("${local.server.poprt:8080}")
+    @Value("${local.server.port:8080}")
     private String port;
 
     private final RestTemplate restTemplate;

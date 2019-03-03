@@ -227,7 +227,8 @@ image::loki-request-token.png[size=cover,pdfwidth=80%]
 [source]
 ----
 spring.freemarker.cache=false # <1>
-spring.freemarker.prefer-file-system-access=true # <2>
+spring.freemarker.prefer-file-system-access=true
+spring.freemarker.template-loader-path=file:./src/main/resources/templates # <2>
 ----
 <1> Disbale FTL caching
 <2> Use the FTLs from `src/main/resources/templates`
