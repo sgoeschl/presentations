@@ -1,6 +1,6 @@
 Build the Docker Iamge
 
-> docker build --tag spring-boot-freemarker-demo .
+> docker build -t spring-boot-freemarker-demo .
 
 Show all docker images on your computer
 

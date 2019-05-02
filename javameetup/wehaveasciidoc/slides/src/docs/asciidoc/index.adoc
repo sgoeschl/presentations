@@ -331,7 +331,6 @@ image::asciidoc-admonitions.png[size=center,pdfwidth=60%]
 * Poplulate tables from external files
 
 <<<
-[%notitle]
 == Include Directive
 ```
 .CSV data, 15% each column
