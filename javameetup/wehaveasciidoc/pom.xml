@@ -14,4 +14,7 @@
         <module>example</module>
     </modules>
 
+    <build>
+        <defaultGoal>process-resources</defaultGoal>
+    </build>
 </project>
