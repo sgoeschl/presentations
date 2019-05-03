@@ -359,13 +359,24 @@ public class HelloWorld {
 == Source Code Support
 image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 
+[.notes]
+****
+* You can combine source code & includes
+****
+
 <<<
 == My Workflow
-* Using GitHub
 * Sublime Text Editor
+* GitHub or BitBucket
 * Sublime AsciiDoc Plugin for syntax highlighting
 * Chrome AsciiDoctor extension for live preview
 * `asciidoctor-maven-plugin` for PDF generation
+
+<<<
+[%notitle]
+=== GitHub AsciiDoc
+[.stretch]
+image::github-asciidoc.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
@@ -378,12 +389,6 @@ image::google-asciidoctor.png[size=center,pdfwidth=70%]
 === AsciiDoctor Maven Plugin
 [.stretch]
 image::asciidoctor-maven-plugin.png[size=center,pdfwidth=90%]
-
-<<<
-[%notitle]
-=== GitHub AsciiDoc
-[.stretch]
-image::github-asciidoc.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
