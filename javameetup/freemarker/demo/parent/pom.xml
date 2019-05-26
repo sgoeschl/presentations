@@ -29,6 +29,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.github.sgoeschl.freemarker.demo</groupId>
+                <artifactId>freemarker-demo-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework</groupId>

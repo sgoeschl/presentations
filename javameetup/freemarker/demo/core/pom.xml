@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>freemarker-demo-core</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>FreeMarker Demo: Core</name>
 
     <dependencies>
