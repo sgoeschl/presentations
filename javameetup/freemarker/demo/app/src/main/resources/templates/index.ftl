@@ -8,5 +8,6 @@
         <li>Integration of <a href="https://getbootstrap.com">Bootstrap 4</a> for a pleasant UI experience</li>
         <li>Application icon and favicon by the courtesy of <a href="https://www.iconsdb.com">ICONSDB</a></li>
         <li>Built-in server error handling</li>
+        <li>Post Form example</li>
     </ul>
 </@layout.page>

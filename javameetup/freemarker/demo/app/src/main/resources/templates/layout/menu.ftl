@@ -10,5 +10,8 @@
         <li class="nav-item">
             <a class="nav-link" href="/ui/exception">Exception</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ui/user-form">Post Example</a>
+        </li>
     </ul>
 </nav>

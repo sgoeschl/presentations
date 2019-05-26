@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div>
     <#if errorMessage??>
         <div class="alert alert-danger">
             <strong>${errorMessage}</strong>
