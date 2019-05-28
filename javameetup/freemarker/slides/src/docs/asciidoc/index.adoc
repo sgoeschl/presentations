@@ -26,6 +26,7 @@ image::front-page.jpg[background,size=cover,pdfwidth=80%]
 <<<
 == Once Upon A Time
 * HTML was generated on the server side
+* Various JVM template endgines were used
 * Browser only rendered the HTML page
 * JavaScript snippets for better UIX
 
@@ -33,7 +34,7 @@ image::front-page.jpg[background,size=cover,pdfwidth=80%]
 [%notitle]
 == Template Engines
 [.stretch]
-image::template-engine.png[background,size=cover,pdfwidth=80%]
+image::template-engine.png[pdfwidth=80%]
 
 <<<
 [%notitle]
@@ -42,7 +43,7 @@ image::template-engine.png[background,size=cover,pdfwidth=80%]
 image::dinosaurs.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
-== Things Changed Somehow
+== Things Have Changed
 * Frontend developers appeared
 * JavaScript and its frameworks rule the Internet now
 * There are even new jobs out there
@@ -82,6 +83,22 @@ image::action-adult-field-1086113.jpg[background,size=cover,pdfwidth=80%]
 ****
 
 <<<
+== Apache FreeMarker History
+* FreeMarker 1 was released 2004
+* FreeMarker 2 was mostly stable 2004 Q3
+* In 2015 it moved to Apache Software Foundation
+* Latest 2.x release is 2.3.28 (04.04.2018)
+* Ongoing work on Freemarker 3.x
+
+<<<
+== Apache FreeMarker Features
+* Can generate any kind of text
+* Easily embeddable (no servlet environment)
+* Pluggable template loader
+* Powerful template language
+* Zero dependencies
+
+<<<
 [%notitle]
 == Microservices
 [.stretch]
@@ -105,7 +122,6 @@ image::microservices.png[size=center,pdfwidth=%]
 
 <<<
 === What You Need To Do
-
 * Add FreeMarker dependency
 * Implement a Spring Controller
 * Write FreeMarker templates
@@ -125,13 +141,13 @@ image::microservices.png[size=center,pdfwidth=%]
 @Controller
 public class ViewController {
 
-    @GetMapping("/ui/users")
-    public String doSomething(Map<String, Object> model,
-            @RequestParam(name = "tenant") String tenant,
-            @RequestParam(name = "site") String site,
-            @RequestParam(name = "user") String user) {
-        model.put("users", findUsers(tenant, site, user));
-        return "users";
+  @GetMapping("/ui/users")
+  public String doSomething(Map<String, Object> model,
+          @RequestParam(name = "tenant") String tenant,
+          @RequestParam(name = "site") String site,
+          @RequestParam(name = "user") String user) {
+      model.put("users", findUsers(tenant, site, user));
+      return "users";
     }
 ```
 
@@ -176,9 +192,7 @@ public class ViewController {
     </head>
     <body>
       <#include "menu.ftl"/>
-      <div class="container-fluid">
-        <#nested/>
-      </div>
+      <div class="container-fluid"><#nested/></div>
     </body>
     </html>
 </#macro>
@@ -210,8 +224,21 @@ image::spring-freemarker-demo.png[size=center,pdfwidth=%]
 
 === FreeMarker Tips & Tricks
 
-=== Template Auto Reloading
+=== FreeMarker Directives
+[source]
+----
+${propertyName.fieldName??} #<1>
+${propertyName.optionalProperty!"Default Value"} #<2>
 
+<#list map as name,value> #<3>
+  ${name} : ${value}
+</#list>
+----
+<1> Does the field exists?
+<2> Return a default value
+<3> Iterate over name/value pairs
+
+=== Template Auto Reloading
 [source]
 ----
 spring.freemarker.cache=false # <1>
@@ -225,23 +252,23 @@ spring.freemarker.template-loader-path=file:./templates # <2>
 == What Else Can You Do With Template Engines?
 
 [%notitle]
-== Magic?!
+=== Magic?!
 [.stretch]
 image::adult-bed-bedroom-1282293.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
-== FreeMarker CLI
-* Need to transform some structured text?
+=== FreeMarker CLI
+* Need to transform some structured documents?
 * Transformation too boring to be done manually?
 * Happening not often enough to write a dedicated program or script?
 
 <<<
-== Real-World Examples
+=== Real-World Examples
 [.stretch]
 image::black-and-white-connect-hand-164531.jpg[size=center,pdfwidth=80%]
 
 <<<
-== The Problem I
+=== The Problem I
 * Security team requires firewall white-listing of all REST endpoints
 * Provide the available REST endpoints & HTTP methods as CSV file
 * Need to update regularly
@@ -249,7 +276,7 @@ image::black-and-white-connect-hand-164531.jpg[size=center,pdfwidth=80%]
 <<<
 === The Solution I
 * REST Endpoints are documented with Swagger
-* Swagger provides endpoint documentation as JSON document
+* Endpoint documentation as JSON document
 * Use https://github.com/json-path/JsonPath[JsonPath] to parse JSON
 * Write out the CSV
 
@@ -279,11 +306,11 @@ ENDPOINT;METHOD;DESCRIPTION
 |===
 
 <<<
-== The Problem II
-* You get Excel documents for further processing
-* Documentation with Markdown or Confluence
-* You need to include parts of Excel data
-* Conversion from Excel to Markdown (or other Markup)?!
+=== The Problem II
+* You need to post-process Excel documents
+  * Generate a CSV file?
+  * Transform to HTML or Markdown?
+  * Or something more weird
 
 <<<
 === The Solution II
@@ -310,14 +337,13 @@ groovy freemarker-cli.groovy
 image::excel-to-markdown.png[size=cover,pdfwidth=80%]
 
 <<<
-== The Problem III
+=== The Problem III
 * Existing CSV, Excel & JSON transaction export
-* One team want to evaluate PDF transaction export
+* One team wanted to evaluate PDF transaction export
 * How to prototype PDF transaction export quickly?
 
 <<<
 === The Solution III
-* Get an OAuth2 token
 * Trigger a CSV transaction export over REST API
 * Parse the CSV using https://commons.apache.org/proper/commons-csv[Apache Commons CSV]
 * Two options to transform CSV to PDF
@@ -343,6 +369,25 @@ groovy freemarker-cli.groovy
   site/sample/csv/transactions.csv > transactions.html
 
 wkhtmltopdf -O landscape transactions.html transactions.pdf
+```
+
+<<<
+=== Hitting Real Data
+```
+######################################################################
+CSV -> HTML -> PDF Transaction Export
+######################################################################
+Fetching the access token took 1 seconds
+CSV export of 4095 transactions took 3 seconds
+Transforming CSV to HTML took 6 seconds
+Converting HTML to PDF took 15 seconds
+######################################################################
+TSV -> FO -> PDF Transaction Export
+######################################################################
+Fetching the access token took 0 seconds
+TSV export of 4095 transactions took 2 seconds
+Transforming TSV to XML-FO took 4 seconds
+Converting XML-FO to PDF took 9 seconds
 ```
 
 <<<
@@ -375,7 +420,7 @@ image::transaction-export-wkhtmltopdf.png[size=cover,pdfwidth=80%]
 
 <<<
 [%notitle]
-=== Belongs To Your Tool Chest
+== Belongs To Your Tool Chest
 [.stretch]
 image::assortment-black-and-white-black-and-white-220639.jpg[size=cover,pdfwidth=80%]
 
@@ -383,15 +428,16 @@ image::assortment-black-and-white-black-and-white-220639.jpg[size=cover,pdfwidth
 == Why choosing FreeMarker?
 * General purpose template engine
   ** Not only HTML output
-* Wide-spread usage
+* Wide-spread commercial usage
   ** Alfresco, Liferay, Magnolia, Netbeans
 * IntelliJ integration
 
 <<<
 == Why choosing FreeMarker?
+* Apache Software Licence
 * Mature & actively maintained
 * Extensive documentation
-* Extensive error messages
+* Useful error messages
 * Zero dependencies
 
 <<<
@@ -402,8 +448,10 @@ image::ask-blackboard-356079.jpg[background,size=cover,pdfwidth=80%]
 <<<
 == References
 
-* https://freemarker.apache.org/index.html[Apache FreeMarker]
-* https://github.com/sgoeschl/freemarker-cli[Apache FreeMarker CLI]
-* https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial#a10847966[Spring Boot FreeMarker Tutorial]
-* http://www.vogella.com/tutorials/FreeMarker/article.html[Using FreeMarker Templates Tutorial]
-* https://github.com/sgoeschl/presentations/blob/master/javameetup/freemarker/slides/src/docs/asciidoc/index.adoc[Presentation]
+* https://freemarker.apache.org/index.html[Apache FreeMarker^]
+* https://docs.spring.io/spring/docs/5.1.7.RELEASE/spring-framework-reference/web.html#mvc-view-freemarker[Spring FreeMarker Integration]
+* https://github.com/sgoeschl/freemarker-cli[Apache FreeMarker CLI^]
+* https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial#a10847966[Spring Boot FreeMarker Tutorial^]
+* http://www.vogella.com/tutorials/FreeMarker/article.html[Using FreeMarker Templates Tutorial^]
+* https://github.com/sgoeschl/presentations/blob/master/javameetup/freemarker/slides/src/docs/asciidoc/index.adoc[Spring Boot FreeMarker Presentation^]
+* https://github.com/sgoeschl/presentations/tree/master/javameetup/freemarker/demo[Spring Boot FreeMarker Demo^]
