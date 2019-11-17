@@ -16,6 +16,8 @@
  */
 package com.github.sgoeschl.freemarker.demo.app.filter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -28,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HttpCacheHeaderFilter extends OncePerRequestFilter {
+
+    private final Logger logger = LoggerFactory.getLogger(HttpCacheHeaderFilter.class);
 
     private final int millis;
 
@@ -43,6 +47,7 @@ public class HttpCacheHeaderFilter extends OncePerRequestFilter {
 
         if (millis > 0) {
             response.addHeader(HttpHeaders.EXPIRES, expiresHttpHeader());
+            logger.debug("Using cached page content valid for {} ms: {}", millis, request.getRequestURL().toString());
         }
 
         filterChain.doFilter(request, response);
