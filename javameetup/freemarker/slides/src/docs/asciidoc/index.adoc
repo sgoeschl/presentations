@@ -283,7 +283,7 @@ image::black-and-white-connect-hand-164531.jpg[size=center,pdfwidth=80%]
 <<<
 === The Command Line I
 ```
-groovy freemarker-cli.groovy
+freemarker-cli
   -t templates/json/csv/swagger-endpoints.ftl
   site/sample/json/swagger-spec.json
 ```
@@ -320,7 +320,7 @@ ENDPOINT;METHOD;DESCRIPTION
 <<<
 === The Command Line II
 ```
-groovy freemarker-cli.groovy
+freemarker-cli
   -t templates/excel/html/transform.ftl
   site/sample/excel/test.xls
 ```
@@ -353,7 +353,7 @@ image::excel-to-markdown.png[size=cover,pdfwidth=80%]
 <<<
 === CSV -> FO -> PDF
 ```
-groovy freemarker-cli.groovy
+freemarker-cli
   -t templates/csv/fo/transactions.ftl
   site/sample/csv/transactions.csv > transactions.fo
 
@@ -364,7 +364,7 @@ fop -fo transactions.fo transactions.pdf
 === CSV -> HTML -> PDF
 
 ```
-groovy freemarker-cli.groovy
+freemarker-cli
   -t templates/csv/html/transactions.ftl
   site/sample/csv/transactions.csv > transactions.html
 
