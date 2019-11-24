@@ -13,7 +13,7 @@ The following features are provided by this blue-print
 
 ## Advanced Templating Layout
 
-While some of my colleagues think that building a Web UI with a JVM template engine is completely retarded (well, it is) sometime there is no need for `node.js` when you just want to render plain JSON content. Having said that you can still use some advanced templating as shown below, e.g.
+While some of my colleagues think that building a Web UI with a JVM template engine is completely old-fashioned sometimes there is no need for `node.js` when you just want to render plain JSON content. Having said that you can still use some advanced templating as shown below, e.g.
 
 ```
 <#import "layout/bootstrap-layout.ftl" as layout>
@@ -36,7 +36,7 @@ renders the index page with main menu with Bootstrap integration.
 
 ## Auto-reloading of FreeMarker Templates
 
-Bascially you have to tell Apache FreeMarker to load the templates from the source location and avoid template caching.
+Basically you have to tell Apache FreeMarker to load the templates from the source location and avoid template caching.
 
 * Enable the local configuration, i.e. `-Dspring.profiles.active=local`
 * Set the working directory to the root of `demo/app` 

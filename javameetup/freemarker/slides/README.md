@@ -1,3 +1,3 @@
-# Apache Freemarker
+# Why Every Developer Needs A Template Engine
 
-An overview how to use Apache FreeMarker in servers and on the command line.
+Being a lazy programmer is hard work - you also need to automated those “boring copy & pasta text tasks”. I started with Groovy & Apache Velocity, automated even more boring tasks, ditched Groovy & Velocity in favour of JDK & Apache FreeMarker, wrote “freemarker-cli" and use Apache FreeMarker to implement simple web UI nowadays. Long story short - if you need to transform access logs, CSV, Excel, HTML, JSON, XML or YAML into some other textual representation (aka CSV, HTML, Markdown Confluence) or require a quick & dirty UI for a JVM-based micro service then this presentation is for you.
