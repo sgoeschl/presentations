@@ -23,17 +23,12 @@ image::front-page.jpg[background,size=cover,pdfwidth=80%]
 * Apache Software Foundation member
 
 <<<
-[%notitle]
-== Currently Found At
-image::laptop-new-v3.png[background,size=cover,pdfwidth=80%]
-
-<<<
 == Those Boring Tasks I
 * Transform CSV to Markdown or HTML
 * Create test user overview from JSON
 * Consolidate dozen of property files into CSV
 * Transform Excel test report to Confluence markup
-* Filter AWS load balancer logs
+* Filter server access logs
 
 <<<
 == Those Boring Tasks II
@@ -53,7 +48,7 @@ image::lazyness.jpg[background,size=cover,pdfwidth=80%]
 * Regular updates of test users & their products
 * QA team created an Excel document manually
 * Wanted to make QA happy (at least once)
-* Groovy & Velocity to create HTML & Markdown
+* Groovy & Velocity to create HTML & Markdown from JSON
 
 [.notes]
 ****
@@ -143,6 +138,60 @@ image::adult-bed-bedroom-1282293.jpg[background,size=cover,pdfwidth=80%]
 
 <<<
 == True Story 1/3
+```html
+<#ftl output_format="HTML" > <1>
+<#assign name = documents[0].name> <2>
+<#assign cvsFormat = CSVFormat.DEFAULT.withDelimiter('\t').withHeader()>
+<#assign csvParser = CSVTool.parse(documents[0], cvsFormat)>
+<#assign csvHeaders = csvParser.getHeaderMap()?keys>
+<#assign csvRecords = csvParser.records>
+```
+<1> Use HTML output escaping
+<2> Parse first source file as CSV
+
+<<<
+== True Story 1/4
+```html
+<!DOCTYPE html>
+<html>
+<body>
+<table class="table table-striped">
+    <@writeHeaders headers=csvHeaders/> <1>
+    <@writeColums columns=csvRecords/>
+</table>
+</body>
+</html>
+```
+<1> Invoke macro with parameters
+
+<<<
+== True Story 1/5
+```html
+<#macro writeHeaders headers>
+    <tr>
+        <#list headers as header>
+            <th>${header}</th>
+        </#list>
+    </tr>
+</#macro>
+```
+
+<<<
+== True Story 1/6
+```html
+<#macro writeColums columns>
+    <#list columns as column>
+        <tr>
+            <#list column.iterator() as field>
+                <td>${field}</td>
+            </#list>
+        </tr>
+    </#list>
+</#macro>
+```
+
+<<<
+== True Story 1/7
 ```
 > freemarker-cli -e UTF-16 \
     -t templates/csv/fo/transactions.ftl \
@@ -151,21 +200,21 @@ image::adult-bed-bedroom-1282293.jpg[background,size=cover,pdfwidth=80%]
 > fop -fo $FILENAME.fo $FILENAME-fop.pdf
 
 ######################################################################
-CSV -> HTML -> PDF Transaction Export
+CSV -> FO -> PDF Transaction Export
 ######################################################################
 Fetching the access token took 1 seconds
-CSV export of 4234 transactions took 5 seconds
-Transforming CSV to HTML took 5 seconds
-Converting HTML to PDF took 16 seconds
+CSV export of 4234 transactions took 2 seconds
+Transforming CSV to XML-FO took 0 seconds
+Converting XML-FO to PDF took 5 seconds
 ```
 <<<
 [%notitle]
-== True Story 1/4
+== True Story 1/8
 [.stretch]
 image::transaction-export-fop.png[size=cover,pdfwidth=80%]
 
 <<<
-== True Story 1/5
+== True Story 1/9
 ```
 > freemarker-cli -e UTF-16 \
     -t templates/csv/html/transactions.ftl \
@@ -175,22 +224,22 @@ image::transaction-export-fop.png[size=cover,pdfwidth=80%]
     $FILENAME-wkhtmltopdf.pdf
 
 ######################################################################
-CSV -> FO -> PDF Transaction Export
+CSV -> HTML -> PDF Transaction Export
 ######################################################################
-Fetching the access token took 0 seconds
-CSV export of 4234 transactions took 4 seconds
-Transforming CSV to XML-FO took 5 seconds
-Converting XML-FO to PDF took 10 seconds
+Fetching the access token took 1 seconds
+CSV export of 4234 transactions took 2 seconds
+Transforming CSV to HTML took 0 seconds
+Converting HTML to PDF took 11 seconds
 ```
 
 <<<
 [%notitle]
-== True Story 1/6
+== True Story 1/10
 [.stretch]
 image::transaction-export-wkhtmltopdf.png[size=cover,pdfwidth=80%]
 
 <<<
-== True Story 1/7
+== True Story 1/11
 * https://github.com/sgoeschl/freemarker-cli/blob/master/templates/csv/fo/transactions.ftl[FreeMarker Template FO^]
 * https://github.com/sgoeschl/freemarker-cli/blob/master/templates/csv/html/transactions.ftl[FreeMarker Template HTML^]
 
@@ -198,17 +247,45 @@ image::transaction-export-wkhtmltopdf.png[size=cover,pdfwidth=80%]
 == True Story 2/1
 * Security team requires firewall white-listing of all REST endpoints
 * Provide the available REST endpoints & HTTP methods as CSV file
-* Need to be updated for regularly
+* Need to be updated regularly
 
 <<<
 == True Story 2/2
 * REST Endpoints are documented with Swagger
-* Endpoint documentation as JSON document
+* Can be exported as JSON document
 * Use https://github.com/json-path/JsonPath[JsonPath^] to parse JSON
 * Write out the CSV
 
 <<<
 == True Story 2/3
+```html
+<#ftl output_format="plainText" strip_text="true">
+<#assign json = JsonPathTool.parse(documents[0])>
+<#assign basePath = json.read("$.basePath")>
+<#assign paths = json.read("$.paths")>
+```
+
+<<<
+== True Story 2/4
+```html
+<#compress> <1>
+ENDPOINT;METHOD;DESCRIPTION
+<#list paths as endpoint,metadata> <2>
+  <#assign relative_url = basePath + endpoint>
+  <#assign methods = metadata?keys> <3>
+  <#list methods as method>
+    <#assign desc = paths[endpoint][method][description])>
+    ${relative_url};${method?upper_case};${desc}
+  </#list>
+</#list>
+</#compress>
+```
+<1> Strip whitespaces
+<2> Iterate over map
+<3> Get keys of hash map
+
+<<<
+== True Story 2/5
 ```
 freemarker-cli
   -t templates/json/csv/swagger-endpoints.ftl
@@ -217,7 +294,7 @@ freemarker-cli
 
 <<<
 [%notitle]
-== True Story 2/4
+== True Story 2/6
 [format="csv", options="header", separator=";"]
 |===
 ENDPOINT;METHOD;DESCRIPTION
@@ -228,37 +305,65 @@ ENDPOINT;METHOD;DESCRIPTION
 |===
 
 <<<
-== True Story 2/5
+== True Story 2/7
 * https://github.com/sgoeschl/freemarker-cli/blob/master/site/sample/json/swagger-spec.json[Swagger JSON^]
 * https://github.com/sgoeschl/freemarker-cli/blob/master/templates/json/csv/swagger-endpoints.ftl[FreeMarker Template^]
 
 <<<
-== Being Even More Lazy
-* Generate test data for performance tests
-* Transform Excel test report to Confluence markup
-* Transform Excel document to CSV configuration file
-* Transform HTML markup to CSV
+== FreeMarker CLI Tools
+
+<<<
+[%notitle]
+== Tool Support
+[format="csv", options="header", separator=";"]
+|===
+Tool;Description
+ExecTool;Execute commands
+CSVTool;Parse CSV files
+ExcelTool;Parse Excel documents
+GrokTool;Parse text files
+JsonPathTool;Parse JSON files
+|===
+
+<<<
+[%notitle]
+== Tool Support
+[format="csv", options="header", separator=";"]
+|===
+Tool;Description
+JsoupTool;Parse HTML files
+PropertiesTool;Parse properties files
+XmlTool;Parse XML files
+YamlTool;Parse YAML files
+|===
+
+<<<
+== FreeMarker CLI Implementation Details
+
+<<<
+[%notitle]
+== Implementation Details
+* Arbitrary number of input files
+* Recursive directory search & include pattern
+* Lazy content loading and garbage collection
+* Streaming of `stdin` and `stdout`
+* Input and output encoding
+* Store personal templates in $HOME/.freemarker-cli
 
 <<<
 == Everything Was Good For A While
 
 <<<
-[%notitle]
-== Microservices
-[.stretch]
-image::microservices.png[size=center,pdfwidth=%]
-
-<<<
 == The Problem
-* Wrote some internal stuff
-* Target audience Product Management & Operations
+* Wrote some internal applications
+* For Product Management & Operations team
 * Decent Web UI would be nice to have
 * No Javascript, Node.js and ecosystem
 
 <<<
 == Microservice Frameworks
 * http://spring.io/projects/spring-boot[Spring Boot]
-  ** FreeMarker, Thymleaf
+  ** FreeMarker, JMustache, Pebble, Jade4J, JSP, Thymleaf
   ** Velocity support was deprecated in Spring 4.3
 * http://micronaut.io[Micronaut]
   ** Velocity initially
@@ -299,10 +404,12 @@ public class ViewController {
           @RequestParam(name = "tenant") String tenant,
           @RequestParam(name = "site") String site,
           @RequestParam(name = "user") String user) {
-      model.put("users", findUsers(tenant, site, user));
-      return "users";
-    }
+      model.put("users", findUsers(tenant, site, user)); <1>
+      return "users"; <2>
+  }
 ```
+<1> Populate FreeMarker model
+<2> Tell Spring Boot to render "users.ftl"
 
 <<<
 == FreeMarker Template
@@ -311,21 +418,17 @@ public class ViewController {
 
 <#list users as user>
     <tr>
-        <td>${user?counter}</td>
+        <td>${user?counter}</td> <1>
         <td>${user.tenant}</td>
         <td>${user.site}</td>
-        <td><@writeUserStatus user/></td>
+        <td><@writeUserStatus user/></td> <2>
         <td>${user.name}</td>
         <td>${user.description}</td>
     </tr>
 </#list>
 ```
-
-[.notes]
-****
-* `user?counter` returns the current iteration index
-* `@writeUserStatus` invokes a macro
-****
+<1> Current iteration index
+<2> Invoke FreeMarker macro
 
 <<<
 == FreeMarker Macro
@@ -386,7 +489,7 @@ image::spring-freemarker-demo.png[size=center,pdfwidth=%]
 == FreeMarker Tips & Tricks
 
 <<<
-== FreeMarker Directives
+=== FreeMarker Directives
 [source]
 ----
 ${propertyName.fieldName??} #<1>
@@ -401,7 +504,7 @@ ${propertyName.optionalProperty!"Default Value"} #<2>
 <3> Iterate over name/value pairs
 
 <<<
-== Template Auto Reloading
+=== Template Auto Reloading
 [source]
 ----
 spring.freemarker.cache=false # <1>
@@ -419,12 +522,7 @@ spring.freemarker.template-loader-path=file:./templates # <2>
 * Ad-hoc file transformations
 * Simple Web UI
 * Email generation
-
-<<<
-[%notitle]
-== Belongs To Your Tool Chest
-[.stretch]
-image::assortment-black-and-white-black-and-white-220639.jpg[size=cover,pdfwidth=80%]
+* Code generation
 
 <<<
 == Why choosing FreeMarker?
