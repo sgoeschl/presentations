@@ -140,9 +140,8 @@ image::adult-bed-bedroom-1282293.jpg[background,size=cover,pdfwidth=80%]
 == True Story 1/3
 ```html
 <#ftl output_format="HTML" > <1>
-<#assign name = documents[0].name> <2>
 <#assign cvsFormat = CSVFormat.DEFAULT.withDelimiter('\t').withHeader()>
-<#assign csvParser = CSVTool.parse(documents[0], cvsFormat)>
+<#assign csvParser = CSVTool.parse(documents[0], cvsFormat)> <2>
 <#assign csvHeaders = csvParser.getHeaderMap()?keys>
 <#assign csvRecords = csvParser.records>
 ```
