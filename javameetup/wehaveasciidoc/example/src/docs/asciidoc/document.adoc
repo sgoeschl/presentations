@@ -84,6 +84,35 @@ WARNING: Watch out for...
 CAUTION: Ensure that..
 
 // ==========================================================================
+## PlantUML Plugin
+// ==========================================================================
+
+A nice feature is support of PlantUML diagrams (assuming that you have graphviz installed)
+
+[plantuml,"test",png]
+----
+@startuml
+
+title Message/Job Queue + Workers State Chart
+
+state "Idle Queue" as Idle
+[*] -> Idle
+Idle -> Queue : Task Arrives
+Queue : Task placed in queue.
+Queue -> Worker : Worker collects Task
+Worker -> ProcessingTask
+
+state ProcessingTask {
+  [*] --> long1
+  long1 --> ProcessData : Enough Data
+}
+
+ProcessingTask -> [*]
+
+@enduml
+----
+
+// ==========================================================================
 == Attributes
 // ==========================================================================
 

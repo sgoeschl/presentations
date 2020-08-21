@@ -11,6 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <asciidoctor.maven.plugin.version>2.0.0</asciidoctor.maven.plugin.version>
 		<asciidoctorj.version>2.4.0</asciidoctorj.version>
+        <asciidoctorj.diagram.version>2.0.2</asciidoctorj.diagram.version>
         <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
     </properties>
 
@@ -27,9 +28,17 @@
                         <artifactId>asciidoctorj-pdf</artifactId>
                         <version>${asciidoctorj.pdf.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj-diagram</artifactId>
+                        <version>${asciidoctorj.diagram.version}</version>
+                    </dependency>                    
                 </dependencies>              
                 <configuration>
-					<allow-uri-read/>           
+					<allow-uri-read/>     
+                    <requires>
+                        <require>asciidoctor-diagram</require>
+                    </requires>                          
 					<attributes>
 	                	<imagesdir>images</imagesdir>
 	                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
