@@ -1,15 +1,17 @@
 = AsciiDoc Sample Document
-Your Name <email@company.invalid>
+:author: Siegfried Goeschl
 v{revnumber}, {docdate}
+:email: siegfried.goeschl@asciifish.net
+:title-page:
+:title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
 :sectnums:
 :sourcedir: includes
-:title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
 :toc:
+:toc-placement: preamble
 :toclevels: 2
+
 :url-home: http://people.apache.org/~sgoeschl/index.html
 :url-blog: http://www.senilesoftwareengineer.org
-
-<<<
 
 // ==========================================================================
 == Overview
@@ -53,7 +55,7 @@ A,B,C,D
 
 === Complex Tables
 
-Of course you can caome up with complex tables ...
+Of course you can come up with complex tables ...
 
 |====
 |Date |Duration |Avg HR |Notes
@@ -69,7 +71,6 @@ Back-to-back with previous interval.
 |24-Aug-08 3+^|none
 |====
 
-
 // ==========================================================================
 == Admonitions
 // ==========================================================================
@@ -81,7 +82,6 @@ IMPORTANT: Don't forget...
 WARNING: Watch out for...
 
 CAUTION: Ensure that..
-
 
 // ==========================================================================
 == Attributes

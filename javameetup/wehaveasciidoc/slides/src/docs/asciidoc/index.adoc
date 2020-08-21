@@ -10,6 +10,7 @@ ifndef::imagesdir[:imagesdir: images]
 :pdf-page-size: 9in x 6in
 :uri-project: https://github.com/sgoeschl/presentations
 
+<<<
 [%notitle]
 == Introduction
 [.stretch]
@@ -243,6 +244,7 @@ image::clojure-cookbook.jpg[size=center,pdfwidth=40%]
 = AsciiDoc Sample Document
 Your Name <email@company.invalid>
 v{revnumber}, {docdate}
+:title-page:
 :title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
 ```
 
