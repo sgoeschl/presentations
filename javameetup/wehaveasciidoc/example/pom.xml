@@ -32,17 +32,17 @@
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctorj-diagram</artifactId>
                         <version>${asciidoctorj.diagram.version}</version>
-                    </dependency>                    
-                </dependencies>              
+                    </dependency>
+                </dependencies>
                 <configuration>
-					<allow-uri-read/>     
+					<allow-uri-read/>
                     <requires>
                         <require>asciidoctor-diagram</require>
-                    </requires>                          
+                    </requires>
 					<attributes>
 	                	<imagesdir>images</imagesdir>
 	                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
-					</attributes>	                    
+					</attributes>
                 </configuration>
                 <executions>
                     <execution>
@@ -59,7 +59,7 @@
                                 <icons>font</icons>
                                 <imagesdir>images</imagesdir>
                                 <pagenums/>
-                                <icons>font</icons>                                
+                                <icons>font</icons>
                                 <idprefix/>
                                 <idseparator>-</idseparator>
                                 <revnumber>${project.version}</revnumber>
@@ -75,9 +75,9 @@
                                         <exclude>includes/**</exclude>
                                     </excludes>
                                 </resource>
-                            </resources>                           
-                        </configuration>                        
-                    </execution>                         
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

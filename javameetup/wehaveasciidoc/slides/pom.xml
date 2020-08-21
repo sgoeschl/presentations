@@ -38,7 +38,7 @@
                             <outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                         </configuration>
-                    </execution>                    
+                    </execution>
                     <execution>
                         <id>install-revealjs</id>
                         <phase>generate-resources</phase>
@@ -51,9 +51,9 @@
                             <outputFileName>reveal.js-${revealjs.version}.zip</outputFileName>
                             <outputDirectory>${revealjs.slides.directory}</outputDirectory>
                         </configuration>
-                    </execution>                     
+                    </execution>
                 </executions>
-            </plugin>               
+            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -64,7 +64,7 @@
                         <artifactId>asciidoctorj-pdf</artifactId>
                         <version>${asciidoctorj.pdf.version}</version>
                     </dependency>
-                </dependencies>                
+                </dependencies>
                 <configuration>
                     <sourceDirectory>src/docs/asciidoc</sourceDirectory>
                 </configuration>
@@ -91,7 +91,7 @@
                                 <project-version>${project.version}</project-version>
                             </attributes>
                         </configuration>
-                    </execution>        
+                    </execution>
                     <execution>
                         <!-- Generate PDF hand-out using 'mvn package' -->
                         <id>generate-pdf</id>
@@ -105,9 +105,9 @@
                             <attributes>
                                 <!-- Provide the version number -->
                                 <revnumber>${project.version}</revnumber>
-                            </attributes>                            
+                            </attributes>
                         </configuration>
-                    </execution>                         
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
