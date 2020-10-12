@@ -10,12 +10,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <asciidoctor-revealjs.version>master</asciidoctor-revealjs.version>
-        <asciidoctor.maven.plugin.version>1.5.7.1</asciidoctor.maven.plugin.version>
-        <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
+        <asciidoctor.maven.plugin.version>1.5.8</asciidoctor.maven.plugin.version>
+        <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
         <asciidoctorj.version>1.5.8.1</asciidoctorj.version>
         <download-maven-plugin.version>1.4.1</download-maven-plugin.version>
         <revealjs.slides.directory>${project.build.directory}/generated-slides</revealjs.slides.directory>
-        <revealjs.version>3.7.0</revealjs.version>
+        <revealjs.version>3.8.0</revealjs.version>
     </properties>
 
     <build>
@@ -38,7 +38,7 @@
                             <outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                         </configuration>
-                    </execution>                    
+                    </execution>
                     <execution>
                         <id>install-revealjs</id>
                         <phase>generate-resources</phase>
@@ -51,9 +51,9 @@
                             <outputFileName>reveal.js-${revealjs.version}.zip</outputFileName>
                             <outputDirectory>${revealjs.slides.directory}</outputDirectory>
                         </configuration>
-                    </execution>                     
+                    </execution>
                 </executions>
-            </plugin>               
+            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -64,7 +64,7 @@
                         <artifactId>asciidoctorj-pdf</artifactId>
                         <version>${asciidoctorj.pdf.version}</version>
                     </dependency>
-                </dependencies>                
+                </dependencies>
                 <configuration>
                     <sourceDirectory>src/docs/asciidoc</sourceDirectory>
                 </configuration>
@@ -91,7 +91,7 @@
                                 <project-version>${project.version}</project-version>
                             </attributes>
                         </configuration>
-                    </execution>        
+                    </execution>
                     <execution>
                         <!-- Generate PDF hand-out using 'mvn package' -->
                         <id>generate-pdf</id>
@@ -105,9 +105,9 @@
                             <attributes>
                                 <!-- Provide the version number -->
                                 <revnumber>${project.version}</revnumber>
-                            </attributes>                            
+                            </attributes>
                         </configuration>
-                    </execution>                         
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

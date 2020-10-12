@@ -19,8 +19,6 @@ package com.github.sgoeschl.freemarker.demo.app;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.sgoeschl.freemarker.demo.app.filter.HttpCacheHeaderFilter;
-import com.github.sgoeschl.freemarker.sample.service.RestService;
-import com.github.sgoeschl.freemarker.sample.service.impl.SpringRestService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -50,11 +48,6 @@ public class MainConfiguration {
                 .setConnectTimeout(ofMillis(restTemplateConnectTimeout))
                 .setReadTimeout(ofMillis(restTemplateReadTimeout))
                 .build();
-    }
-
-    @Bean
-    public RestService restService(RestTemplate restTemplate) {
-        return new SpringRestService(restTemplate);
     }
 
     @Bean

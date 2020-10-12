@@ -342,6 +342,7 @@ image::asciidoc-admonitions.png[size=center,pdfwidth=60%]
 \include::table.csv[]
 |======
 ```
+
 <<<
 == Source Code Support
 ```
@@ -367,12 +368,27 @@ image::asciidoc-java-example.png[size=center,pdfwidth=80%]
 ****
 
 <<<
-== My Workflow
-* Sublime Text Editor
-* GitHub or BitBucket
-* Sublime AsciiDoc Plugin for syntax highlighting
-* Chrome AsciiDoctor extension for live preview
-* `asciidoctor-maven-plugin` for PDF generation
+== Plant UML
+* Plant UML allows to text-based diagrams
+* No more copy & paste of outdated diagrams
+* Google Chrome & Visual Studio Code
+* Can be combined with `include` directive
+
+<<<
+== Plant UML
+```
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response#
+@enduml
+```
+
+<<<
+== Plant UML
+image::plant-uml.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]

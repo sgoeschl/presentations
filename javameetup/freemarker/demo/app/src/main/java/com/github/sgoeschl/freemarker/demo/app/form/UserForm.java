@@ -4,11 +4,11 @@ import javax.validation.constraints.NotBlank;
 
 public class UserForm {
 
+    @NotBlank(message = "User id is mandatory")
     private String id;
 
     @NotBlank(message = "User name is mandatory")
     private String name;
-
 
     @NotBlank(message = "User group is mandatory")
     private String group;

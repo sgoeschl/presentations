@@ -21,10 +21,9 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- compile dependency versions -->
-        <version.spring.boot>2.3.0.M2</version.spring.boot>
-        <version.javamelody>1.80.0</version.javamelody>
-        <version.junit>4.12</version.junit>
-        <version.spring-web>5.1.11.RELEASE</version.spring-web>
+        <version.spring.boot>2.3.3</version.spring.boot>
+        <version.javamelody>1.85.0</version.javamelody>
+        <version.junit>4.13</version.junit>
         <version.validation>2.0.1.Final</version.validation>
     </properties>
 
@@ -34,17 +33,6 @@
                 <groupId>com.github.sgoeschl.freemarker.demo</groupId>
                 <artifactId>freemarker-demo-core</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <!-- Spring Boot -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${version.spring-web}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${version.spring-web}</version>
             </dependency>
             <!-- Java Bean Validation -->
             <dependency>

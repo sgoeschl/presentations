@@ -18,8 +18,6 @@ package com.github.sgoeschl.freemarker.demo.app.controller;
 
 import com.github.sgoeschl.freemarker.demo.app.form.UserForm;
 import com.github.sgoeschl.freemarker.sample.model.User;
-import com.github.sgoeschl.freemarker.sample.service.RestService;
-import com.github.sgoeschl.freemarker.sample.util.Pair;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +39,7 @@ import static org.springframework.http.HttpMethod.GET;
 @Controller
 public class ViewController {
 
-    private final RestService restService;
-
-    public ViewController(RestService restService) {
-        this.restService = restService;
+    public ViewController() {
     }
 
     @GetMapping("/")
@@ -55,29 +50,6 @@ public class ViewController {
     @GetMapping("/ui/exception")
     public String exception() {
         throw new RuntimeException("You clicked on the 'Exception' link to simulate an error ...");
-    }
-
-    @GetMapping("/ui/actuator")
-    public String logfile(
-            Map<String, Object> model,
-            @RequestParam("endpoint") String endpoint) {
-        final String url = "http://localhost:8080/actuator/" + endpoint;
-        final Pair<HttpEntity<String>, ResponseEntity<String>> pair;
-        pair = restService.exchange(url, GET);
-
-        final HttpEntity<String> request = pair.getLeft();
-        final ResponseEntity<String> response = pair.getRight();
-        final HttpStatus statusCode = response.getStatusCode();
-        final String title = ("Invoke Spring Boot Actuator Endpoint");
-        final String subtitle = format("HTTP GET %s - %s - %s", url, statusCode, response.getHeaders().get("Date"));
-
-        model.put("title", title);
-        model.put("subtitle", subtitle);
-        model.put("request", request);
-        model.put("response", response);
-        model.put("body", response.getBody());
-
-        return "actuator";
     }
 
     @GetMapping("/ui/user-form")
