@@ -23,7 +23,7 @@
         <!-- compile dependency versions -->
         <version.spring.boot>2.3.3</version.spring.boot>
         <version.javamelody>1.85.0</version.javamelody>
-        <version.junit>4.13</version.junit>
+        <version.junit>4.13.1</version.junit>
         <version.validation>2.0.1.Final</version.validation>
     </properties>
 
