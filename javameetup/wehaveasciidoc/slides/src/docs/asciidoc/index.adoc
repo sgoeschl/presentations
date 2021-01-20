@@ -391,38 +391,41 @@ Alice <-- Bob: another authentication Response#
 image::plant-uml.png[size=center,pdfwidth=70%]
 
 <<<
+== Viewing AsciiDoc
+
+<<<
 [%notitle]
-=== GitHub AsciiDoc
+== GitHub AsciiDoc
 [.stretch]
 image::github-asciidoc.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
-=== Chrome AsciiDoctor Plugin
+== Chrome AsciiDoctor Plugin
 [.stretch]
 image::google-asciidoctor.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
-=== AsciiDoctor Maven Plugin
+== Visual AsciiDoc Plugin
 [.stretch]
-image::asciidoctor-maven-plugin.png[size=center,pdfwidth=90%]
+image::visual-code-asciidoc.png[size=center,pdfwidth=70%]
 
 <<<
 [%notitle]
-=== Sample Document Page 01
+== Sample Document Page 01
 [.stretch]
 image::asciidoc-pdf-page-01.png[size=center,pdfwidth=35%]
 
 <<<
 [%notitle]
-=== Sample Document Page 02
+== Sample Document Page 02
 [.stretch]
 image::asciidoc-pdf-page-02.png[size=center,pdfwidth=35%]
 
 <<<
 [%notitle]
-=== Sample Document Page 03
+== Sample Document Page 03
 [.stretch]
 image::asciidoc-pdf-page-03.png[size=center,pdfwidth=35%]
 
