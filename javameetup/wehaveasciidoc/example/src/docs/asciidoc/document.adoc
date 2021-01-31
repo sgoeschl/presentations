@@ -33,7 +33,7 @@ This snippet is include from a file  - no more copying & wasting working code sa
 
 [source,java]
 ----
-include::{sourcedir}/helloworld.java[]
+include::includes/helloworld.java[]
 ----
 <1> Prints "Hello, world!" to the console.
 

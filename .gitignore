@@ -16,3 +16,6 @@ target
 .settings
 logs/*.*
 temp/*.*
+
+.gradle
+**/build/
