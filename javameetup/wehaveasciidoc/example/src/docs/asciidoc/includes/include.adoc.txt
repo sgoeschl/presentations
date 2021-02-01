@@ -1,2 +1,13 @@
-[NOTE]
-This is the content of an included file
+NOTE: Please note that this glossary is actually included so we can share it across multiple documents.
+
+Example Glossary
+----------------
+Glossaries are optional. Glossaries entries are an example of a style
+of AsciiDoc labeled lists.
+
+[glossary]
+A glossary term::
+  The corresponding (indented) definition.
+
+A second glossary term::
+  The corresponding (indented) definition.

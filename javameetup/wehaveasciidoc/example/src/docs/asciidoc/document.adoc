@@ -1,6 +1,8 @@
 = AsciiDoc Sample Document
 :author: Siegfried Goeschl
 v{revnumber}, {docdate}
+:description: Sample AsiiDoc with PlantUML integration
+:keywords: writing, documentation, plantuml
 :email: siegfried.goeschl@asciifish.net
 :title-page:
 :title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
@@ -166,6 +168,6 @@ imagesdir,{imagesdir}
 | 1.0.0   | 2018-11-23      | Initial version                                | Siegfried Goeschl
 |====================================================================================================================================
 
-=== Glossary
+[glossary]
 
 include::includes/include.adoc.txt[]
