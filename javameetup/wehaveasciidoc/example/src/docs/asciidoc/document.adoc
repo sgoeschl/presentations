@@ -5,7 +5,6 @@ v{revnumber}, {docdate}
 :title-page:
 :title-logo-image: image:logo.png[pdfwidth=3.00in,align=center]
 :sectnums:
-:sourcedir: includes
 :toc:
 :toc-placement: preamble
 :toclevels: 2
@@ -41,7 +40,7 @@ include::includes/helloworld.java[]
 == Table Support
 // ==========================================================================
 
-It is handy to process CSV data since it is easy to update
+It is handy to process CSV data since it is easy to update - you can define the CSV in-place or include it from a file
 
 === CSV Tables
 .CSV data, 15% each column
@@ -89,6 +88,32 @@ CAUTION: Ensure that..
 
 A nice feature is support of PlantUML diagrams (assuming that you have graphviz installed)
 
+The following PlantUML code is directly rendered to a diagram
+
+```
+@startuml
+
+title Message/Job Queue + Workers State Chart
+
+state "Idle Queue" as Idle
+[*] -> Idle
+Idle -> Queue : Task Arrives
+Queue : Task placed in queue.
+Queue -> Worker : Worker collects Task
+Worker -> ProcessingTask
+
+state ProcessingTask {
+  [*] --> long1
+  long1 --> ProcessData : Enough Data
+}
+
+ProcessingTask -> [*]
+
+@enduml
+```
+
+That feature makes it a nice fit for documenting your current project
+
 [plantuml,"test",png]
 ----
 @startuml
@@ -116,13 +141,18 @@ ProcessingTask -> [*]
 == Attributes
 // ==========================================================================
 
-.Built-in
-asciidoctor-version:: {asciidoctor-version}
-safe-mode-name:: {safe-mode-name}
-docdate:: {docdate}
-docdir:: {docdir}
-docfile:: {docfile}
-imagesdir:: {imagesdir}
+You can also reference built-in attributes
+
+[format="csv",options="header"]
+|======
+Attriubute,Value
+asciidoctor-version,{asciidoctor-version}
+safe-mode-name,{safe-mode-name}
+docdate,{docdate}
+docdir,{docdir}
+docfile,{docfile}
+imagesdir,{imagesdir}
+|======
 
 // ==========================================================================
 == Appendix
