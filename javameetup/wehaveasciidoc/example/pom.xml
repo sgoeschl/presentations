@@ -10,13 +10,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
-		<asciidoctorj.version>2.5.4</asciidoctorj.version>
+        <asciidoctorj.pdf.version>2.3.4</asciidoctorj.pdf.version>
         <asciidoctorj.diagram.version>2.2.3</asciidoctorj.diagram.version>
-        <asciidoctorj.pdf.version>2.3.0</asciidoctorj.pdf.version>
+        <asciidoctorj.version>2.5.7</asciidoctorj.version>
+        <jruby.version>9.3.8.0</jruby.version>
     </properties>
 
     <build>
-        <defaultGoal>process-resources</defaultGoal>
+        <defaultGoal>clean process-resources</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
@@ -33,17 +34,30 @@
                         <artifactId>asciidoctorj-diagram</artifactId>
                         <version>${asciidoctorj.diagram.version}</version>
                     </dependency>
+                    <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+                    <dependency>
+                        <groupId>org.jruby</groupId>
+                        <artifactId>jruby</artifactId>
+                        <version>${jruby.version}</version>
+                    </dependency>
+                    <!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>${asciidoctorj.version}</version>
+                    </dependency>
                 </dependencies>
                 <configuration>
-					<allow-uri-read/>
+                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                    <allow-uri-read/>
+                    <!-- Attributes common to all output formats -->
+                    <attributes>
+                        <sourcedir>${project.build.sourceDirectory}</sourcedir>
+                    </attributes>
                     <requires>
                         <require>asciidoctor-diagram</require>
                     </requires>
-					<attributes>
-	                	<imagesdir>images</imagesdir>
-	                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
-					</attributes>
-z                </configuration>
+                </configuration>
                 <executions>
                     <execution>
                         <id>generate-pdf-doc</id>
@@ -53,17 +67,14 @@ z                </configuration>
                         </goals>
                         <configuration>
                             <backend>pdf</backend>
-                            <compact>true</compact>
-                            <sourceHighlighter>coderay</sourceHighlighter>
                             <attributes>
+                                <source-highlighter>rouge</source-highlighter>
                                 <icons>font</icons>
-                                <imagesdir>images</imagesdir>
                                 <pagenums/>
-                                <icons>font</icons>
+                                <toc/>
                                 <idprefix/>
                                 <idseparator>-</idseparator>
                                 <revnumber>${project.version}</revnumber>
-                                <source-highlighter>coderay</source-highlighter>
                             </attributes>
                             <resources>
                                 <resource>
