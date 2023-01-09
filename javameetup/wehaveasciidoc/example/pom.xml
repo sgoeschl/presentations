@@ -9,10 +9,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <asciidoctor.maven.plugin.version>2.0.0</asciidoctor.maven.plugin.version>
-		<asciidoctorj.version>2.4.0</asciidoctorj.version>
-        <asciidoctorj.diagram.version>2.0.2</asciidoctorj.diagram.version>
-        <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
+        <asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
+		<asciidoctorj.version>2.5.4</asciidoctorj.version>
+        <asciidoctorj.diagram.version>2.2.3</asciidoctorj.diagram.version>
+        <asciidoctorj.pdf.version>2.3.0</asciidoctorj.pdf.version>
     </properties>
 
     <build>
@@ -43,7 +43,7 @@
 	                	<imagesdir>images</imagesdir>
 	                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
 					</attributes>
-                </configuration>
+z                </configuration>
                 <executions>
                     <execution>
                         <id>generate-pdf-doc</id>

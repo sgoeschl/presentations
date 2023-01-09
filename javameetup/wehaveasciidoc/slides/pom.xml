@@ -10,12 +10,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <asciidoctor-revealjs.version>master</asciidoctor-revealjs.version>
-        <asciidoctor.maven.plugin.version>1.5.8</asciidoctor.maven.plugin.version>
-        <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
-        <asciidoctorj.version>1.5.8.1</asciidoctorj.version>
-        <download-maven-plugin.version>1.4.1</download-maven-plugin.version>
-        <revealjs.slides.directory>${project.build.directory}/generated-slides</revealjs.slides.directory>
+        <asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
+		<asciidoctorj.version>2.5.4</asciidoctorj.version>
+        <asciidoctorj.diagram.version>2.2.3</asciidoctorj.diagram.version>
+        <asciidoctorj.pdf.version>2.3.0</asciidoctorj.pdf.version>
+        <download-maven-plugin.version>1.6.8</download-maven-plugin.version>
         <revealjs.version>3.8.0</revealjs.version>
+        <revealjs.slides.directory>${project.build.directory}/generated-slides</revealjs.slides.directory>
     </properties>
 
     <build>

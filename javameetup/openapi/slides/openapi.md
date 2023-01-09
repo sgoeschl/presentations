@@ -149,15 +149,7 @@ Error:
 
 ---
 
-# Swagger Editor [^2]
-
-![inline](./images/swagger_editornew.png)
-
-[^2]: Does not support OpenAPI 3.1.0 (yet)
-
----
-
-![](./images/the-chicken-or-the-egg.jpg)
+![](./images/pexels-alison-burrell-195226.jpg)
 
 ---
 
@@ -172,13 +164,6 @@ Error:
   * More annotations than code
 * Better documentation quality than code first
   * Quicker to re-iterate
-* Gitlab renders OpenAPI files nicely
-
----
-
-# Gitlab Meets OpenAPI
-
-![inline](./images/gitlab-openapi-intergation.jpg)
 
 ---
 
@@ -191,7 +176,39 @@ Error:
 
 ---
 
-# openapi-generator-maven-plugin
+# Design First Tools
+
+* IntelliJ 
+* Visual Studio Code with OpenAPI extension
+* Online Swagger Editor
+* Gitlab OpenAPI integration
+* Vim with OpenAPI plugin
+
+---
+
+![inline](./images/intellij-openapi-integration.jpg)
+
+---
+
+![inline](./images/visual-code-openapi-integration.jpg)
+
+---
+
+![inline](./images/swagger_editornew.png)
+
+---
+
+![inline](./images/gitlab-openapi-intergation.jpg)
+
+---
+
+![inline](./images/vim-openapi-integration.png)
+
+---
+
+# Source Code Generation
+
+## openapi-generator-maven-plugin
 
 ---
 
@@ -336,3 +353,8 @@ public class PetApiController implements PetApi {
 * Use code generation to sync between spec and code
 * Developers love documenation and examples
 * Use generated Postman collection as starting point
+
+---
+
+![](./images/questions-and-answers.jpg)
+
