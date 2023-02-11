@@ -335,7 +335,7 @@ Controller code is ugly - has more annotations than source code
 ^
 Using the OpenAPI website or Maven plugin
 
----
+---  
 
 ## openapi-generator-maven-plugin
 
