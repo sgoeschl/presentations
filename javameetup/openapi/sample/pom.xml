@@ -31,11 +31,9 @@
                                 ${project.basedir}/src/main/resources/petstore-openapi-3.yaml
                             </inputSpec>
                             <generatorName>spring</generatorName>
-                            <apiPackage>com.github.sgoeschl.openapi.demo.api</apiPackage>
-                            <modelPackage>com.github.sgoeschl.openapi.demo.model</modelPackage>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
+                            <apiPackage>com.github.sgoeschl.openapi.demo.rest.api</apiPackage>
+                            <modelPackage>com.github.sgoeschl.openapi.demo.rest.model</modelPackage>
+                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                                 <discriminatorCaseSensitive>false</discriminatorCaseSensitive>

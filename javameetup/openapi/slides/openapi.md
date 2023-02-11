@@ -1,4 +1,6 @@
-![inline](./images/openapi-logo.png)
+![](./images/background-dark.jpg)
+# Everything You Always Wanted To Know About OpenAPI
+#### Siegfried GOESCHL, ASCIIFISH
 
 --- 
 
@@ -6,28 +8,34 @@
 
 ---
 
-# What Is It?
+## What Is It?
 
 > The OpenAPI Specification, previously known as the Swagger Specification, is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services
 -- Wikipedia
 
 ---
 
-# The Tool Formerly Known As Swagger
+## Swagger Versus OpenAPI
 
-* Swagger development began in early 2010 by Tony Tam
-* SmartBear purchased the Swagger API development in 2015
-* In January 2016, renamed to OpenAPI
-* In 2017, the OpenAPI Initiative released version 3.0.0
-* In 2021, the OpenAPI Initiative released version 3.1.0
+| Year  | Event                                                     |
+| ------| --------------------------------------------------------- |
+| 2010  | Swagger development began in early 2010 by Tony Tam       |
+| 2015  | SmartBear purchased the Swagger API development           |
+| 2016  | Renamed from Swagger to OpenAPI                           |
+| 2017  | OpenAPI 3.0.0 release                                     |
+| 2021  | OpenAPI 3.1.0 release                                     |
+
+^
+- A little bit of history lesson
+- Swagger and OpenAPI are mostly the same things
 
 ---
 
-# Why Bother With OpenAPI?
+## Why Bother With OpenAPI?
 
 ---
 
-# Obstacles To Consuming APIs[^1]
+## Obstacles To Consuming APIs[^1]
 
 ![inline](./images/state-of-the-api-report-2022-01.jpg)
 
@@ -35,7 +43,11 @@
 
 ---
 
-# Improving API Documentation[^1]
+![fit](./images/disturbing-lack-of-documentation.jpg)
+
+---
+
+## Improving API Documentation[^1]
 
 ![inline](./images/state-of-the-api-report-2022-02.jpg)
 
@@ -43,41 +55,80 @@
 
 ---
 
-![inline](./images/read-the-fucking-manual.jpg)
+## OpenAPI Ticks Most Boxes
+
+* Up-to-date documentation :heavy_check_mark:
+* Better examples :heavy_check_mark:
+* Standardized documentation :heavy_check_mark:
+* Better documentation work flow :heavy_check_mark:
+* Try it / interactive documentation :heavy_check_mark:
 
 ---
 
+![fit](./images/i-am-interested-continue.jpg)
+
+---
+
+![](./images/background-dark.jpg)
 # OpenAPI Overview
 
 ---
 
+## Before We Deep Dive
+
+* OpenAPI definitions are written in YAML or JSON
+  * YAML is easier to read
+  * JSON/YAML conversion in Online Swagger Editor
+* OpenAPI files must include its OpenAPI Specification version, e.g. "openapi: 3.0.0"
+
+^ 
+- See "YAML Considered Harmful", Philipp Krenn
+
+---
+
+## OpenAPI 3.0 Basic Structure
+
 ![inline](./images/openapi3structure.png)
 
 --- 
-# Info
+
+## Info Section
 
 ```yaml
 info:
-  version: 1.0.0
-  title: Swagger Petstore
+  title: Swagger Petstore - OpenAPI 3.0
+  description: >-
+    This is a sample Pet Store Server based on the OpenAPI 3.0 specification. 
+    You can find out more about ...
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
   license:
-    name: MIT
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.17
 ```
+
+---
+
+![inline](./images/openapi-info-section.jpg)
 
 --- 
 
-# Servers
+## Servers Section
 
 ```yaml
 servers:
+  - url: http://localhost:8080
   - url: http://petstore.swagger.io/v1
 ```
 
 ---
 
-# Security
+## Security Section
 
 ```yaml
+components:
   securitySchemes:
     petstore_auth:
       type: oauth2
@@ -87,34 +138,71 @@ servers:
           scopes:
             'write:pets': modify pets in your account
             'read:pets': read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'      
+
 ```
 
---- 
+---
 
-# Paths
+## Security Section
 
 ```yaml
 paths:
-  /pets:
-    post:
-      summary: Create a pet
-      operationId: createPets
+  /pet:
+    put:
       tags:
-        - pets
+        - pet
+      summary: Update an existing pet
+      description: Update an existing pet by Id
+      operationId: updatePet
+      requestBody:
       responses:
-        '201':
-          description: Null response
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"    
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
 ```
+
+---
+
+
+![inline](./images/openapi-authorization-section.jpg)
 
 --- 
 
-# Tags
+## Paths Section
+
+```yaml
+paths:
+  /pet:
+    put:
+      tags:
+        - pet
+      summary: Update an existing pet
+      description: Update an existing pet by Id
+      operationId: updatePet
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+```
+---
+
+![inline](./images/openapi-path-section.jpg)
+
+--- 
+
+## Tags Section
 
 ```yaml
 tags:
@@ -125,27 +213,52 @@ tags:
       url: 'http://swagger.io'
   - name: store
     description: Access to Petstore orders
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
   - name: user
     description: Operations about user
 ```
 
+^
+- Provide better overview
+- Tag names are used for code generation
+
 ---
 
-# Components
+![inline](./images/openapi-tags-section.jpg)
+
+---
+
+## Components Section
 
 ```yaml
-Error:
-  type: object
-  required:
-    - code
-    - message
-  properties:
-    code:
-      type: integer
-      format: int32
-    message:
-      type: string
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Dogs
 ```
+
+^
+- The reusable parts of your OpenAPI definition
+
+---
+
+![inline](./images/openapi-components-section.jpg)
+
+---
+
+![](./images/background-dark.jpg)
+
+# Design Or Code First?!
 
 ---
 
@@ -153,89 +266,112 @@ Error:
 
 ---
 
-# Design Or Code First?!
+## Design First - The Good
+
+* Improved documentation quality
+* Early review of REST API design/changes 
+* Code generation possible
+
+^
+Controller code is ugly - has more annotations than source code
 
 ---
 
-# Design First - The Good
-
-* Early review of REST API
-* Generate ugly source code
-  * More annotations than code
-* Better documentation quality than code first
-  * Quicker to re-iterate
-
----
-
-# Design First - The Bad
+## Design First - The Bad
 
 * Learning curve for developers
+  * Writing first OpenAPI file is hard
   * Having good template helps
-* Code & design might be out of sync
-  * Code generation solves this problem
+* Code & design can be out of sync
+  * Code generation for rescue
 
 ---
 
-# Design First Tools
+## Design First Tooling
 
 * IntelliJ 
 * Visual Studio Code with OpenAPI extension
 * Online Swagger Editor
-* Gitlab OpenAPI integration
-* Vim with OpenAPI plugin
+* Vim with OpenAPI plugin (for the real nerds)
 
 ---
 
 ![inline](./images/intellij-openapi-integration.jpg)
 
+^ 
+- Bi-directional syncing
+- Manual reload of changes required
+
 ---
 
 ![inline](./images/visual-code-openapi-integration.jpg)
+
 
 ---
 
 ![inline](./images/swagger_editornew.png)
 
----
-
-![inline](./images/gitlab-openapi-intergation.jpg)
+^
+- Best OpenAPI validation
 
 ---
 
 ![inline](./images/vim-openapi-integration.png)
 
+^
+- For real nerds only
+
 ---
 
+![](./images/background-dark.jpg)
 # Source Code Generation
 
-## openapi-generator-maven-plugin
+---
+
+## Server & Client Generators
+
+![inline](./images/openapi-generators.jpg)
+
+^
+Using the OpenAPI website or Maven plugin
 
 ---
+
+## openapi-generator-maven-plugin
 
 ```xml
 <configuration>
     <inputSpec>
-        ${project.basedir}/src/main/resources/rentalapi-openapi-3.yml
+        ${project.basedir}/src/main/resources/petstore-openapi-3.yaml
     </inputSpec>
     <generatorName>spring</generatorName>
-    <apiPackage>at.willhaben.rental.tenant.rest.api</apiPackage>
-    <modelPackage>at.willhaben.rental.tenant.rest.model</modelPackage>
-    <supportingFilesToGenerate>
-        ApiUtil.java
-    </supportingFilesToGenerate>
+    <apiPackage>com.github.sgoeschl.openapi.demo.api</apiPackage>
+    <modelPackage>com.github.sgoeschl.openapi.demo.model</modelPackage>
+    <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
     <configOptions>
         <delegatePattern>true</delegatePattern>
+        <discriminatorCaseSensitive>false</discriminatorCaseSensitive>
+        <hideGenerationTimestamp>true</hideGenerationTimestamp>
         <openApiNullable>false</openApiNullable>
         <useTags>true</useTags>
-        <hideGenerationTimestamp>true</hideGenerationTimestamp>
     </configOptions>
 </configuration>
 ```
 
 ---
 
-# openapi-generator-maven-plugin
+## openapi-generator-maven-plugin
 
+* There are many different generators
+  * Spring, Micronaut, JAX-RS, ...
+* Review the generated source code
+  * Generators are from varying quality
+
+---
+
+## OpenAPI Spring Boot Generator
+
+* Spring Boot 2 & 3 support
 * `delegatePattern` separates generated & written code
 * Skipping `openApiNullable` and additional Jackson library
 * `useTags` is nice since it generates an interface per tag
@@ -243,10 +379,11 @@ Error:
 
 ---
 
-# Generated APIs
+## Generated APIs
 
 ```
-src/main/java/com/github/sgoeschl/openapi/demo/api
+src/main/java/com/github/sgoeschl/openapi/demo/rest/api
+
 |-- ApiUtil.java
 |-- PetApi.java
 |-- PetApiController.java
@@ -254,17 +391,15 @@ src/main/java/com/github/sgoeschl/openapi/demo/api
 |-- StoreApi.java
 |-- StoreApiController.java
 |-- StoreApiDelegate.java
-|-- UserApi.java
-|-- UserApiController.java
-`-- UserApiDelegate.java
 ```
 
 ---
 
-# Generated Model Classes
+## Generated Model Classes
 
 ```
-src/main/java/com/github/sgoeschl/openapi/demo/model
+src/main/java/com/github/sgoeschl/openapi/demo/rest/model
+
 |-- Address.java
 |-- Category.java
 |-- Customer.java
@@ -276,7 +411,7 @@ src/main/java/com/github/sgoeschl/openapi/demo/model
 
 ---
 
-# Controller Using Delegate
+## Controller Using Delegate Pattern
 
 ```java
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
@@ -300,7 +435,7 @@ public class PetApiController implements PetApi {
 
 ---
 
-# Bean Validation In Action
+## Bean Validation In Action
 
 ```java
   @Min(0) @Max(99) 
@@ -316,45 +451,205 @@ public class PetApiController implements PetApi {
 
 ---
 
-# openapi-generator-maven-plugin
+## openapi-generator-maven-plugin
 
 * We are generating `Typescript` and `Java` code
-  * Java code is used 1:1 by BE devs
+  * Java code is used 1:1 by backend devs
   * Typescript as inspiration for FE devs
-* Review the generated source code
-  * Generators are from varying quality
 
 --- 
 
-# Bonus Points
+![](./images/background-dark.jpg)
+# OpenAPI Tips And Tricks
 
-* Swagger Editor
-  * Perfect for rapid prototyping
-  * Best tool for verifying OpenAPI files
-* OpenAPI files can be directly imported into Postman
-  * Starting point for our Postman collections
-  * Postman collection maintained by BE devs
+---
+
+## Get Your Hands Dirty
+
+--- 
+![](./images/fear-of-writing.jpg)
+
+^ 
+- You could be a Shakespeare for OpenAPI writing 
+- Start with an existing OpenAPI template
 
 --- 
 
-# Bonus Points
+![inline](./images/openapi-website.jpg)
 
-* Bean validation works nicely
-  * Validate all of your input parameters
-* Put OpenAPI files under version control
-  * No more "do you have the latest version"
-  * You can do Merge/Pull Requests
+^ 
+- Checkout https://www.openapis.org
+- Helps your writing OpenAPI specifications
+
+---
+
+![inline](./images/zalando-rest-api-guidelines.jpg)
+
+^ 
+Helps your writing better REST APIs
+
+---
+
+![inline](./images/api_design_ptterns-book.jpg)
+
+^ 
+Helps your desiging better REST APIs
+
+---
+
+## Combine And Extend Model Definitions
+
+---
+
+![inline](./images/combine.and-extemd-model-definitions.jpg)
+
+^
+- You have a bunch of response pages
+- Paging support adds a lot of boiler-plate code
+
+---
+
+## Combine And Extend Model Definitions
+
+``` yaml
+components:
+  schemas:    
+    ResponsePage:
+      description: "Models a paginated search result."
+      properties:
+        totalResults:
+          type: integer
+          description: "Indicate how many results would be included if pagination were complete."
+          minimum: 0
+        self:
+          description: "Pagination link|cursor pointing to the current page."
+          type: string
+        first:
+          description: "Pagination link|cursor pointing to the first page."
+          type: string
+        prev:
+          description: "Pagination link|cursor pointing to the previous page."
+          type: string
+        next:
+          description: "Pagination link|cursor pointing to the next page."
+          type: string
+
+```
+
+^
+- Define and re-use ResponsePage
+
+---
+
+## Combine And Extend Model Definitions
+
+``` yaml
+components:
+  schemas:    
+    ExchangeTenantViewResponsePage:
+      type: object
+      description: Response page
+      allOf:
+        - $ref: '#/components/schemas/ResponsePage'
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExchangeTenantView'
+```
+---
+
+## Configure JWT Authentication 
+
+^
+- You want to provide interactive OpenAPI file
+- Your endpoints 
+
+---
+
+## Configure JWT Authentication 
+
+* Bearer token authentication
+* Support non-authenticated endpoints
+
+---
+
+![inline](./images/openapi-jwt-authentication-01.jpg)
+
+---
+
+![inline](./images/openapi-jwt-authentication-02.jpg)
+
+---
+
+```yaml
+security:
+  - bearerAuth: [ ] # secure all endpoints (default)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+```
+
+---
+
+```yaml    
+paths:
+  /api/exchanges/tenant-profile:
+    get:
+      tags:
+        - Exchange
+      summary: Public view of the tenant profile secured by a token
+      operationId: getPublicExchangeTenantProfile
+      security: [ ]  # Disable security - public method
+```
 
 --- 
 
-# Conclusion
+# Conclusion / Best Practices
 
-* Design-first API with OpenAPI saves time
-* Use code generation to sync between spec and code
-* Developers love documenation and examples
-* Use generated Postman collection as starting point
+* OpenAPI design-first approach is recommended
+* Code generation to sync between definition and code
+* Improved developer experience, e.g. Gitlab, pull requests, ..
+* Bootstrap Postman collection from OpenAPI import
+
+^
+- Design-first results in better REST APIs
+- Bean validation works nicely with generated code
+- Generated Postman collection still requires manual work
+
+---
+
+# And last bot not least
+
+---
+
+![inline](./images/learn-rinse-repeat.jpg)
 
 ---
 
 ![](./images/questions-and-answers.jpg)
+
+---
+
+# Resources
+
+* [https://www.openapis.org](https://www.openapis.org)
+* [https://editor.swagger.io](https://editor.swagger.io)
+* [https://github.com/OpenAPITools/openapi-generator](https://github.com/OpenAPITools/openapi-generator)
+* [https://openapi-generator.tech/docs/generators/spring/](https://openapi-generator.tech/docs/generators/spring/)
+* [https://opensource.zalando.com/restful-api-guidelines/](https://opensource.zalando.com/restful-api-guidelines/)
+* [https://www.manning.com/books/api-design-patterns](https://www.manning.com/books/api-design-patterns)
+
+---
+
+# Resources
+
+* [https://www.postman.com/state-of-api](https://www.postman.com/state-of-api)
+* [https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi](https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi)
+
+
 
