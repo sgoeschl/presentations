@@ -1,3 +1,4 @@
+theme: Merriweather,8
 ![](./images/background-dark.jpg)
 # Everything You Always Wanted To Know About OpenAPI
 #### Siegfried GOESCHL, ASCIIFISH
@@ -8,14 +9,19 @@
 
 ---
 
-## What Is It?
+![](./images/background-dark.jpg)
+# 1. What Is OpenAPI?
+
+---
+
+## What Is OpenAPI?
 
 > The OpenAPI Specification, previously known as the Swagger Specification, is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services
 -- Wikipedia
 
 ---
 
-## Swagger Versus OpenAPI
+## Swagger And OpenAPI
 
 | Year  | Event                                                     |
 | ------| --------------------------------------------------------- |
@@ -70,7 +76,7 @@
 ---
 
 ![](./images/background-dark.jpg)
-# OpenAPI Overview
+# 2. OpenAPI Overview
 
 ---
 
@@ -258,11 +264,14 @@ components:
 
 ![](./images/background-dark.jpg)
 
-# Design Or Code First?!
+# 3. Design Or Code First?!
 
 ---
 
 ![](./images/pexels-alison-burrell-195226.jpg)
+
+^
+- For single-person projects the code first approach might be fine
 
 ---
 
@@ -324,7 +333,7 @@ Controller code is ugly - has more annotations than source code
 ---
 
 ![](./images/background-dark.jpg)
-# Source Code Generation
+# 4. Source Code Generation
 
 ---
 
@@ -362,8 +371,10 @@ Using the OpenAPI website or Maven plugin
 
 ## openapi-generator-maven-plugin
 
-* There are many different generators
-  * Spring, Micronaut, JAX-RS, ...
+* There are many different Java source code generators
+  * Spring Boot 2 & 3, Micronaut, JAX-RS, ...
+* Plus interesting client options
+  * Javascript, Typescript, Swift, ...
 * Review the generated source code
   * Generators are from varying quality
 
@@ -460,7 +471,7 @@ public class PetApiController implements PetApi {
 --- 
 
 ![](./images/background-dark.jpg)
-# OpenAPI Tips And Tricks
+# 5. OpenAPI Tips And Tricks
 
 ---
 
@@ -607,6 +618,22 @@ paths:
       security: [ ]  # Disable security - public method
 ```
 
+---
+
+![](./images/pexels-miguel-padrian-clockwork.jpg)
+
+--- 
+
+## OpenAPI Integrations
+
++ Configuration of your Web Application Firewall (WAF)
+* Configuration of Amazon API Gateway 
+* Swagger Parsers for custom integrations
+
+^ 
+* WAF OpenAPI support by NGINX, F5
+
+
 --- 
 
 # Conclusion / Best Practices
@@ -650,6 +677,4 @@ paths:
 
 * [https://www.postman.com/state-of-api](https://www.postman.com/state-of-api)
 * [https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi](https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi)
-
-
-
+* [Swagger Parser](https://github.com/swagger-api/swagger-parser)
