@@ -11,16 +11,28 @@
 
     <properties>
         <java.version>17</java.version>
+        <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
     </properties>
 
     <build>
         <defaultGoal>clean package</defaultGoal>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <!-- OpenAPI Generation -->
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>        
         <plugins>
             <plugin>
-                <!-- OpenAPI Generate -->
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>6.0.1</version>
+                <configuration>
+                <additionalProperties>removeEnumValuePrefix=false</additionalProperties>
+                </configuration>                
                 <executions>
                     <execution>
                         <id>openapi-generate-java</id>
@@ -31,15 +43,25 @@
                             <inputSpec>
                                 ${project.basedir}/src/main/resources/petstore-openapi-3.yaml
                             </inputSpec>
+                            <!-- See https://openapi-generator.tech/docs/generators/spring/ -->
                             <generatorName>spring</generatorName>
                             <apiPackage>com.github.sgoeschl.openapi.demo.rest.api</apiPackage>
                             <modelPackage>com.github.sgoeschl.openapi.demo.rest.model</modelPackage>
                             <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                             <configOptions>
+                                <!-- Whether to generate the server files using the delegate pattern -->
                                 <delegatePattern>true</delegatePattern>
+                                <!-- Whether to generate constructors with required args for models -->
+                                <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <!-- Whether the discriminator value lookup should be case-sensitive or not. This option only works for Java API client -->
                                 <discriminatorCaseSensitive>false</discriminatorCaseSensitive>
+                                <!-- Hides the generation timestamp when files are generated -->
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <!-- Enable OpenAPI Jackson Nullable library -->
                                 <openApiNullable>false</openApiNullable>
+                                <!-- Generate code and provide dependencies for use with Spring Boot 3.x -->
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <!-- Use tags for creating interface and controller classnames -->
                                 <useTags>true</useTags>
                             </configOptions>
                         </configuration>

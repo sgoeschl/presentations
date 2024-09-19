@@ -12,6 +12,7 @@
     <modules>
         <module>freemarker</module>
         <module>wehaveasciidoc</module>
+        <module>openapi</module>
     </modules>
 
 </project>

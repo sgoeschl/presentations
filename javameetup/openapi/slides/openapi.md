@@ -1,5 +1,4 @@
 theme: Merriweather,8
-![](./images/background-dark.jpg)
 # Everything You Always Wanted To Know About OpenAPI
 #### Siegfried GOESCHL, ASCIIFISH
 
@@ -9,8 +8,7 @@ theme: Merriweather,8
 
 ---
 
-![](./images/background-dark.jpg)
-# 1. What Is OpenAPI?
+# What Is OpenAPI?
 
 ---
 
@@ -75,8 +73,7 @@ theme: Merriweather,8
 
 ---
 
-![](./images/background-dark.jpg)
-# 2. OpenAPI Overview
+# OpenAPI Overview
 
 ---
 
@@ -262,9 +259,7 @@ components:
 
 ---
 
-![](./images/background-dark.jpg)
-
-# 3. Design Or Code First?!
+# Design Or Code First?!
 
 ---
 
@@ -332,8 +327,7 @@ Controller code is ugly - has more annotations than source code
 
 ---
 
-![](./images/background-dark.jpg)
-# 4. Source Code Generation
+#  Source Code Generation
 
 ---
 
@@ -470,18 +464,18 @@ public class PetApiController implements PetApi {
 
 --- 
 
-![](./images/background-dark.jpg)
-# 5. OpenAPI Tips And Tricks
+# OpenAPI Tips And Tricks
 
 ---
 
 ## Get Your Hands Dirty
 
 --- 
-![](./images/fear-of-writing.jpg)
+
+![inline](./images/fear-of-writing.jpg)
 
 ^ 
-- You could be a Shakespeare for OpenAPI writing 
+- You could become Shakespeare for OpenAPI writing 
 - Start with an existing OpenAPI template
 
 --- 
@@ -626,13 +620,10 @@ paths:
 
 ## OpenAPI Integrations
 
-+ Configuration of your Web Application Firewall (WAF)
+* Configuration of your Web Application Firewall (WAF)
+  * WAF OpenAPI support by NGINX, F5
 * Configuration of Amazon API Gateway 
 * Swagger Parsers for custom integrations
-
-^ 
-* WAF OpenAPI support by NGINX, F5
-
 
 --- 
 
