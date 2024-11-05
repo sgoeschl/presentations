@@ -8,30 +8,29 @@ theme: Merriweather,8
 
 ---
 
-# What Is OpenAPI?
-
----
-
 ## What Is OpenAPI?
 
 > The OpenAPI Specification, previously known as the Swagger Specification, is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services
 -- Wikipedia
 
+<!--
+
 ---
 
-## Swagger And OpenAPI
+## A Brief History Of OpenAPI
 
 | Year  | Event                                                     |
 | ------| --------------------------------------------------------- |
-| 2010  | Swagger development began in early 2010 by Tony Tam       |
-| 2015  | SmartBear purchased the Swagger API development           |
+| 2010  | Swagger development began in early 2010                   |
+| 2015  | SmartBear purchased development                           |
 | 2016  | Renamed from Swagger to OpenAPI                           |
 | 2017  | OpenAPI 3.0.0 release                                     |
 | 2021  | OpenAPI 3.1.0 release                                     |
 
-^
-- A little bit of history lesson
-- Swagger and OpenAPI are mostly the same things
+^ A little bit of history lesson
+Swagger and OpenAPI are mostly the same things
+
+-->
 
 ---
 
@@ -45,6 +44,8 @@ theme: Merriweather,8
 
 [^1]: Postman 2022 State Of The API Report
 
+^ Biggest problem: lack of documentation, knowledge and time
+
 ---
 
 ![fit](./images/disturbing-lack-of-documentation.jpg)
@@ -56,6 +57,8 @@ theme: Merriweather,8
 ![inline](./images/state-of-the-api-report-2022-02.jpg)
 
 [^1]: Postman 2022 State Of The API Report
+
+^ Modest improvements: up2date documentation, examples, interactive usage
 
 ---
 
@@ -82,14 +85,11 @@ theme: Merriweather,8
 * OpenAPI definitions are written in YAML or JSON
   * YAML is easier to read
   * JSON/YAML conversion in Online Swagger Editor
-* OpenAPI files must include its OpenAPI Specification version, e.g. "openapi: 3.0.0"
-
-^ 
-- See "YAML Considered Harmful", Philipp Krenn
+  * See [YAML Considered Harmful, Philipp Krenn](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DWQurEEfSf8M&ved=2ahUKEwjVyaSOiruJAxVCRvEDHcUUEWcQwqsBegQIDBAF&usg=AOvVaw3kO1tyqXtLWtCqDcU-MGEQ)
 
 ---
 
-## OpenAPI 3.0 Basic Structure
+## OpenAPI 3.X Basic Structure
 
 ![inline](./images/openapi3structure.png)
 
@@ -152,6 +152,8 @@ components:
 
 ```
 
+^ Supports API Keys, HTTP Authentication, OAuth 2.0, OpenID Connect
+
 ---
 
 ## Security Section
@@ -172,6 +174,8 @@ paths:
             - 'write:pets'
             - 'read:pets'
 ```
+
+^ Update a resource requiring custom claims
 
 ---
 
@@ -199,6 +203,9 @@ paths:
               $ref: '#/components/schemas/Pet'
         required: true
 ```
+
+^ The "operationId" is used for the generated method name
+
 ---
 
 ![inline](./images/openapi-path-section.jpg)
@@ -223,9 +230,8 @@ tags:
     description: Operations about user
 ```
 
-^
-- Provide better overview
-- Tag names are used for code generation
+^ Provide better overview
+Tag names are used generated Java interfaces
 
 ---
 
@@ -250,8 +256,7 @@ components:
           example: Dogs
 ```
 
-^
-- The reusable parts of your OpenAPI definition
+^ The data structures of your OpenAPI spec
 
 ---
 
@@ -265,19 +270,34 @@ components:
 
 ![](./images/pexels-alison-burrell-195226.jpg)
 
-^
-- For single-person projects the code first approach might be fine
+---
+
+[.column]
+
+## Code First
+
+* Write controllers with a lot of metadata
+* Server-side framework creates OpenAPI on the fly
+
+[.column]
+
+## Design First
+
+* Create OpenAPI spec from the scratch
+* Implementation based on that spec
+* You may or may not create OpenAPI on the fly
 
 ---
 
 ## Design First - The Good
 
+* No need to write obfuscated controller code
 * Improved documentation quality
 * Early review of REST API design/changes 
-* Code generation possible
+* Code generation possible / recommended
 
-^
-Controller code is ugly - has more annotations than source code
+^ Manual controller code is ugly - more annotations than source code
+On willhaben DSA project we used OpenAPI to define the domain model
 
 ---
 
@@ -286,8 +306,8 @@ Controller code is ugly - has more annotations than source code
 * Learning curve for developers
   * Writing first OpenAPI file is hard
   * Having good template helps
-* Code & design can be out of sync
-  * Code generation for rescue
+* Design & manual code can be out of sync
+  * Code generation to ensure up-to-date documentation
 
 ---
 
@@ -302,28 +322,27 @@ Controller code is ugly - has more annotations than source code
 
 ![inline](./images/intellij-openapi-integration.jpg)
 
-^ 
-- Bi-directional syncing
-- Manual reload of changes required
+^ Bi-directional syncing
+Manual reload of changes required
 
 ---
 
 ![inline](./images/visual-code-openapi-integration.jpg)
 
+^ OpenAPI plugin available
 
 ---
 
 ![inline](./images/swagger_editornew.png)
 
-^
-- Best OpenAPI validation
+^ JS application running in your browser
+Best OpenAPI validation
 
 ---
 
 ![inline](./images/vim-openapi-integration.png)
 
-^
-- For real nerds only
+^ For real nerds only
 
 ---
 
@@ -335,10 +354,21 @@ Controller code is ugly - has more annotations than source code
 
 ![inline](./images/openapi-generators.jpg)
 
-^
-Using the OpenAPI website or Maven plugin
+^ Using the OpenAPI website or Maven plugin
 
 ---  
+
+## openapi-generator-maven-plugin
+
+* There are many different Java source code generators
+  * Spring Boot 2 & 3, Micronaut, JAX-RS, ...
+* Plus interesting client options
+  * Javascript, Typescript, Swift, ...
+* Review the generated source code
+  * Generators are from varying quality!!
+* Put generated code under version control?
+
+---
 
 ## openapi-generator-maven-plugin
 
@@ -353,7 +383,6 @@ Using the OpenAPI website or Maven plugin
     <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
     <configOptions>
         <delegatePattern>true</delegatePattern>
-        <discriminatorCaseSensitive>false</discriminatorCaseSensitive>
         <hideGenerationTimestamp>true</hideGenerationTimestamp>
         <openApiNullable>false</openApiNullable>
         <useTags>true</useTags>
@@ -363,24 +392,16 @@ Using the OpenAPI website or Maven plugin
 
 ---
 
-## openapi-generator-maven-plugin
-
-* There are many different Java source code generators
-  * Spring Boot 2 & 3, Micronaut, JAX-RS, ...
-* Plus interesting client options
-  * Javascript, Typescript, Swift, ...
-* Review the generated source code
-  * Generators are from varying quality
-
----
-
 ## OpenAPI Spring Boot Generator
 
 * Spring Boot 2 & 3 support
 * `delegatePattern` separates generated & written code
 * Skipping `openApiNullable` and additional Jackson library
 * `useTags` is nice since it generates an interface per tag
-* `hideGenerationTimestamp` to keep you and Git happy
+* `hideGenerationTimestamp` to keep you and Git
+
+^ Generated server code can used in production
+Generated code may be formatted and put under version control
 
 ---
 
@@ -397,6 +418,9 @@ src/main/java/com/github/sgoeschl/openapi/demo/rest/api
 |-- StoreApiController.java
 |-- StoreApiDelegate.java
 ```
+
+^ Tag names are used for the API class name, e.g. "PetApi"
+"operatorId" for methods names within the API
 
 ---
 
@@ -438,9 +462,35 @@ public class PetApiController implements PetApi {
 }
 ```
 
+^ Controller forwards REST calls to delegate
+Mapping to business logic is implemented in custom delegates
+
+---
+
+## Controller Using Delegate Pattern
+
+* Clean separation of generated and custom code
+* Your `XXXDelegate` implementation can be easily tested
+* Nested `XXXDelegate`  to implement cross-cutting concerns
+  * Chain of Responsibility design pattern
+  * Implement application-level security
+
 ---
 
 ## Bean Validation In Action
+
+**OpenAPI**
+
+```yaml
+nrOfPersons:
+  type: integer
+  description: Number of persons which are going to live in the rental property
+  minimum: 0
+  maximum: 99
+  example: 2
+```
+
+**Java**
 
 ```java
   @Min(0) @Max(99) 
@@ -454,67 +504,86 @@ public class PetApiController implements PetApi {
   }
 ```
 
----
-
-## openapi-generator-maven-plugin
-
-* We are generating `Typescript` and `Java` code
-  * Java code is used 1:1 by backend devs
-  * Typescript as inspiration for FE devs
-
 --- 
 
-# OpenAPI Tips And Tricks
+# OpenAPI Tips
 
 ---
 
-## Get Your Hands Dirty
+
+![inline](./images/rtfm.jpg)
 
 --- 
 
-![inline](./images/fear-of-writing.jpg)
+![inline fill](./images/openapi-website.jpg)
 
-^ 
-- You could become Shakespeare for OpenAPI writing 
-- Start with an existing OpenAPI template
-
---- 
-
-![inline](./images/openapi-website.jpg)
-
-^ 
-- Checkout https://www.openapis.org
-- Helps your writing OpenAPI specifications
+^ RTFM
+Checkout https://www.openapis.org
+Helps your writing OpenAPI specifications
 
 ---
 
-![inline](./images/zalando-rest-api-guidelines.jpg)
+![inline fill](./images/zalando-rest-api-guidelines.jpg)
 
-^ 
-Helps your writing better REST APIs
+^  Helps your writing better REST APIs
 
 ---
 
 ![inline](./images/api_design_ptterns-book.jpg)
 
-^ 
-Helps your desiging better REST APIs
+^ Helps your designing better REST APIs
 
 ---
 
-## Combine And Extend Model Definitions
+## The All-Of Keyword
+
+* The `allOf` keyword lets you combine and extend model definitions
 
 ---
+
+### All-Of / Separate Resource Models
+
+```yaml
+components:
+  schemas:
+    SomeResourceCreationRequest:
+      type: object
+      properties:
+        owner:
+          type: string
+        ...
+    SomeResource:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SomeResourceCreationRequest'
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - createdAt
+```
+
+^ Create a new resource using a POST statement
+Expected response is the newly created resource
+Avoid duplication of creation request and resource
+
+---
+
+### All-Of / Modeling A Paginated Response
 
 ![inline](./images/combine.and-extemd-model-definitions.jpg)
 
-^
-- You have a bunch of response pages
-- Paging support adds a lot of boiler-plate code
+^ You have a bunch of response pages
+Paging support adds a lot of boiler-plate code
 
 ---
 
-## Combine And Extend Model Definitions
+### All-Of / Modeling A Paginated Response
 
 ``` yaml
 components:
@@ -541,12 +610,11 @@ components:
 
 ```
 
-^
-- Define and re-use ResponsePage
+^ Define and re-use ResponsePage
 
 ---
 
-## Combine And Extend Model Definitions
+### All-Of / Modeling A Paginated Response
 
 ``` yaml
 components:
@@ -562,19 +630,19 @@ components:
           items:
             $ref: '#/components/schemas/ExchangeTenantView'
 ```
----
-
-## Configure JWT Authentication 
-
-^
-- You want to provide interactive OpenAPI file
-- Your endpoints 
 
 ---
 
 ## Configure JWT Authentication 
 
-* Bearer token authentication
+^ You want to provide interactive OpenAPI file
+Your endpoints
+
+---
+
+## Configure JWT Authentication 
+
+* Enable bearer authentication
 * Support non-authenticated endpoints
 
 ---
@@ -618,26 +686,37 @@ paths:
 
 --- 
 
+<!--
+
+## Markdown In YAML
+
+* Description fields support Markdown
+  * Folded blocks
+  * Literal blocks
+
+-->
+
+---
+
 ## OpenAPI Integrations
 
 * Configuration of your Web Application Firewall (WAF)
   * WAF OpenAPI support by NGINX, F5
 * Configuration of Amazon API Gateway 
 * Swagger Parsers for custom integrations
+* Bootstrap Postman collection from OpenAPI import :skull:
+* IntelliJ HTTP Clients can use OpenAPI to create requests
 
 --- 
 
-# Conclusion / Best Practices
+# Conclusion
 
-* OpenAPI design-first approach is recommended
-* Code generation to sync between definition and code
-* Improved developer experience, e.g. Gitlab, pull requests, ..
-* Bootstrap Postman collection from OpenAPI import
-
-^
-- Design-first results in better REST APIs
-- Bean validation works nicely with generated code
-- Generated Postman collection still requires manual work
+* Open API is a useful technolgy
+* Design-first approach is recommended
+  * Leads to better REST APIs
+  * REST APIs are much easier to use
+* Code generation to sync between spec and code
+  * In a perfect world for client & server
 
 ---
 
@@ -666,6 +745,9 @@ paths:
 
 # Resources
 
+* [What’s New in OpenAPI 3.1](https://lornajane.net/posts/2020/whats-new-in-openapi-3-1)
 * [https://www.postman.com/state-of-api](https://www.postman.com/state-of-api)
 * [https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi](https://github.com/sgoeschl/presentations/tree/master/javameetup/openapi)
 * [Swagger Parser](https://github.com/swagger-api/swagger-parser)
+* [Develop REST APIs using OpenAPI in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html)
+* [Security concerns about the ongoing use of Postman](https://www.reddit.com/r/webdev/comments/1643zm8/security_concerns_about_the_ongoing_use_of_postman/)

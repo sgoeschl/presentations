@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.1</version>
+        <relativePath/>
+        <!-- lookup parent from repository -->
+    </parent>
 
     <groupId>com.github.sgoeschl.openapi.demo</groupId>
     <artifactId>openapi-demo</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>Open API Demo</name>
+    <description>OpenAPI source code generation</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
+        <fmt-maven-plugin.version>2.23</fmt-maven-plugin.version>
         <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
+        <spring-doc.version>2.5.0</spring-doc.version>
     </properties>
+
+    <dependencies>
+        <!-- Standard Spring Boot dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring Boot OpenAPI integration -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${spring-doc.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <defaultGoal>clean package</defaultGoal>
@@ -24,15 +48,21 @@
                     <artifactId>openapi-generator-maven-plugin</artifactId>
                     <version>${openapi-generator-maven-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <!-- Source Code Formatter -->
+                    <groupId>com.spotify.fmt</groupId>
+                    <artifactId>fmt-maven-plugin</artifactId>
+                    <version>${fmt-maven-plugin.version}</version>
+                </plugin>
             </plugins>
-        </pluginManagement>        
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <configuration>
-                <additionalProperties>removeEnumValuePrefix=false</additionalProperties>
-                </configuration>                
+                    <additionalProperties>removeEnumValuePrefix=false</additionalProperties>
+                </configuration>
                 <executions>
                     <execution>
                         <id>openapi-generate-java</id>
@@ -53,8 +83,6 @@
                                 <delegatePattern>true</delegatePattern>
                                 <!-- Whether to generate constructors with required args for models -->
                                 <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
-                                <!-- Whether the discriminator value lookup should be case-sensitive or not. This option only works for Java API client -->
-                                <discriminatorCaseSensitive>false</discriminatorCaseSensitive>
                                 <!-- Hides the generation timestamp when files are generated -->
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <!-- Enable OpenAPI Jackson Nullable library -->
@@ -91,6 +119,25 @@
                             <configOptions>
                             </configOptions>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Re-format generated code to put it under version control later on -->
+                <groupId>com.spotify.fmt</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <configuration>
+                    <sourceDirectory>./target/generated-sources/openapi/src/main/java</sourceDirectory>
+                    <!-- Unable to disable test code formatting - therefore reusing the source directory location -->
+                    <testSourceDirectory>./target/generated-sources/openapi/src/main/java</testSourceDirectory>
+                    <lineLength>120</lineLength>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
