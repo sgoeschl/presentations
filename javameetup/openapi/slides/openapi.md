@@ -13,7 +13,8 @@ theme: Merriweather,8
 > The OpenAPI Specification, previously known as the Swagger Specification, is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services
 -- Wikipedia
 
-<!--
+^ - A way to define machine-readable interface files to work with RESTful web services.
+- The term SWAGGER stems from the OpenAPI history.
 
 ---
 
@@ -27,11 +28,6 @@ theme: Merriweather,8
 | 2017  | OpenAPI 3.0.0 release                                     |
 | 2021  | OpenAPI 3.1.0 release                                     |
 
-^ A little bit of history lesson
-Swagger and OpenAPI are mostly the same things
-
--->
-
 ---
 
 ## Why Bother With OpenAPI?
@@ -44,11 +40,13 @@ Swagger and OpenAPI are mostly the same things
 
 [^1]: Postman 2022 State Of The API Report
 
-^ Biggest problem: lack of documentation, knowledge and time
+^ Biggest problem: lack of documentation, lack of knowledge and lack of time
 
 ---
 
 ![fit](./images/disturbing-lack-of-documentation.jpg)
+
+^ An API is usually meant to be consumed by someone else
 
 ---
 
@@ -74,18 +72,20 @@ Swagger and OpenAPI are mostly the same things
 
 ![fit](./images/i-am-interested-continue.jpg)
 
+^ I hope I still have your attention.
+
 ---
 
 # OpenAPI Overview
 
 ---
 
-## Before We Deep Dive
+## Open API First Contact
 
-* OpenAPI definitions are written in YAML or JSON
+* OpenAPI files are written in YAML or JSON
   * YAML is easier to read
-  * JSON/YAML conversion in Online Swagger Editor
   * See [YAML Considered Harmful, Philipp Krenn](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DWQurEEfSf8M&ved=2ahUKEwjVyaSOiruJAxVCRvEDHcUUEWcQwqsBegQIDBAF&usg=AOvVaw3kO1tyqXtLWtCqDcU-MGEQ)
+  * JSON/YAML conversion in Online Swagger Editor
 
 ---
 
@@ -204,7 +204,8 @@ paths:
         required: true
 ```
 
-^ The "operationId" is used for the generated method name
+^ The "operationId" is used for generated method name
+Tag + operatorId => Interface / method
 
 ---
 
@@ -230,12 +231,13 @@ tags:
     description: Operations about user
 ```
 
-^ Provide better overview
-Tag names are used generated Java interfaces
+^ Used for grouping in the Swagger UI
 
 ---
 
 ![inline](./images/openapi-tags-section.jpg)
+
+^ Tag names are used generated Java interfaces
 
 ---
 
@@ -270,44 +272,50 @@ components:
 
 ![](./images/pexels-alison-burrell-195226.jpg)
 
+^ Write code to generate OpenAPI or generate code from OpenAPI.
+
 ---
 
 [.column]
 
 ## Code First
 
-* Write controllers with a lot of metadata
+* Write controllers with tons of annotations
 * Server-side framework creates OpenAPI on the fly
+* OpenAPI spec always up2date
 
 [.column]
 
 ## Design First
 
-* Create OpenAPI spec from the scratch
-* Implementation based on that spec
+* Write OpenAPI spec from the scratch
+* Implementation follows the OpenAPI spec
 * You may or may not create OpenAPI on the fly
 
 ---
 
 ## Design First - The Good
 
-* No need to write obfuscated controller code
 * Improved documentation quality
-* Early review of REST API design/changes 
-* Code generation possible / recommended
+  * Focus on writing a consistent spec
+  * No need to write obfuscated controller code
+* Early review of REST API design/changes
+  * Use OpenAPI to define/refine the domain model?!
 
-^ Manual controller code is ugly - more annotations than source code
-On willhaben DSA project we used OpenAPI to define the domain model
+^ Controller code is ugly - more annotations than source code.
+willhaben uses OpenAPI to describe the domain model.
 
 ---
 
 ## Design First - The Bad
 
 * Learning curve for developers
-  * Writing first OpenAPI file is hard
-  * Having good template helps
+  * Writing first OpenAPI spec is hard
+  * Having a good template helps
 * Design & manual code can be out of sync
-  * Code generation to ensure up-to-date documentation
+  * Code generation is (more or less) mandatory
+
+^ You shall not start with an empty spec.
 
 ---
 
@@ -322,27 +330,28 @@ On willhaben DSA project we used OpenAPI to define the domain model
 
 ![inline](./images/intellij-openapi-integration.jpg)
 
-^ Bi-directional syncing
-Manual reload of changes required
+^ Context-sensitive navigation.
+Manual reload of changes required.
 
 ---
 
 ![inline](./images/visual-code-openapi-integration.jpg)
 
-^ OpenAPI plugin available
+^ OpenAPI plugin available.
+Different view than IntelliJ.
 
 ---
 
 ![inline](./images/swagger_editornew.png)
 
-^ JS application running in your browser
-Best OpenAPI validation
+^ JS application running in your browser.
+Best OpenAPI validation.
 
 ---
 
 ![inline](./images/vim-openapi-integration.png)
 
-^ For real nerds only
+^ For the real developers among us.
 
 ---
 
@@ -350,11 +359,21 @@ Best OpenAPI validation
 
 ---
 
+#  Source Code Generation
+
+* Swagger Editor (sort of tech demo)
+* Gradle Plugin
+* Maven Plugin
+
+^ I'm focusing on JVM server-side code.
+
+---
+
 ## Server & Client Generators
 
 ![inline](./images/openapi-generators.jpg)
 
-^ Using the OpenAPI website or Maven plugin
+^ No way to tweak the code generation
 
 ---  
 
@@ -367,6 +386,8 @@ Best OpenAPI validation
 * Review the generated source code
   * Generators are from varying quality!!
 * Put generated code under version control?
+
+^ Swiss army knife for source code generation.
 
 ---
 
@@ -401,11 +422,11 @@ Best OpenAPI validation
 * `hideGenerationTimestamp` to keep you and Git
 
 ^ Generated server code can used in production
-Generated code may be formatted and put under version control
+Generated code may be formatted and put under version control.
 
 ---
 
-## Generated APIs
+### Generated APIs
 
 ```
 src/main/java/com/github/sgoeschl/openapi/demo/rest/api
@@ -424,7 +445,7 @@ src/main/java/com/github/sgoeschl/openapi/demo/rest/api
 
 ---
 
-## Generated Model Classes
+### Generated Model Classes
 
 ```
 src/main/java/com/github/sgoeschl/openapi/demo/rest/model
@@ -440,7 +461,7 @@ src/main/java/com/github/sgoeschl/openapi/demo/rest/model
 
 ---
 
-## Controller Using Delegate Pattern
+### Controller Using Delegate Pattern
 
 ```java
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
@@ -467,13 +488,30 @@ Mapping to business logic is implemented in custom delegates
 
 ---
 
-## Controller Using Delegate Pattern
+### Wiring Controller With Custom Delegates
+
+```java
+@Configuration
+public class ApplicationConfig {
+
+  @Bean
+  public PetApiDelegate petApiDelegate() {
+    return new CustomPetApiDelegate();
+  }
+}
+```
+
+^ I'm usually implement custom wiring of delegates.
+
+---
+
+### Controller Using Delegate Pattern
 
 * Clean separation of generated and custom code
 * Your `XXXDelegate` implementation can be easily tested
-* Nested `XXXDelegate`  to implement cross-cutting concerns
+* Nested `XXXDelegate`  might help for cross-cutting concerns
   * Chain of Responsibility design pattern
-  * Implement application-level security
+  * E.g. implement application-level security
 
 ---
 
@@ -484,7 +522,7 @@ Mapping to business logic is implemented in custom delegates
 ```yaml
 nrOfPersons:
   type: integer
-  description: Number of persons which are going to live in the rental property
+  description: Number of persons to live in the rental property
   minimum: 0
   maximum: 99
   example: 2
@@ -537,6 +575,7 @@ Helps your writing OpenAPI specifications
 
 ## The All-Of Keyword
 
+* How to model the data structures for POST/PUT/GET without duplication?
 * The `allOf` keyword lets you combine and extend model definitions
 
 ---
@@ -691,12 +730,13 @@ paths:
 ## Markdown In YAML
 
 * Description fields support Markdown
-  * Folded blocks
-  * Literal blocks
-
--->
+  * Folded & literal text blocks
+  * Tables
+  * Links
 
 ---
+
+-->
 
 ## OpenAPI Integrations
 
@@ -707,14 +747,16 @@ paths:
 * Bootstrap Postman collection from OpenAPI import :skull:
 * IntelliJ HTTP Clients can use OpenAPI to create requests
 
+^ Advanced OpenAPI features might not be supported.
+
 --- 
 
 # Conclusion
 
-* Open API is a useful technolgy
-* Design-first approach is recommended
+* Open API is a widely-used technolgy
+  * Provides a lot of integration points
+* Design-first approach if possible
   * Leads to better REST APIs
-  * REST APIs are much easier to use
 * Code generation to sync between spec and code
   * In a perfect world for client & server
 
