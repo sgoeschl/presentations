@@ -1,6 +1,6 @@
 # Overview
 
-Presentation about `OpenAPI` which in turn is an excuse to play around with [Deckset](https://www.deckset.com).
+Presentation about `OpenAPI` which in turn is an excuse to use [Deckset](https://www.deckset.com).
 
 ## Abstract
 
