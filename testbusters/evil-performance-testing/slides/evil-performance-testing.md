@@ -110,7 +110,7 @@ theme: Merriweather,8
 
 ## Run Your Own Performance Test
 
-^ Setup am own performance test to analyze customers complaints  
+^ Setup own performance test to analyze customers complaints  
 
 ---
 
