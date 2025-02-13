@@ -47,11 +47,15 @@ theme: Merriweather,8
 | Response Time 99 percentile   | < 50 ms                   |
 | Throughput                    | > 50 req/sec              |
 
+^ Define performance test acceptance criteria to be met before using GRUNTMASTER 7000
+
 ---
 
 ## JMeter Report Overview
 
 ![inline](./images/jmeter-cm-01.jpg)
+
+^ Impressive average response time & no errors
 
 ---
 
@@ -59,11 +63,15 @@ theme: Merriweather,8
 
 ![inline](./images/jmeter-cm-04.jpg)
 
+^ Throughput is much higher than required
+
 ---
 
 ## JMeter Response Time 99th Percentile
 
 ![inline](./images/jmeter-cm-03.jpg)
+
+^ Mostly stable performance - no response time peaks
 
 ---
 
@@ -75,6 +83,8 @@ theme: Merriweather,8
 | Response Time 99 percentile   | < 50 ms                   | ~ 18 ms                   | ✅     |
 | Throughput                    | > 50 req/sec              | 80 req/sec                | ✅     |
 
+^ Performance acceptance criteria met and exceeded - everything looks fine
+
 ---
 
 ![](./images/success.jpg)
@@ -82,7 +92,7 @@ theme: Merriweather,8
 ---
 
 ## GRUNTMASTER 7000
-### Mixed Customer Feedback
+### Mixed End User Feedback
 
 ---
 
@@ -100,11 +110,15 @@ theme: Merriweather,8
 
 ## Run Your Own Performance Test
 
+^ Setup am own performance test to analyze customers complaints  
+
 ---
 
 ## JMeter Report Overview
 
 ![inline](./images/jmeter-om-01.jpg)
+
+^ Average response time above 1 second?! 
 
 ---
 
@@ -112,11 +126,15 @@ theme: Merriweather,8
 
 ![inline](./images/jmeter-om-04.jpg)
 
+^ Throughput looks strange - should be a nice flat line?!
+
 ---
 
 ## JMeter Response Time 99th Percentile
 
 ![inline](./images/jmeter-om-03.jpg)
+
+^ 99th Percentile is mostly stuck at 10 seconds?
 
 ---
 
@@ -127,6 +145,8 @@ theme: Merriweather,8
 | Overall Errors                | 0                         | 0                         | ✅     |
 | Response Time 99 percentile   | < 50 ms                   | ~ 9000 ms                 | ❌     |
 | Throughput                    | > 50 req/sec              | 40 req/sec                | ❌     |
+
+^ Performance test criteria are not met :-(
 
 --- 
 
@@ -141,6 +161,8 @@ theme: Merriweather,8
 | Overall Errors                | 0                         | 0                    | ✅     |
 | Response Time 99th Percentile | ~ 18 ms                   | ~ 9000 ms            | ❌     |
 | Throughput                    | 80 req/sec                | 40 req/sec           | ❌     |
+
+^ The two tests show completely different results - was Path-E-Tech Management cheating?
 
 ---
 
@@ -216,8 +238,16 @@ theme: Merriweather,8
 * Both JMeter tests used a SUT with **exactly the same behavior**
     * The **good** JMeter report uses a **closed workload model**
     * The **bad** JMeter report uses an **open workload model**
-* I only gave you the **99th percentile response time chart**
-    * Omitted the average & maximum response time chart
+
+--- 
+
+## Evil Performance Testing
+
+* The **closed workload model** is affected by **coordinated omission**
+  * JMeter worker threads were blocked by the SUT
+* Vendor only provided the **99th percentile response time chart**
+    * Omitting the **long runners** and **outliers**
+    * Dropped the maximum response time data
 
 ---
 
@@ -225,7 +255,6 @@ theme: Merriweather,8
 
 * Performance test reports might be misleading
 * Do not trust 99th percentile charts
-* Review maximum response time charts
 * Watch out for Coordinated Omission
 * Understand the workload model being used
 
