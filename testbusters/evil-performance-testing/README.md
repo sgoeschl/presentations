@@ -2,7 +2,7 @@
 
 ## Abstract
 
-The infamous “Pointy Haired Boss” is promoting his new flagship product - GRUNTMASTER 7000. Let's follow the journey of a prospective customer struggling with performance test reports, percentile charts, coordinated omission and workload models.
+The infamous “Pointy Haired Boss” is promoting his new flagship product - GRUNTMASTER 7000. Let's follow the fictional journey of a prospective customer struggling with performance test reports, percentile charts, coordinated omission and workload models.
 
 ## The Speaker
 

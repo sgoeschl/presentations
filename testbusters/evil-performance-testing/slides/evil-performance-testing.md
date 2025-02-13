@@ -5,7 +5,7 @@ theme: Merriweather,8
 --- 
 
 ## Meet The Pointy Haired Boss 
-### Engineering Manager @ Path-E-Tech Management
+### Manager @ Path-E-Tech Management
 
 --- 
 
