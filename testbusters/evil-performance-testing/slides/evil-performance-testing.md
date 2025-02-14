@@ -280,3 +280,4 @@ theme: Merriweather,8
 
 * [ScyllaDB / On Coordinated Omission](https://www.scylladb.com/2021/04/22/on-coordinated-omission/)
 * [Why Percentiles Don’t Work the Way You Think](https://orangematter.solarwinds.com/2016/11/18/why-percentiles-dont-work-the-way-you-think/)
+* [SpringBoot HTTPBIN](https://github.com/sgoeschl/springboot-httpbin)
