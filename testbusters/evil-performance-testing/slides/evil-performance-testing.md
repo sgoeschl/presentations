@@ -280,4 +280,20 @@ theme: Merriweather,8
 
 * [ScyllaDB / On Coordinated Omission](https://www.scylladb.com/2021/04/22/on-coordinated-omission/)
 * [Why Percentiles Don’t Work the Way You Think](https://orangematter.solarwinds.com/2016/11/18/why-percentiles-dont-work-the-way-you-think/)
+* [hey HTTP load generator](https://github.com/rakyll/hey) 
 * [SpringBoot HTTPBIN](https://github.com/sgoeschl/springboot-httpbin)
+
+---
+
+## Extra Material
+
+---
+
+![inline](./images/hey-test-report.jpg)
+
+^ hey is a simple HTTP load generator showing the distribution of response times
+^ -c Number of workers, -z Duration
+^ 50 requests tool roughly a second and one request 10 seconds 
+
+--- 
+
