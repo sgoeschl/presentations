@@ -123,7 +123,7 @@ OUT.println(&quot;RequestsPerMinute: &quot; + vars.get(&quot;RequestsPerMinute&q
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Closed Model" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Closed Model">
         <stringProp name="TestPlan.comments">Throughput Timer Thread Group</stringProp>
         <stringProp name="ThreadGroup.num_threads">${NrOfThreads}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${RampUpPeriod}</stringProp>
@@ -235,7 +235,7 @@ Connect to 5s</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <OpenModelThreadGroup guiclass="OpenModelThreadGroupGui" testclass="OpenModelThreadGroup" testname="Open Model">
+      <OpenModelThreadGroup guiclass="OpenModelThreadGroupGui" testclass="OpenModelThreadGroup" testname="Open Model" enabled="false">
         <stringProp name="TestPlan.comments">Open Model Thread Group</stringProp>
         <stringProp name="OpenModelThreadGroup.schedule">random_arrivals(10 min) rate(4800/min)</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
@@ -325,7 +325,7 @@ Connect to 5s</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="Teardown Thread Group">
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="Teardown Thread Group" enabled="true">
         <stringProp name="TestPlan.comments">Teardown test environment</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
