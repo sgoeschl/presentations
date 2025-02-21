@@ -13,8 +13,15 @@ The JMeter test contains of two different `Thread Groups` (only one of them shou
 
 ```bash
 # Start the JMeter GUI
-> jmeter.sh
+> jmeter -t httpbin-jmeter.jmx
 
 # Run a JMeter test scenario
 > runme.sh 
 ```
+
+## Spring Boot HTTPBin Server
+
+* A modified version of [dyrnq / springboot-httpbin](https://github.com/dyrnq/springboot-httpbin) is used to simulate a "Stop The World GC Pause
+* My actual source code is found here: https://github.com/sgoeschl/springboot-httpbin 
+* After starting you can look at the OpenAPI stuff using [http://localhost:8080](http://localhost:8080)
+

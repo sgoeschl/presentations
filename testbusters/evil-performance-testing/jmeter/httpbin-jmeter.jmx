@@ -190,11 +190,7 @@ Connect to 5s</stringProp>
           <longProp name="duration">86400</longProp>
           <intProp name="exactLimit">10000</intProp>
           <longProp name="randomSeed">0</longProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>4800.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
+          <stringProp name="throughput">${RequestsPerMinute}</stringProp>
           <intProp name="throughputPeriod">60</intProp>
         </PreciseThroughputTimer>
         <hashTree/>
@@ -237,7 +233,7 @@ Connect to 5s</stringProp>
       </hashTree>
       <OpenModelThreadGroup guiclass="OpenModelThreadGroupGui" testclass="OpenModelThreadGroup" testname="Open Model" enabled="false">
         <stringProp name="TestPlan.comments">Open Model Thread Group</stringProp>
-        <stringProp name="OpenModelThreadGroup.schedule">random_arrivals(10 min) rate(4800/min)</stringProp>
+        <stringProp name="OpenModelThreadGroup.schedule">random_arrivals(10 min) rate(${RequestsPerMinute}/min)</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="OpenModelThreadGroupController"/>
       </OpenModelThreadGroup>

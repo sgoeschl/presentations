@@ -18,7 +18,7 @@ theme: Merriweather,8
 [.column]
 * Merger of **Path-Way Electronics** and **E-Tech Management**
 * Located in North America
-* Made $$$ with GRUNTMASTER 6000
+* They made $$$ with GRUNTMASTER 6000
 
 [.column]
 ![inline](./images/gruntmaster-6000.jpg)
@@ -41,11 +41,11 @@ theme: Merriweather,8
 
 ## Performance Test Success Criteria
 
-| Metric                        | Acceptance Criteria       |
-| :---------------------------- | ------------------------- |
-| Overall Errors                | 0                         |
-| Response Time 99 percentile   | < 50 ms                   |
-| Throughput                    | > 50 req/sec              |
+| Metric                            | Acceptance Criteria       |
+| :-------------------------------- | ------------------------- |
+| Overall Errors                    | 0                         |
+| Response Time 99th percentile     | < 50 ms                   |
+| Throughput                        | > 50 req/sec              |
 
 ^ Define performance test acceptance criteria to be met before using GRUNTMASTER 7000
 
@@ -170,7 +170,7 @@ theme: Merriweather,8
 
 ---
 
-![inline](./images/coordinated-omission.jpg)
+![inline](./images/catbert-coordinated-omission.jpg)
 
 --- 
 
@@ -195,14 +195,20 @@ theme: Merriweather,8
 
 ---
 
-![inline](./images/percentile-charts.jpg)
+## Gil Tene's Example
+
+![inline](./images/coordinated-omission-diagram.png)
+
+---
+
+![inline](./images/catbert-percentile-charts.jpg)
 
 ---
 
 ## Percentiles Charts
 
 * Percentiles are effectively removing information
-    * Hide "long runners" and "outliers"
+    * Remove "long runners" and "outliers"
 * Never get rid of the maximum value
     * *The number one indicator you should never get rid of is the maximum value. That’s not noise, it’s the signal, the rest is noise.* [^1]
 
@@ -210,23 +216,41 @@ theme: Merriweather,8
 
 ---
 
-![inline](./images/workload-models.jpg)
+![inline](./images/catbert-workload-models.jpg)
 
 ---
 
 ## Closed Workload Model
 
-* New users only enter the system when existing users exit.
-* Ticketing platforms and call centers.
+* Closed workload model has a fixed number of virtual users
+* New users only enter the system when existing users exit
+* Think of a call centers agent responding to a call
+* Mostly measuring response time
 
 ---
 
 ## Open Workload Model
 
-* New virtual users arrive regardless of the existing number of concurrent virtual users.
-* E-commerce and news sites
+* An open system has no control over the number of concurrent users
+* New users arrive regardless of the existing number of concurrent users.
+* Think of buying Taylor Swift concert tickets
+* Mostly measuring service time
 
 --- 
+
+![inline](./images/service-versus-response-time.jpg)
+
+---
+
+## Performance Test Tools & Workload Models
+
+| Test Tool   | Closed Model  | Open Model           |
+| :---------- |:-------------:|:--------------------:|
+| JMeter      | ✅            | ✅                   |
+| Gatling     | ✅            | ✅                   |
+| SoapUI      | ✅            | ❌                   |
+
+---
 
 ![inline](./images/phb-i-see-no-evil.jpg)
 
@@ -245,18 +269,19 @@ theme: Merriweather,8
 
 * The **closed workload model** is affected by **coordinated omission**
   * JMeter worker threads were blocked by the SUT
-* Vendor only provided the **99th percentile response time chart**
+* The **99th percentile response time chart** is misleading
     * Omitting the **long runners** and **outliers**
     * Dropped the maximum response time data
+    * Effectively hiding the 10 seconds being stalled
 
 ---
 
 ## Conclusion
 
-* Performance test reports might be misleading
-* Do not trust 99th percentile charts
-* Watch out for Coordinated Omission
-* Understand the workload model being used
+* Performance test reports can be misleading
+* Percentile charts show you the things you want to see
+* Coordinated Omission is everywhere
+* Understand your workload model
 
 ^ Ad 99th percentile - what happened to the remaining 1% of the requests
 
@@ -297,3 +322,6 @@ theme: Merriweather,8
 
 --- 
 
+## Tomcat Connection Queues
+
+![inline](./images/tomcat-connection-queue.png)
