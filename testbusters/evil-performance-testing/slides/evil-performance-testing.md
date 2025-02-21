@@ -314,14 +314,49 @@ theme: Merriweather,8
 
 ---
 
+![inline](./images/catbert-response-time-trap.jpg)
+
+---
+
+> Server response time is below one second. If you get timeouts, your performance test tool is broken!
+-- Typical conversation during performance testing sessions
+
+---
+
+## Response Time Trap
+
+```java
+private void somewhereInTheServer() {
+    long start = System.currentTimeMillis();
+    // do the thing ...
+    long finish = System.currentTimeMillis();
+    long timeElapsed = finish - start;
+    publish(timeElapsed);
+}
+```
+
+^ Some applications publish internal performance data.
+Measuring the time between start / end of a work unit.
+You measure response time.
+
+---
+
+## Response Time Trap
+
+* Some applications publish internal performance data
+* Measuring the time between start / end of a work unit
+* Usually the response time is measured
+
+---
+
+## ## Response Time Trap
+
+![inline](./images/tomcat-connection-queue.png)
+
+---
+
 ![inline](./images/hey-test-report.jpg)
 
 ^ hey is a simple HTTP load generator showing the distribution of response times
 ^ -c Number of workers, -z Duration
-^ 50 requests tool roughly a second and one request 10 seconds 
-
---- 
-
-## Tomcat Connection Queues
-
-![inline](./images/tomcat-connection-queue.png)
+^ 50 requests tool roughly a second and one request 10 seconds
