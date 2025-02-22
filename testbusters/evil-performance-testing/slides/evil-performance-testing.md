@@ -1,8 +1,23 @@
 theme: Merriweather,8
 # Evil Performance Testing 
-#### Siegfried GOESCHL, ASCIIFISH
+#### Siegfried GOESCHL
+#### ASCIIFISH
 
 --- 
+
+## About Me
+
+[.column]
+* Writing Java backend code
+* Infamous for motivation skills & management presentations
+* Loves with performance testing & engineering
+* Helps at the Java Meetup Vienna & DevFest Vienna
+* Never spend enough time on the bicycle.
+
+[.column]
+![inline](./images/portrait.jpg)
+
+---
 
 ## Meet The Pointy Haired Boss 
 ### Manager @ Path-E-Tech Management
@@ -22,6 +37,8 @@ theme: Merriweather,8
 
 [.column]
 ![inline](./images/gruntmaster-6000.jpg)
+
+^ Name is unfortunate - can be spelled "Pathetic Management"
 
 ---
 
@@ -51,6 +68,10 @@ theme: Merriweather,8
 
 ---
 
+## Looking At The Vendor's Performance Test Results
+
+---
+
 ## JMeter Report Overview
 
 ![inline](./images/jmeter-cm-01.jpg)
@@ -75,13 +96,13 @@ theme: Merriweather,8
 
 ---
 
-## Vendor Performance Test Results
+## Reviewing Performance Acceptance Criteria
 
-| Metric                        | Acceptance Criteria       | Delivered                 | Result |
-| :---------------------------- | ------------------------- | ------------------------- | ------ |
-| Overall Errors                | 0                         | 0                         | ✅     |
-| Response Time 99 percentile   | < 50 ms                   | ~ 18 ms                   | ✅     |
-| Throughput                    | > 50 req/sec              | 80 req/sec                | ✅     |
+| Metric                            | Criteria                  | Measured                  | Result |
+| :-------------------------------- | ------------------------- | ------------------------- | ------ |
+| Overall Errors                    | 0                         | 0                         | ✅     |
+| Response Time 99th percentile     | < 50 ms                   | ~ 18 ms                   | ✅     |
+| Throughput                        | > 50 req/sec              | 80 req/sec                | ✅     |
 
 ^ Performance acceptance criteria met and exceeded - everything looks fine
 
@@ -140,11 +161,11 @@ theme: Merriweather,8
 
 ## Your Performance Test Results
 
-| Metric                        | Acceptance Criteria       | Delivered                 | Result |
-| :---------------------------- | ------------------------- | ------------------------- | ------ |
-| Overall Errors                | 0                         | 0                         | ✅     |
-| Response Time 99 percentile   | < 50 ms                   | ~ 9000 ms                 | ❌     |
-| Throughput                    | > 50 req/sec              | 40 req/sec                | ❌     |
+| Metric                            | Acceptance Criteria       | Delivered                 | Result |
+| :-------------------------------- | ------------------------- | ------------------------- | ------ |
+| Overall Errors                    | 0                         | 0                         | ✅     |
+| Response Time 99th percentile     | < 50 ms                   | ~ 9000 ms                 | ❌     |
+| Throughput                        | > 50 req/sec              | 40 req/sec                | ❌     |
 
 ^ Performance test criteria are not met :-(
 
@@ -195,7 +216,7 @@ theme: Merriweather,8
 
 ---
 
-## Gil Tene's Example
+## Gil Tene's Original Example
 
 ![inline](./images/coordinated-omission-diagram.png)
 
@@ -281,9 +302,14 @@ theme: Merriweather,8
 * Performance test reports can be misleading
 * Percentile charts show you the things you want to see
 * Coordinated Omission is everywhere
-* Understand your workload model
+* Ensure that your workload model reflects reality
 
-^ Ad 99th percentile - what happened to the remaining 1% of the requests
+^ Tests might be biased - they show what you want to show.
+^ Ad 99th percentile - what happened to the remaining 1% of the requests?
+
+---
+
+![inline](./images/chain-of-command.jpg)
 
 ---
 
@@ -318,7 +344,7 @@ theme: Merriweather,8
 
 ---
 
-> Server response time is below one second. If you get timeouts, your performance test tool is broken!
+> Server response time is below one second. If you get time outs, your performance test tool is broken!
 -- Typical conversation during performance testing sessions
 
 ---
@@ -326,12 +352,12 @@ theme: Merriweather,8
 ## Response Time Trap
 
 ```java
-private void somewhereInTheServer() {
+void somewhereInTheServerGuts() {
     long start = System.currentTimeMillis();
     // do the thing ...
     long finish = System.currentTimeMillis();
     long timeElapsed = finish - start;
-    publish(timeElapsed);
+    println("Processing took: " + timeElapsed);
 }
 ```
 
@@ -343,15 +369,16 @@ You measure response time.
 
 ## Response Time Trap
 
-* Some applications publish internal performance data
-* Measuring the time between start / end of a work unit
-* Usually the response time is measured
+![inline](./images/tomcat-connection-queue.png)
 
 ---
 
-## ## Response Time Trap
+## Response Time Trap
 
-![inline](./images/tomcat-connection-queue.png)
+* Some applications publish internal performance data
+* Measuring the time between start / end of a work unit
+* This is the **response time** and not **service time**
+* So the response time could be well below one seconds while the clients have to wait for more than 30 seconds 
 
 ---
 
