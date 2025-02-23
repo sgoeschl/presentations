@@ -5,30 +5,28 @@ theme: Merriweather,8
 
 --- 
 
-## About Me
+## About Siegfried
 
 [.column]
 * Writing Java backend code
 * Infamous for motivation skills & management presentations
-* Loves with performance testing & engineering
+* Loves performance testing & engineering
 * Helps at the Java Meetup Vienna & DevFest Vienna
-* Never spend enough time on the bicycle.
 
 [.column]
 ![inline](./images/portrait.jpg)
 
----
-
-## Meet The Pointy Haired Boss 
-### Manager @ Path-E-Tech Management
-
 --- 
+
+## Meet The Pointy Haired Boss  
 
 ![inline](./images/quality-is-out-top-priority.jpg)
 
+^ The Pointy Haired Boss works at Path-E-Tech Management
+
 ---
 
-##  Path-E-Tech Management
+## Path-E-Tech Management
 
 [.column]
 * Merger of **Path-Way Electronics** and **E-Tech Management**
@@ -38,13 +36,16 @@ theme: Merriweather,8
 [.column]
 ![inline](./images/gruntmaster-6000.jpg)
 
-^ Name is unfortunate - can be spelled "Pathetic Management"
+^ Name is unfortunate - can be spelled "Pathetic Management".
 
 ---
 
 ## Launching GRUNTMASTER 7000
 
 ![inline](./images/gruntmaster-7000.jpg)
+
+^ New flagship product.
+Second best invention after snake oil.
  
 ---
 
@@ -53,6 +54,8 @@ theme: Merriweather,8
 * You have hard performance requirements
 * Performance problems cost you $$$
 * Mandatory performance test before purchase
+
+^ As a prospective customer you want to make 100% sure that GRUNTMASTER 7000 works.
 
 ---
 
@@ -64,11 +67,13 @@ theme: Merriweather,8
 | Response Time 99th percentile     | < 50 ms                   |
 | Throughput                        | > 50 req/sec              |
 
-^ Define performance test acceptance criteria to be met before using GRUNTMASTER 7000
+^ Define performance test acceptance criteria to be met before using GRUNTMASTER 7000.
 
 ---
 
-## Looking At The Vendor's Performance Test Results
+## Looking At Path-E-Tech Management's Test Reports
+
+^ Path-E-Tech Management provides JMeter test report to prove "fitness for purpose".
 
 ---
 
@@ -84,7 +89,8 @@ theme: Merriweather,8
 
 ![inline](./images/jmeter-cm-04.jpg)
 
-^ Throughput is much higher than required
+^ Throughput is much higher than required.
+Test ramp up and ramp down are expected.
 
 ---
 
@@ -92,7 +98,7 @@ theme: Merriweather,8
 
 ![inline](./images/jmeter-cm-03.jpg)
 
-^ Mostly stable performance - no response time peaks
+^ Mostly stable performance - no response time peaks.
 
 ---
 
@@ -104,16 +110,21 @@ theme: Merriweather,8
 | Response Time 99th percentile     | < 50 ms                   | ~ 18 ms                   | ✅     |
 | Throughput                        | > 50 req/sec              | 80 req/sec                | ✅     |
 
-^ Performance acceptance criteria met and exceeded - everything looks fine
+^ Performance acceptance criteria met and exceeded.
+Everything looks fine.
 
 ---
 
 ![](./images/success.jpg)
 
+^ You happily sign the purchase order.
+
 ---
 
 ## GRUNTMASTER 7000
 ### Mixed End User Feedback
+
+^ Customer feedback is not overly enthusiastic.
 
 ---
 
@@ -123,6 +134,8 @@ theme: Merriweather,8
 
 ![inline](./images/gruntmaster-7000-feedback-01.jpg)
 
+^ Your Customer Happiness Department sees some room for improvement.
+
 ---
 
 ![](./images/gruntmaster-7000-feedback-03.jpg)
@@ -131,7 +144,7 @@ theme: Merriweather,8
 
 ## Run Your Own Performance Test
 
-^ Setup own performance test to analyze customers complaints  
+^ Setup own performance test to analyze customers complaints.
 
 ---
 
@@ -177,13 +190,21 @@ theme: Merriweather,8
 
 # What Is Right & Wrong?!
 
-| Metric                        | Vendor Test               | Your Tests           | Result | 
+| Metric                        | Vendor Test               | Your Test            | Result | 
 | :---------------------------- |:-------------------------:|:--------------------:|:------:|
 | Overall Errors                | 0                         | 0                    | ✅     |
 | Response Time 99th Percentile | ~ 18 ms                   | ~ 9000 ms            | ❌     |
 | Throughput                    | 80 req/sec                | 40 req/sec           | ❌     |
 
-^ The two tests show completely different results - was Path-E-Tech Management cheating?
+^ The two tests show completely different results?!
+
+---
+
+## Is Path-E-Tech Management Lying About GRUNTMASTER 7000?!
+
+---
+
+![inline](./images/one-does-not-simply-lie.jpg)
 
 ---
 
@@ -198,9 +219,10 @@ theme: Merriweather,8
 ##  Coordinated Omission
 
 [.column]
-* Gruntmaster 7000 stalls 10 seconds every minute
-* The JMeter worker threads are also stalled up to 10 seconds
-* JMeter omitted requests which do not show up in the reports
+* GRUNTMASTER 7000 stalls 10 seconds every minute
+* The JMeter worker threads also stall up to 10 seconds
+* Stalled JMeter worker threads do not send requests
+* Those requests were omitted
 
 [.column]
 ![inline](./images/sut-stalls.jpg)
@@ -259,7 +281,7 @@ theme: Merriweather,8
 
 --- 
 
-![inline](./images/service-versus-response-time.jpg)
+![fill](./images/service-versus-response-time.jpg)
 
 ---
 
@@ -289,7 +311,7 @@ theme: Merriweather,8
 ## Evil Performance Testing
 
 * The **closed workload model** is affected by **coordinated omission**
-  * JMeter worker threads were blocked by the SUT
+  * JMeter worker threads were stalled by the SUT
 * The **99th percentile response time chart** is misleading
     * Omitting the **long runners** and **outliers**
     * Dropped the maximum response time data
@@ -302,14 +324,10 @@ theme: Merriweather,8
 * Performance test reports can be misleading
 * Percentile charts show you the things you want to see
 * Coordinated Omission is everywhere
-* Ensure that your workload model reflects reality
+* Ensure that your workload model reflects your expectations
 
 ^ Tests might be biased - they show what you want to show.
 ^ Ad 99th percentile - what happened to the remaining 1% of the requests?
-
----
-
-![inline](./images/chain-of-command.jpg)
 
 ---
 
