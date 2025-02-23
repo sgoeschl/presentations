@@ -10,7 +10,7 @@ theme: Merriweather,8
 [.column]
 * Writing Java backend code
 * Infamous for motivation skills & management presentations
-* Loves performance testing & engineering
+* Likes performance testing & engineering
 * Helps at the Java Meetup Vienna & DevFest Vienna
 
 [.column]
@@ -23,6 +23,7 @@ theme: Merriweather,8
 ![inline](./images/quality-is-out-top-priority.jpg)
 
 ^ The Pointy Haired Boss works at Path-E-Tech Management
+And PHB is the boss of Dilbert
 
 ---
 
@@ -55,7 +56,7 @@ Second best invention after snake oil.
 * Performance problems cost you $$$
 * Mandatory performance test before purchase
 
-^ As a prospective customer you want to make 100% sure that GRUNTMASTER 7000 works.
+^ You are a prospective customer looking at GRUNTMASTER 7000.
 
 ---
 
@@ -73,7 +74,7 @@ Second best invention after snake oil.
 
 ## Looking At Path-E-Tech Management's Test Reports
 
-^ Path-E-Tech Management provides JMeter test report to prove "fitness for purpose".
+^ After some time Path-E-Tech Management provides JMeter test report to prove "fitness for purpose".
 
 ---
 
@@ -90,7 +91,7 @@ Second best invention after snake oil.
 ![inline](./images/jmeter-cm-04.jpg)
 
 ^ Throughput is much higher than required.
-Test ramp up and ramp down are expected.
+Test ramp up and tear down are expected.
 
 ---
 
@@ -130,6 +131,8 @@ Everything looks fine.
 
 ![inline](./images/gruntmaster-7000-feedback-04.jpg)
 
+^ Complaints everywhere in the social media.
+
 ---
 
 ![inline](./images/gruntmaster-7000-feedback-01.jpg)
@@ -139,6 +142,8 @@ Everything looks fine.
 ---
 
 ![](./images/gruntmaster-7000-feedback-03.jpg)
+
+^ Your annual report review and bonus is near.
 
 ---
 
@@ -200,11 +205,15 @@ Everything looks fine.
 
 ---
 
-## Is Path-E-Tech Management Lying About GRUNTMASTER 7000?!
+## Was Path-E-Tech Management Lying About GRUNTMASTER 7000?!
+
+^ You addressing the elephant in the room - was Path-E-Tech Management  lying?
 
 ---
 
 ![inline](./images/one-does-not-simply-lie.jpg)
+
+^ There is marketing instead.
 
 ---
 
@@ -227,7 +236,7 @@ Everything looks fine.
 [.column]
 ![inline](./images/sut-stalls.jpg)
 
-^ Think of stop-the-world GC pause
+^ Think of stop-the-world GC pause lasting 10 seconds.
 
 ---
 
@@ -242,6 +251,11 @@ Everything looks fine.
 
 ![inline](./images/coordinated-omission-diagram.png)
 
+^ Imagine one worker thread doing 10.000 requests in 100 sec.
+Then the SUT stalls for 100 seconds which results in one single request in 100 sec.
+In other words in this 100 seconds 9.999 requests were omitted.
+If you consider all those omitted requests the average response time would be 25 sec.
+
 ---
 
 ![inline](./images/catbert-percentile-charts.jpg)
@@ -251,11 +265,14 @@ Everything looks fine.
 ## Percentiles Charts
 
 * Percentiles are effectively removing information
-    * Remove "long runners" and "outliers"
+    * Remove "outliers / noise " for nicer graphs
 * Never get rid of the maximum value
     * *The number one indicator you should never get rid of is the maximum value. That’s not noise, it’s the signal, the rest is noise.* [^1]
 
 [^1]: Gil Tene, How NOT to Measure Latency
+
+^ Big question - are the outliers part of the normal operation?
+If so they might be "long runners"?!
 
 ---
 
@@ -267,7 +284,7 @@ Everything looks fine.
 
 * Closed workload model has a fixed number of virtual users
 * New users only enter the system when existing users exit
-* Think of a call centers agent responding to a call
+* Think of measuring call centers agent performance
 * Mostly measuring response time
 
 ---
@@ -276,22 +293,19 @@ Everything looks fine.
 
 * An open system has no control over the number of concurrent users
 * New users arrive regardless of the existing number of concurrent users.
-* Think of buying Taylor Swift concert tickets
+* Think of buying a Taylor Swift concert ticket
 * Mostly measuring service time
 
 --- 
 
 ![fill](./images/service-versus-response-time.jpg)
 
+^ Guy in front of the counter sees response time.
+The guy on the far left with glasses sees service time.
+
 ---
 
-## Performance Test Tools & Workload Models
-
-| Test Tool   | Closed Model  | Open Model           |
-| :---------- |:-------------:|:--------------------:|
-| JMeter      | ✅            | ✅                   |
-| Gatling     | ✅            | ✅                   |
-| SoapUI      | ✅            | ❌                   |
+## Was Path-E-Tech Management Doing Evil Performance Testing?!
 
 ---
 
@@ -299,16 +313,19 @@ Everything looks fine.
 
 ---
 
-## Evil Performance Testing
+## Evil Performance Testing?!
 
 * Both JMeter test reports are **real**
 * Both JMeter tests used a SUT with **exactly the same behavior**
     * The **good** JMeter report uses a **closed workload model**
     * The **bad** JMeter report uses an **open workload model**
 
+^ Both JMeters reports you find on Github.
+Both JMeter test runs experience the same 10 second pauses of GRUNTMASTER 7000.
+
 --- 
 
-## Evil Performance Testing
+## Evil Performance Testing?!
 
 * The **closed workload model** is affected by **coordinated omission**
   * JMeter worker threads were stalled by the SUT
@@ -327,7 +344,7 @@ Everything looks fine.
 * Ensure that your workload model reflects your expectations
 
 ^ Tests might be biased - they show what you want to show.
-^ Ad 99th percentile - what happened to the remaining 1% of the requests?
+Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
@@ -397,6 +414,16 @@ You measure response time.
 * Measuring the time between start / end of a work unit
 * This is the **response time** and not **service time**
 * So the response time could be well below one seconds while the clients have to wait for more than 30 seconds 
+
+---
+
+## Performance Test Tools & Workload Models
+
+| Test Tool   | Closed Model  | Open Model           |
+| :---------- |:-------------:|:--------------------:|
+| JMeter      | ✅            | ✅                   |
+| Gatling     | ✅            | ✅                   |
+| SoapUI      | ✅            | ❌                   |
 
 ---
 
