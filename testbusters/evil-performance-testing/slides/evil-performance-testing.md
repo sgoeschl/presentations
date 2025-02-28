@@ -305,6 +305,19 @@ The guy on the far left with glasses sees service time.
 
 ---
 
+## Workload Models & Test Tools
+
+| Test Tool   | Closed Model  | Open Model           |
+| :---------- |:-------------:|:--------------------:|
+| JMeter      | ✅            | ✅                   |
+| Gatling     | ✅            | ✅                   |
+| SoapUI      | ✅            | ❌                   |
+
+^ Gatling is commercial tool
+Gatling gRPC Plugin is crippled - 5 minute test duration
+
+---
+
 ## Was Path-E-Tech Management Doing Evil Performance Testing?!
 
 ---
@@ -368,6 +381,88 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 * [Why Percentiles Don’t Work the Way You Think](https://orangematter.solarwinds.com/2016/11/18/why-percentiles-dont-work-the-way-you-think/)
 * [hey HTTP load generator](https://github.com/rakyll/hey) 
 * [SpringBoot HTTPBIN](https://github.com/sgoeschl/springboot-httpbin)
+* [Loom Project: The Revolution of JMeter](https://medium.com/globant/loom-project-the-revolution-of-jmeter-d321486517a8)
+
+---
+
+## Resources
+
+* [Unveiling the Secret: Achieving 50k Concurrent User load using JMeter with 2.5G RAM Only](https://medium.com/@nirmalmewada/unveiling-the-secret-achieving-50k-concurrent-user-load-using-jmeter-with-2-5g-ram-only-51f892b233ce)
+* [Better Benchmarking: Your Benchmark Tool Might be Lying to You](https://www.nearform.com/insights/better-benchmarking-benchmark-tool-lying/)
+* [hey Performance Test Tool](https://github.com/rakyll/hey)
+* [wrk2 Performance Test Tool](https://github.com/giltene/wrk2)
+* [oha Performance Test Tool](https://github.com/hatoo/oha)
+
+---
+
+## Questions & Answers
+
+### From The Last Presentation
+
+---
+
+### Replace My Closed Workload Model-Only Test Tool?
+
+* We lived happily with **Closed Workload** Models and **Coordinated Omission** for many years
+* Expected that your test reports become skewed when hitting a slow server
+* Double-check maximum response times
+
+---
+
+### What About JMeter And Project Loom
+
+* JMeter implements an **Open Workload Model** by starting more JVM threads
+* **JVM threads** are expensive in term of memory and context switching
+* Project Loom provides **Virtual Threads** implemented in JDK 21
+* The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
+
+^ JVM thread takes at least 1 MB of memory
+
+---
+
+### Help Me - I Only Want To Test A Single URL!?
+
+* JMeter and Gatling have a steep learning curve
+* Complete overkill when testing a few static URLs
+* Have a look at **wrk2**, **hey** and **oha**
+
+^ Unable to install wrk2 on my M1 Mac
+
+---
+
+![inline](./images/hey-test-report.jpg)
+
+^ hey is a simple HTTP load generator showing the distribution of response times
+-c Number of workers, -z Duration
+50 requests tool roughly a second and one request 10 seconds
+
+---
+
+![inline](./images/oha-test-report-01.jpg)
+
+^ Fancy UI for a command line tool
+
+---
+
+![inline](./images/oha-test-report-02.jpg)
+
+^ Result are very different to hey
+59 requests done instead of 50
+
+---
+
+![inline](./images/coordinated-omission-everywhere.jpg)
+
+---
+
+### Coordinated Omission Everywhere
+
+* **hey** uses a number of worker threads
+    * Closed Workload Model & Coordinated Omission
+    * Issued HTTP 50 requests within 60 seconds
+* **oha** uses request by second
+    * Open Workload Model
+    * Issued 59 HTTP requests within 60 seconds
 
 ---
 
@@ -414,21 +509,3 @@ You measure response time.
 * Measuring the time between start / end of a work unit
 * This is the **response time** and not **service time**
 * So the response time could be well below one seconds while the clients have to wait for more than 30 seconds 
-
----
-
-## Performance Test Tools & Workload Models
-
-| Test Tool   | Closed Model  | Open Model           |
-| :---------- |:-------------:|:--------------------:|
-| JMeter      | ✅            | ✅                   |
-| Gatling     | ✅            | ✅                   |
-| SoapUI      | ✅            | ❌                   |
-
----
-
-![inline](./images/hey-test-report.jpg)
-
-^ hey is a simple HTTP load generator showing the distribution of response times
-^ -c Number of workers, -z Duration
-^ 50 requests tool roughly a second and one request 10 seconds
