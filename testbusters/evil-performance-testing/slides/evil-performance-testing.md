@@ -46,7 +46,7 @@ And PHB is the boss of Dilbert
 ![inline](./images/gruntmaster-7000.jpg)
 
 ^ New flagship product.
-Second best invention after snake oil.
+Second-best invention after snake oil.
  
 ---
 
@@ -62,11 +62,11 @@ Second best invention after snake oil.
 
 ## Performance Test Success Criteria
 
-| Metric                            | Acceptance Criteria       |
-| :-------------------------------- | ------------------------- |
-| Overall Errors                    | 0                         |
-| Response Time 99th percentile     | < 50 ms                   |
-| Throughput                        | > 50 req/sec              |
+| Metric                        | Acceptance Criteria |
+|:------------------------------|---------------------|
+| Overall Errors                | 0                   |
+| Response Time 99th percentile | < 50 ms             |
+| Throughput                    | > 50 req/sec        |
 
 ^ Define performance test acceptance criteria to be met before using GRUNTMASTER 7000.
 
@@ -105,11 +105,11 @@ Test ramp up and tear down are expected.
 
 ## Reviewing Performance Acceptance Criteria
 
-| Metric                            | Criteria                  | Measured                  | Result |
-| :-------------------------------- | ------------------------- | ------------------------- | ------ |
-| Overall Errors                    | 0                         | 0                         | ✅     |
-| Response Time 99th percentile     | < 50 ms                   | ~ 18 ms                   | ✅     |
-| Throughput                        | > 50 req/sec              | 80 req/sec                | ✅     |
+| Metric                        | Criteria     | Measured   | Result |
+|:------------------------------|--------------|------------|--------|
+| Overall Errors                | 0            | 0          | ✅      |
+| Response Time 99th percentile | < 50 ms      | ~ 18 ms    | ✅      |
+| Throughput                    | > 50 req/sec | 80 req/sec | ✅      |
 
 ^ Performance acceptance criteria met and exceeded.
 Everything looks fine.
@@ -179,11 +179,11 @@ Everything looks fine.
 
 ## Your Performance Test Results
 
-| Metric                            | Acceptance Criteria       | Delivered                 | Result |
-| :-------------------------------- | ------------------------- | ------------------------- | ------ |
-| Overall Errors                    | 0                         | 0                         | ✅     |
-| Response Time 99th percentile     | < 50 ms                   | ~ 9000 ms                 | ❌     |
-| Throughput                        | > 50 req/sec              | 40 req/sec                | ❌     |
+| Metric                        | Acceptance Criteria | Delivered  | Result |
+|:------------------------------|---------------------|------------|--------|
+| Overall Errors                | 0                   | 0          | ✅      |
+| Response Time 99th percentile | < 50 ms             | ~ 9000 ms  | ❌      |
+| Throughput                    | > 50 req/sec        | 40 req/sec | ❌      |
 
 ^ Performance test criteria are not met :-(
 
@@ -195,11 +195,11 @@ Everything looks fine.
 
 # What Is Right & Wrong?!
 
-| Metric                        | Vendor Test               | Your Test            | Result | 
-| :---------------------------- |:-------------------------:|:--------------------:|:------:|
-| Overall Errors                | 0                         | 0                    | ✅     |
-| Response Time 99th Percentile | ~ 18 ms                   | ~ 9000 ms            | ❌     |
-| Throughput                    | 80 req/sec                | 40 req/sec           | ❌     |
+| Metric                        | Vendor Test | Your Test  | Result | 
+|:------------------------------|:-----------:|:----------:|:------:|
+| Overall Errors                |      0      |     0      |   ✅    |
+| Response Time 99th Percentile |   ~ 18 ms   | ~ 9000 ms  |   ❌    |
+| Throughput                    | 80 req/sec  | 40 req/sec |   ❌    |
 
 ^ The two tests show completely different results?!
 
@@ -307,11 +307,11 @@ The guy on the far left with glasses sees service time.
 
 ## Workload Models & Test Tools
 
-| Test Tool   | Closed Model  | Open Model           |
-| :---------- |:-------------:|:--------------------:|
-| JMeter      | ✅            | ✅                   |
-| Gatling     | ✅            | ✅                   |
-| SoapUI      | ✅            | ❌                   |
+| Test Tool | Closed Model | Open Model |
+|:----------|:------------:|:----------:|
+| JMeter    |      ✅       |     ✅      |
+| Gatling   |      ✅       |     ✅      |
+| SoapUI    |      ✅       |     ❌      |
 
 ^ Gatling is commercial tool
 Gatling gRPC Plugin is crippled - 5 minute test duration
@@ -333,8 +333,8 @@ Gatling gRPC Plugin is crippled - 5 minute test duration
     * The **good** JMeter report uses a **closed workload model**
     * The **bad** JMeter report uses an **open workload model**
 
-^ Both JMeters reports you find on Github.
-Both JMeter test runs experience the same 10 second pauses of GRUNTMASTER 7000.
+^ Both JMeters reports you find on GitHub.
+Both JMeter test runs experience the same 10-second pauses of GRUNTMASTER 7000.
 
 --- 
 
@@ -412,7 +412,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 ### What About JMeter And Project Loom
 
 * JMeter implements an **Open Workload Model** by starting more JVM threads
-* **JVM threads** are expensive in term of memory and context switching
+* **JVM threads** are expensive in terms of memory and context switching
 * Project Loom provides **Virtual Threads** implemented in JDK 21
 * The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
 
@@ -474,7 +474,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-> Server response time is below one second. If you get time outs, your performance test tool is broken!
+> Server response time is below one second. If you get time-outs, your performance test tool is broken!
 -- Typical conversation during performance testing sessions
 
 ---
