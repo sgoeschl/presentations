@@ -137,13 +137,13 @@ Everything looks fine.
 
 ![inline](./images/gruntmaster-7000-feedback-01.jpg)
 
-^ Your Customer Happiness Department sees some room for improvement.
+^ Even Your Customer Happiness Department sees room for improvement.
 
 ---
 
 ![](./images/gruntmaster-7000-feedback-03.jpg)
 
-^ Your annual report review and bonus is near.
+^ Your annual report review & bonus near.
 
 ---
 
@@ -195,11 +195,11 @@ Everything looks fine.
 
 # What Is Right & Wrong?!
 
-| Metric                        | Vendor Test | Your Test  | Result | 
-|:------------------------------|:-----------:|:----------:|:------:|
-| Overall Errors                |      0      |     0      |   ✅    |
-| Response Time 99th Percentile |   ~ 18 ms   | ~ 9000 ms  |   ❌    |
-| Throughput                    | 80 req/sec  | 40 req/sec |   ❌    |
+| Metric                        | Path-E-Tech Management | Your Company | Result | 
+|:------------------------------|:----------------------:|:------------:|:------:|
+| Overall Errors                |           0            |      0       |   ✅    |
+| Response Time 99th Percentile |        ~ 18 ms         |  ~ 9000 ms   |   ❌    |
+| Throughput                    |       80 req/sec       |  40 req/sec  |   ❌    |
 
 ^ The two tests show completely different results?!
 
@@ -207,7 +207,7 @@ Everything looks fine.
 
 ## Was Path-E-Tech Management Lying About GRUNTMASTER 7000?!
 
-^ You addressing the elephant in the room - was Path-E-Tech Management  lying?
+^ You are addressing the elephant in the room - was Path-E-Tech Management  lying?
 
 ---
 
@@ -264,15 +264,32 @@ If you consider all those omitted requests the average response time would be 25
 
 ## Percentiles Charts
 
+* Used for performance testing and monitoring
+* Contain more information that average value
 * Percentiles are effectively removing information
     * Remove "outliers / noise " for nicer graphs
-* Never get rid of the maximum value
-    * *The number one indicator you should never get rid of is the maximum value. That’s not noise, it’s the signal, the rest is noise.* [^1]
-
-[^1]: Gil Tene, How NOT to Measure Latency
 
 ^ Big question - are the outliers part of the normal operation?
 If so they might be "long runners"?!
+
+---
+
+![inline](./images/response-time-graph.jpg)
+
+^ "median" is the 50th percentile
+"average" is skewed by the long tail
+
+---
+
+![inline](./images/latency-versus-qps.png)
+
+^ Diagram is hiding the maximum response time of ~ 1-2 req / sec
+https://grafana.com/blog/2021/04/27/benchmarking-grafana-enterprise-metrics-for-horizontally-scaling-prometheus-up-to-500-million-active-series/
+
+---
+
+> The number one indicator you should never get rid of is the maximum value. That’s not noise, it’s the signal, the rest is noise.
+--  Gil Tene, How NOT to Measure Latency
 
 ---
 
@@ -284,7 +301,7 @@ If so they might be "long runners"?!
 
 * Closed workload model has a fixed number of virtual users
 * New users only enter the system when existing users exit
-* Think of measuring call centers agent performance
+* Think of measuring call center agent performance
 * Mostly measuring response time
 
 ---
@@ -343,7 +360,6 @@ Both JMeter test runs experience the same 10-second pauses of GRUNTMASTER 7000.
 * The **closed workload model** is affected by **coordinated omission**
   * JMeter worker threads were stalled by the SUT
 * The **99th percentile response time chart** is misleading
-    * Omitting the **long runners** and **outliers**
     * Dropped the maximum response time data
     * Effectively hiding the 10 seconds being stalled
 
@@ -356,8 +372,14 @@ Both JMeter test runs experience the same 10-second pauses of GRUNTMASTER 7000.
 * Coordinated Omission is everywhere
 * Ensure that your workload model reflects your expectations
 
-^ Tests might be biased - they show what you want to show.
+^ Tests might be biased - what do you want to show?
 Ad 99th percentile - what happened to the remaining 1% of the requests?
+
+---
+
+## Last But Not Least - Use Your Brain
+
+![inline](./images/dilbert-and-dogbert.jpg)
 
 ---
 
@@ -401,7 +423,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-### Replace My Closed Workload Model-Only Test Tool?
+## Replace My Closed Workload Model-Only Test Tool?
 
 * We lived happily with **Closed Workload** Models and **Coordinated Omission** for many years
 * Expected that your test reports become skewed when hitting a slow server
@@ -409,18 +431,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-### What About JMeter And Project Loom
-
-* JMeter implements an **Open Workload Model** by starting more JVM threads
-* **JVM threads** are expensive in terms of memory and context switching
-* Project Loom provides **Virtual Threads** implemented in JDK 21
-* The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
-
-^ JVM thread takes at least 1 MB of memory
-
----
-
-### Help Me - I Only Want To Test A Single URL!?
+## Help Me - I Only Want To Test A Single URL!?
 
 * JMeter and Gatling have a steep learning curve
 * Complete overkill when testing a few static URLs
@@ -430,7 +441,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-![inline](./images/hey-test-report.jpg)
+![](./images/hey-test-report.png)
 
 ^ hey is a simple HTTP load generator showing the distribution of response times
 -c Number of workers, -z Duration
@@ -438,20 +449,16 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-![inline](./images/oha-test-report-01.jpg)
+![](./images/oha-test-report-01.png)
 
 ^ Fancy UI for a command line tool
 
 ---
 
-![inline](./images/oha-test-report-02.jpg)
+![](./images/oha-test-report-02.png)
 
 ^ Result are very different to hey
 59 requests done instead of 50
-
----
-
-![inline](./images/coordinated-omission-everywhere.jpg)
 
 ---
 
@@ -463,6 +470,21 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 * **oha** uses request by second
     * Open Workload Model
     * Issued 59 HTTP requests within 60 seconds
+
+---
+
+![inline](./images/coordinated-omission-everywhere.jpg)
+
+---
+
+## What About JMeter And Project Loom?!
+
+* JMeter implements an **Open Workload Model** by starting more JVM threads
+* **JVM threads** are expensive in terms of memory and context switching
+* Project Loom provides **Virtual Threads** implemented in JDK 21
+* The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
+
+^ JVM thread takes at least 1 MB of memory
 
 ---
 
