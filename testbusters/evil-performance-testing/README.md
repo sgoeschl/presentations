@@ -2,15 +2,19 @@
 
 ## Abstract
 
-The infamous “Pointy Haired Boss” is promoting his new flagship product - GRUNTMASTER 7000. Let's follow the fictional journey of a prospective customer struggling with performance test reports, percentile charts, coordinated omission and workload models.
+The infamous “Pointy Haired Boss” is promoting his new flagship product - GRUNTMASTER 7000. Let's follow a fictional journey of a prospective customer deciding if GRUNTMASTER 7000 fulfills his performance requirements - double-checking performance test reports, reading between the lines of percentile charts, understanding the effect of workload models and seeing the impact of coordinated omission.
 
-## Details
+## Keywords
 
-Inspired bi Gil Tene's presentations, I wondered if it is possible to come up with a positive (and real) performance test report even if the SUT is completely broken and stalls repeatedly with a stop-the-world GC, e.g. stalling every 50 seconds for 10 seconds. I extended [StringBoot HTTPBin](https://github.com/dyrnq/springboot-httpbin) and used JMeter to create a "good" and a "bad" performance test report demonstrating the effect of coordinated omission, different workload models and the danger of percentile charts.
+performance testing, coordinated omission, workload models
+
+## Inspiration
+
+Inspired bi Gil Tene's presentations, I wondered if it is possible to come up with a nice-looking (and **real**) performance test report even if the SUT is completely broken and stalls repeatedly with a stop-the-world GC, e.g. stalling every 50 seconds for 10 seconds. I extended [StringBoot HTTPBin](https://github.com/dyrnq/springboot-httpbin) and used JMeter to create a "good" and a "bad" performance test report demonstrating the effect of coordinated omission, different workload models and the danger of percentile charts.
 
 ## About The Speaker
 
-Siegfried is a grumpy Senior Software Engineer and is infamous for his motivation skills and management presentations. He also spent too much time in the Open Source community such as Apache Turbine, Apache Commons, Apache JSPWiki and Apache Freemarker but decided to become an ASF emeritus member in 03/2025. When not writing Java backend code he tinkers with performance testing & engineering, helps at the Java Meetup Vienna & DevFest Vienna and never spend enough time on the bicycle.
+Siegfried is a grumpy Senior Software Engineer and infamous for his motivation skills and management presentations. He also spent too much time in the Open Source community such as Apache Turbine, Apache Commons, Apache JSPWiki and Apache Freemarker but decided to become an ASF emeritus member in 03/2025. When not writing Java backend code he tinkers with performance testing & engineering, helps at the Java Meetup Vienna & DevFest Vienna and never spend enough time on the bicycle.
 
 * [LinkedIn Profile](https://www.linkedin.com/in/siegfried-goeschl-0410432/)
 * [XING Profile](https://www.xing.com/profile/Siegfried_Goeschl)
