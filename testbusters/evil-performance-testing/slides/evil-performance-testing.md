@@ -60,7 +60,7 @@ Second-best invention after snake oil.
 
 ---
 
-## Performance Test Success Criteria
+## Performance Test Acceptance Criteria
 
 | Metric                        | Acceptance Criteria |
 |:------------------------------|---------------------|
@@ -103,7 +103,7 @@ Test ramp up and tear down are expected.
 
 ---
 
-## Reviewing Performance Acceptance Criteria
+## Reviewing Performance Test Acceptance Criteria
 
 | Metric                        | Criteria     | Measured   | Result |
 |:------------------------------|--------------|------------|--------|
@@ -111,10 +111,10 @@ Test ramp up and tear down are expected.
 | Response Time 99th percentile | < 50 ms      | ~ 18 ms    | ✅      |
 | Throughput                    | > 50 req/sec | 80 req/sec | ✅      |
 
-^ Performance acceptance criteria met and exceeded.
+^ Performance test acceptance criteria met and exceeded.
 Everything looks fine.
 
----
+--- 
 
 ![](./images/success.jpg)
 
@@ -122,10 +122,11 @@ Everything looks fine.
 
 ---
 
-## GRUNTMASTER 7000
-### Mixed End User Feedback
+## Launching GRUNTMASTER 7000
 
-^ Customer feedback is not overly enthusiastic.
+---
+
+## Customer Feedback Is Not Overly Enthusiastic
 
 ---
 
@@ -138,6 +139,7 @@ Everything looks fine.
 ![inline](./images/gruntmaster-7000-feedback-01.jpg)
 
 ^ Even Your Customer Happiness Department sees room for improvement.
+And you didn't even know that such a department existed.
 
 ---
 
@@ -265,7 +267,7 @@ If you consider all those omitted requests the average response time would be 25
 ## Percentiles Charts
 
 * Used for performance testing and monitoring
-* Contain more information that average value
+* Provides more information than average repsonse time
 * Percentiles are effectively removing information
     * Remove "outliers / noise " for nicer graphs
 
@@ -431,6 +433,18 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
+## What About JMeter And Project Loom?!
+
+* JMeter implements an **Open Workload Model** by starting more JVM threads
+* **JVM threads** are expensive in terms of memory and context switching
+* Project Loom provides **Virtual Threads** implemented in JDK 21
+* The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
+
+^ JVM thread takes at least 1 MB of memory.
+JMeter & Loom is an improvement but not a quantum leap.
+
+---
+
 ## Help Me - I Only Want To Test A Single URL!?
 
 * JMeter and Gatling have a steep learning curve
@@ -462,7 +476,7 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 
 ---
 
-### Coordinated Omission Everywhere
+### Workload Models Again
 
 * **hey** uses a number of worker threads
     * Closed Workload Model & Coordinated Omission
@@ -470,21 +484,6 @@ Ad 99th percentile - what happened to the remaining 1% of the requests?
 * **oha** uses request by second
     * Open Workload Model
     * Issued 59 HTTP requests within 60 seconds
-
----
-
-![inline](./images/coordinated-omission-everywhere.jpg)
-
----
-
-## What About JMeter And Project Loom?!
-
-* JMeter implements an **Open Workload Model** by starting more JVM threads
-* **JVM threads** are expensive in terms of memory and context switching
-* Project Loom provides **Virtual Threads** implemented in JDK 21
-* The **JMeter Loom Project** promises much lower memory consumption and better scaling of JMeter
-
-^ JVM thread takes at least 1 MB of memory
 
 ---
 
