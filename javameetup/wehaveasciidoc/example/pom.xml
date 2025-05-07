@@ -13,7 +13,7 @@
         <asciidoctorj.pdf.version>2.3.4</asciidoctorj.pdf.version>
         <asciidoctorj.diagram.version>2.2.3</asciidoctorj.diagram.version>
         <asciidoctorj.version>2.5.7</asciidoctorj.version>
-        <jruby.version>9.3.8.0</jruby.version>
+        <jruby.version>9.4.12.1</jruby.version>
     </properties>
 
     <build>
