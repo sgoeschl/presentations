@@ -285,7 +285,9 @@ If so they might be "long runners"?!
 
 ![inline](./images/latency-versus-qps.png)
 
-^ Diagram is hiding the maximum response time of ~ 1-2 req / sec
+^ Diagram is hiding the maximum response time of ~ 1-2 req / sec.
+How many requests a customer is sending?
+One in a life time or 20 per user sesion?
 https://grafana.com/blog/2021/04/27/benchmarking-grafana-enterprise-metrics-for-horizontally-scaling-prometheus-up-to-500-million-active-series/
 
 ---

@@ -1,0 +1,488 @@
+= What Is A Software Developer?!
+Siegfried Goeschl <siegfried.goeschl@asciifish.net>
+2017-12-19
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+ifndef::imagesdir[:imagesdir: images]
+:customcss: customcss.css
+
+[%notitle]
+== What Is A Software Developer?!
+[.stretch]
+image::cover-page.png[background,size=center]
+
++++<aside class="notes">+++
+Welcome to the first presentation of today's Executive Circle. 
+My name is Siegfried Goeschl
+I try to answer the most important question ever:
+What is a Software Developer?
++++</aside>+++
+
+[%notitle]
+== What Is A Software Developer - 02
+image::coffeine-to-code.jpg[background,size=cover]
+
++++<aside class="notes">+++
+Some sort of low-level organism converting caffeine into code
++++</aside>+++
+
+[%notitle]
+== Earn Way Too Much Money
+[.stretch]
+image::software-engineers-salary.jpg[size=center]
+
++++<aside class="notes">+++
+But there are also other well-known characteristics 
++++</aside>+++
+
+[%notitle]
+== What Is A Software Developer
+image::pexels-photo-450279.jpg[background,size=cover]
++++<aside class="notes">+++
+They seem to have a questionable styling
+WHo is wearing a wooly hat during the summer
++++</aside>+++
+
+[%notitle]
+== What Is A Software Developer
+image::giphy.png[background,size=cover]
+
++++<aside class="notes">+++
+They love to send around animated images from Giphy
++++</aside>+++
+
+[%notitle]
+== The Coding Love
+[.stretch]
+image::the-coding-love.png[size=center]
+
++++<aside class="notes">+++
+They have a strange affection for cats
++++</aside>+++
+
+[%notitle]
+== Funny Numbers
+[.stretch]
+image::don__t_panic__because_the_answer_is_42___version_2_by_biggiepoppa-d5qdvxx.png[size=center]
+
++++<aside class="notes">+++
+They are talking in funny numbers and the number 42 is the answer to all questions
++++</aside>+++
+
+[%notitle]
+== Science Fiction & Fantasy
+[.stretch]
+image::serenity-firefly-1080P-wallpaper-middle-size.jpg[background,size=center]
+
++++<aside class="notes">+++
+And all of them love Star Trek, Star Wars or even unknown Science Fiction
++++</aside>+++
+
+== Is That All You Need To Know?!
+
++++<aside class="notes">+++
+I personally think - the answer is NO 
++++</aside>+++
+
+[%notitle]
+== Break On Through The Other Side
+[.stretch]
+image::break-on-through-to-the-other-side-white.jpg[size=center]
+
++++<aside class="notes">+++
+So I invite you to a journey to other side - to see how live & work looks like for a software developer
++++</aside>+++
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Motivation
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+== What Motivates Software Developers?!
+
++++<aside class="notes">+++
+I googled it and got 350.000 results. 
+So I guess there is no simple answer. 
+And very likely there is more than one answer.
++++</aside>+++
+
+// [%notitle]
+// == Maslow Hierarchy Of Needs
+// [.stretch]
+// image::maslow-hierachy-of-needs.gif[size=cover]
+
+[%notitle]
+== Drew Eckhardt
+image::drew-eckhart-profile.png[size=cover]
+
+== Drew Eckhardt's Answer
+
+* Solving hard technical problems other people can’t.
+* Coming up with neat ideas, implementing them, and seeing your vision work.
+* Working with great people and doing more than you can as an individual.
+* Growing other engineers so they are stronger and faster.
+* Crushing competition. I love the smell of exponential growth in the morning, it smells like victory.
+
++++<aside class="notes">+++
+https://www.quora.com/What-motivates-a-software-developer-to-build-great-things
++++</aside>+++
+
+[%notitle]
+== 404 - Motivation Not Found
+image::404NotFound.jpg[background,size=cover]
+
+== 404 - Not Found
+
+* Keep the legacy system running
+* No budget and time for neat ideas
+* Working with grumpy colleagues
+* No learning & mentoring anywhere
+
+== What Are The Alternatives?
+
+[%notitle]
+== Find A New Job
+[.stretch]
+image::new-year-new-job.jpg[background,size=center]
+
+[%notitle]
+== Moonlighting
+image::moonlighting.jpg[background,size=cover]
+
+[%notitle]
+== The Side Project
+[.stretch]
+image::the-side-project.jpg[background,size=center]
+
+[%notitle]
+== Open Source
+[.stretch]
+image::opensource-600x600.jpg[size=cover]
+
++++<aside class="notes">+++
+This is all related to the KEY principle
++++</aside>+++
+
+== Introducing The KEY Principle
+
+[%notitle]
+== Keep Educating Yourself
+image::keep-educating-yourself.jpg[background,size=cover]
+
+== Most Stuff You Know Now Will Be Obsolete in Five Years.
+
+== The Technology Race
+
+* IT industry is constantly re-inventing itself
+* New technology solves old problems
+* New technology creates new problems
+* Developers love & need to use new stuff
+* Without constant learning we will be (made) redundant
+
+[%notitle]
+== The Fate Of The Dodo Bird
+[.stretch]
+image::dodo-bird.jpg[size=cover]
+
+== Software Developers Need To Learn New Stuff.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Developer Style Guide
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+[%notitle]
+== No Dress Code
+image::no-dress-code.png[background,size=cover]
+
++++<aside class="notes">+++
+They only code we are interested in is source code
++++</aside>+++
+
+[%notitle]
+== Types Of Programmers
+image::programmer_types.png[background,size=cover]
+
++++<aside class="notes">+++
+And sometimes when a colleague is over-dressed we wish him all the best for the job interview
++++</aside>+++
+
+// [%notitle]
+// === Developer Dress Code
+// [.stretch]
+// image::tech-uniform-clipped.png[size=cover]
+//
+// [%notitle]
+// === Developer Dress Code Example II
+// [.stretch]
+// image::developer-dress-code-02.jpg[size=cover]
+//
+// [%notitle]
+// === Developer Dress Code Exampe I
+// [.stretch]
+// image::developer-dress-code-01.jpg[size=cover]
+//
+// [%notitle]
+// === Developer Dress Code III
+// [.stretch]
+// image::developer-dress-code-03.jpg[size=cover]
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// The Flow
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+[%notitle]
+== Do Not This Disturb This Senior Programmer
+[.stretch]
+image::do-not-disturb.jpg[size=center]
+
+== What Is The Flow?
+
+Flow, also know as zone, is the mental state of operation in which a person performing an activity is fully immersed in a feeling of energized focus, full involvement, and enjoyment in the process of the activity.
+
++++<aside class="notes">+++
+The flow is the mental state of operation where you are fully concentrated, were you are productive, were you have fun and might pull an all-nighter.
++++</aside>+++
+
+== Flow & Software Developers
+
+As software developers we occasionally get to experience that glorious state of productivity where we are in the zone, time flies by, and features come flowing out of us.
+
++++<aside class="notes">+++
+We love to be in the flow.
+It is hard to enter the flow
+It even harder to remain in the flow
++++</aside>+++
+
+// https://conferences.oreilly.com/oscon/open-source-2015/public/schedule/detail/40312
+
+== Disturbing The Flow
+
+* Noise
+* Meetings
+* Unscheduled interruptions
+* Waiting for something
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Slow Developer Boxes
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+== Waiting For Something?
+
++++<aside class="notes">+++
+When we finished our work we need to build the software and test it
+That takes time - sometimes a long time
++++</aside>+++
+
+== Standard Developer Laptop
+
+Overall build time **11:29 min**
+
+```
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11:29 min
+[INFO] Finished at: 2017-09-25T15:59:34+02:00
+[INFO] Final Memory: 289M/1668M
+[INFO] ------------------------------------------------------------------------
+```
+== High-End iMac 2016
+
+Overall build time **04:31 min**
+
+```
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 04:31 min (Wall Clock)
+[INFO] Finished at: 2017-09-26T11:13:11+02:00
+[INFO] Final Memory: 282M/734M
+[INFO] ------------------------------------------------------------------------
+```
+[%notitle]
+== Slow Developer Boxes
+image::slow-developer-boxes.jpg[background,size=cover]
+
+== How To Get A Faster Box?
+
+[%notitle]
+== Keep Calm And Follow The Rules
+[.stretch]
+image::keep-calm-follow-the-rules.png[size=center]
+
+[%notitle]
+== Break The Windows Addiction
+image::windows-is-broken.jpg[background,size=cover]
+
++++<aside class="notes">+++
+Many of us a breaking the windows addiction and switch to Linux or Mac OS X.
+You have to learn a new operating system, it is more fun to use and there is no virus scanner
+A virus scanner can bring down your whole computer 
+There are hardly any virus scanner on Linux or Mac OS X
++++</aside>+++
+
+[%notitle]
+== Bring Your Own Device
+[.stretch]
+image::byod-devices.png[size=cover]
+
++++<aside class="notes">+++
+If you are independent you can use your own devices & stuff.
+Fast computer, 3 x 27 inch monitors and even a proper keyboard with mechanical switches.
++++</aside>+++
+
+== Where To Find Software Developers You Can Hire?
+
+== If You Have A Good Answer Please Tell Gunda
+[.stretch]
+image::gunda-horvath-foto.256x256.jpg[size=cover]
+
++++<aside class="notes">+++
+Assuming that we don't have a good ansser - where can we find them?
++++</aside>+++
+
+[%notitle]
+== Meetups
+image::meetup-stockwerk.jpg[background,size=cover]
+
+[%notitle]
+== At Conferences
+image::we-are-developers.jpg[background,size=cover]
+
++++<aside class="notes">+++
+There are also some very interesting minorities in the software developer community
++++</aside>+++
+
+[%notitle]
+== Female Sofware Engineers
+image::female-software-engineer.jpg[background,size=cover]
+
+[%notitle]
+== No Country For Old Man
+image::no-country-for-old-men-03.jpg[background,size=cover]
+
++++<aside class="notes">+++
+But just assume you found a potential candidate somehow.
+The next step would be interviewing the software developer.
++++</aside>+++
+
+== Let's Assume You Found Your Candidate
+
+// [%notitle]
+// == Freelancer
+// [.stretch]
+// image::freelancer.jpg[size=center]
+
+== Interviewing A Software Developer
+
++++<aside class="notes">+++
+I had the opportunity to do many job interviews on both sides on the table.
+And when I interview a colleague of mine I'm looking for passion
++++</aside>+++
+
+// [%notitle]
+// == Resource Versus Overhead
+// [.stretch]
+// image::resource-versus-overhead.png[size=cover]
+
+// [%notitle]
+// == The Usual No-Go
+// image::no-response-444.jpg[background,size=cover]
+
+[%notitle]
+== Love What You Do
+[.stretch]
+image::work-and-passion.png[size=cover]
+
+== In The Search Of Passion
+
+* Broad (and realistic) skill set
+* Side projects on GitHub
+* Working on Open Source projects
+* Attending meetups & conferences
+* StackOverflow, mailing lists
+* Writing blog entries
+
++++<aside class="notes">+++
+There are many signs of passion
++++</aside>+++
+
+[%notitle]
+== Dark Matters Developers
+image::dark_matter.jpg[background,size=cover]
+
+== Dark Matters Developers
+
+* Term coined by Scott Hanselmann
+* Not everyone is working on bleeding edge
+* Many of us just get their work done
+* Hence not visible in the Internet
+* Dark Matters Developer != Bad Developer
+* They are just not "Loud Developers"
+
++++<aside class="notes">+++
+Loud Developers.
+But many of us just getting their work done. 
+They are smart. 
+They are efficient. 
+They are knowledgeable.
+And they have a social life consisting of hobbies, friends and family.
++++</aside>+++
+
+// [%notitle]
+// == LinkedIn Profile Of A Motivated Developer
+// image::xing-profile.png[background,size=cover]
+
+[%notitle]
+== The Grass Is Greener On The Other Side
+image::the-grass-is-always-greener.jpg[background,size=cover]
+
+== It's Greener On The Other Side
+
+* Many developers will leave after 2 - 3 years
+* It is not always about more money
+* It is about new challenges & opportunities
+* They younger the more likely to leave
+
+== If You Can't Fight It, Embrace It
+
+== Fight It & Embrace It
+
+* Foster good team & company spirit 
+* Rotate team members to keep them learning
+* Avoid the "Single Point Of Knowledge"
+* Don't feel bad when the developers are leaving
+* If they ever come back you did an awesome job
+
+[%notitle]
+== Anyone Awake?
+image::iStock_000006160804Medium.jpg[background,size=cover]
+
+== Things To Take Home
+
+* Understand their motivation to work for you
+* Understand their motivation to leave you
+* Give them room to learn & experiment
+* Make sure that they find the flow
+* The Grass Is Greener On The Other Side
+
+== Why I'm Here?
+
+* Java Backend Developer
+* Meetup & conference organizer
+* Apache Software Foundation Member
+* I'm a "Load Developer"
+* Asked a stupid question
+
+[%notitle]
+== Working At Willhaben
+image::willhaben-logo.png[size=center]
+
++++<aside class="notes">+++
+And I'm working at Willhaben. I work there again. Because it is the best company to work for.
++++</aside>+++
+
+== Thanks For Your Attention
+
+== Questions & Answers
