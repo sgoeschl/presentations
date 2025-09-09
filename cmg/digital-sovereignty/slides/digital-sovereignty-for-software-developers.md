@@ -1,5 +1,5 @@
 theme: Merriweather,8
-# Digital Sovereignty For Software Developers
+# Digitale Souveränität für Europäische Softwareentwickler
 #### Siegfried GOESCHL
 #### ASCIIFISH
 
