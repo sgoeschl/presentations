@@ -4,6 +4,15 @@
 
 The infamous “Pointy Haired Boss” is promoting his new flagship product - GRUNTMASTER 7000. Let's follow a fictional journey of a prospective customer deciding if GRUNTMASTER 7000 fulfills his performance requirements - double-checking performance test reports, reading between the lines of percentile charts, understanding the effect of workload models and seeing the impact of coordinated omission.
 
+## Description
+
+In performance testing, flawlessly clean metrics—like perfect 99th-percentile response times, error-free runs, and high throughput—can create a dangerous sense of security. Yet, once the system is live, real-world usage may immediately expose performance degradation, latency spikes, and reliability failures. This talk, Evil Performance Testing, by Siegfried Göeschl, unveils the deceptive forces behind seemingly impeccable test reports. Drawing on a fictional narrative featuring the “Pointy-Haired Boss” and the GRUNTMASTER 7000, Göeschl illuminates two critical pitfalls in traditional performance testing:
+
+* Closed Workload Models — These artificially cap the number of in-flight requests, hiding queuing behavior and system stress under load.
+* Coordinated Omission — A subtle yet pervasive artifact in load testing: when delayed responses cause subsequent requests to be emitted late, the test skips or hides critical high latency data.
+
+Attendees will gain an understanding of how such approaches hiodes latency problems and system bottlenecks leading to falsely reassuring test reports. This session will not only explain the problem but also offer guidance on designing more transparent, realistic performance tests that reflect true system behavior.
+
 ## Keywords
 
 performance testing, coordinated omission, workload models
