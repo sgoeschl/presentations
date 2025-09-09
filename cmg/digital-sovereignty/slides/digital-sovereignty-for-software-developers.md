@@ -35,20 +35,26 @@ theme: Merriweather,8
 
 ## Software Developer Onboarding
 
-* Linux und Macs werden nicht unterstützt - Company Policy
-* Du brauchst Outlook, weil wir einen Exchange Server haben
+* Linux und Macs werden nicht unterstützt
+* Du brauchst Outlook wegen Exchange Server
 * Das Solution Design wird in Word geschrieben
-* Dokumentation findest Du am Sharepoint oder in Confluence
-* Tasks & Bugs werden in JIRA verwaltet
-* Das Data Ware House (DWH) verwendet Oracle 19c
-* Die Produktion läuft auf dem AWS Data Center in Frankfurt
+* Und Präsentationen bitte in Powerpoint
+* Dokumentation ist am Sharepoint oder Confluence
 
 ^ - Fiktives (oder nicht so fiktives) Onboarding eines Software Entwicklers
 
 ---
 
+## Software Developer Onboarding
+
+* Tasks & Bugs werden in JIRA verwaltet
+* Data Ware House (DWH) verwendet Oracle 19c
+* PROD läuft auf dem AWS Data Center in Frankfurt
+
+---
+
 > Wer etwas will, findet Wege. Wer etwas nicht will, findet Gründe.
-> -- Götz Werner
+> -- Götz Werner, Gründer dm Drogerie Markt
 
 ---
 
@@ -75,8 +81,26 @@ theme: Merriweather,8
 
 ---
 
-## 
+## Infrastruktur
 
+* Müssen wir JIRA & Confluence verwenden? 
+  * Atlassian hat mehrmals [die Preise stark erhöht](https://community.atlassian.com/forums/Jira-questions/Massive-Price-Increase-for-Jira-Cloud-Enterprise-and-Apps/qaq-p/2969785)
+  * Ist eine Ticketsysten wirklich "Rocket Science"?
+  * Wikipedia verwendet [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)
+* Technische Dokumentation mit Microsoft?! 
+  * [Markdown](https://www.markdownguide.org) und [AsciiDoc](https://asciidoc.org) eignen sich besser
+  * Lassen sich direkt als Text versionieren 
+
+^ - https://community.atlassian.com/forums/Jira-questions/Massive-Price-Increase-for-Jira-Cloud-Enterprise-and-Apps/qaq-p/2969785
+
+--- 
+
+## Datenbanken
+
+* Oracle bietet Oracle Database and MySQL an
+* MariaDB und PostgreSQL als Open Source Alternativen
+  * Laufewn auf einer Vielzahl von Umgebungen und Cloudanbietern
+  * Meistens wird über eine Library auf die Datenbank zugegriffen - vereinfacht die Migration
 
 ---
 ![](./images/questions-and-answers.jpg)
