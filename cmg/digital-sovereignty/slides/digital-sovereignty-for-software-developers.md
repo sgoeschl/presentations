@@ -2,7 +2,7 @@ theme: Merriweather,8
 
 # Digitale Souveränität
 
-## für Europäische Softwareentwickler
+## Für Europäische Softwareentwickler
 
 ### Siegfried GÖSCHL
 
@@ -38,8 +38,8 @@ theme: Merriweather,8
 ## Fikitives Developer Onboarding
 
 * Linux und Macs werden nicht unterstützt - ist Company Policy
-* Outlook verpflichtend wegen Exchange Server
-* Microsoft Office wird von allen verwendet
+* Outlook notwendig wegen Exchange Server
+* Microsoft Office ist verpflichtend
 * Technische Dokumente in Confluence und Sharepoint
 
 ^ - Fiktives (oder nicht so fiktives) Onboarding eines Software Entwicklers
@@ -91,15 +91,17 @@ theme: Merriweather,8
 ## Reduktion Technologischer Abhängigkeiten
 
 * Vermeide Vendor Lock-in: offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
-* Cloud-Strategie prüfen: Multi-Cloud- oder Hybrid-Ansätze statt nur AWS, Azure oder GCP
+* Cloud-Strategie prüfen: Multi-Cloud oder Hybrid-Ansätze statt nur AWS, Azure oder GCP
 * Portable Infrastruktur: Nutze Container (Docker, Podman) und Orchestrierung (Kubernetes, OpenShift) für Unabhängigkeit
   von einzelnen Providern
+
+^ Multi-Cloud oder Hybrid-Ansätze verbesseren Verhandlungsposition.
 
 ---
 
 ## Interoperabilität & Standards
 
-* Nutze offene Datenformate (JSON, YAML, XML, CSV) statt proprietärer Formate.
+* Nutzung offene Datenformate (JSON, YAML, XML, CSV) statt proprietärer Formate.
 * Setze auf offene APIs und dokumentiere sie (OpenAPI/Swagger).
 * Infrastruktur-Definitionen mit Infrastructure as Code (in freien Formaten)
 
@@ -108,7 +110,7 @@ theme: Merriweather,8
 ## Eigene Infrastruktur & Datenkontrolle
 
 * Abschied von Microsoft Office & Sharepoint - LibreOffice & NextCloud als Alternative
-* Self-Hosting wichtiger Systeme (z. B. Git, CI/CD, Issue-Tracker) mit Tools wie GitLab CE, Gitea, Jenkins, SonarQube.
+* Self-Hosting wichtiger Systeme (z. B. Git, CI/CD, Issue-Tracker) mit Tools wie GitLab CE, Gitea, Jenkins, SonarQube
 * Datenhaltung bevorzugt auf eigener Hardware oder in souveränen europäischen Clouds
 
 ---
@@ -201,33 +203,10 @@ theme: Merriweather,8
 
 ---
 
+![](./images/pexels-vie-studio-4439457.jpg)
+ 
+---
+
 ## Work In Progress
 
 ---
-
-## Infrastruktur
-
-* Müssen wir JIRA & Confluence verwenden?
-    * Atlassian hat
-      mehrmals [die Preise stark erhöht](https://community.atlassian.com/forums/Jira-questions/Massive-Price-Increase-for-Jira-Cloud-Enterprise-and-Apps/qaq-p/2969785)
-    * Ist eine Ticketsysten wirklich "Rocket Science"?
-    * Wikipedia verwendet [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)
-* Technische Dokumentation mit Microsoft?!
-    * [Markdown](https://www.markdownguide.org) und [AsciiDoc](https://asciidoc.org) eignen sich besser
-    * Lassen sich direkt als Text versionieren
-
-^ - https://community.atlassian.com/forums/Jira-questions/Massive-Price-Increase-for-Jira-Cloud-Enterprise-and-Apps/qaq-p/2969785
-
---- 
-
-## Datenbanken
-
-* Oracle bietet Oracle Database and MySQL an
-* MariaDB und PostgreSQL als Open Source Alternativen
-    * Laufen auf einer Vielzahl von Umgebungen und Cloudanbietern
-    * Meistens wird über eine Library auf die Datenbank zugegriffen - vereinfacht die Migration
-
----
-
-![](./images/questions-and-answers.jpg)
-
