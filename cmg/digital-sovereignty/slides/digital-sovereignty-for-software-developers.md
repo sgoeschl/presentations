@@ -39,7 +39,7 @@ theme: Merriweather,8
 
 * Linux und Macs werden nicht unterstützt - ist Company Policy
 * Outlook notwendig wegen Exchange Server
-* Microsoft Office ist verpflichtend
+* ZUm Arbeiten wird Microsoft Office verwendet
 * Technische Dokumente in Confluence und Sharepoint
 
 ^ - Fiktives (oder nicht so fiktives) Onboarding eines Software Entwicklers
@@ -49,7 +49,7 @@ theme: Merriweather,8
 ## Fikitives Developer Onboarding
 
 * Bug Tracking in JIRA
-* DWH verwendet eine Oracle Datenbank
+* Es gibt etliche Oracle Datenbanken im Haus
 * Die Produktion läuft auf AWS
 
 ---
@@ -82,34 +82,28 @@ theme: Merriweather,8
 
 ## Priorisierung Von Open Source
 
-* Bevorzuge freie Entwicklungsumgebungen & Tools
-* Freie Datenbanken (PostgreSQL, MariaDB) statt ausschließlich kommerzieller DBs (Oracle, MSSQL, SAP HANA)
-* Verwende Open-Source-Frameworks (Spring Boot, Quarkus, Django, Angular, React)
+* Einsatz freier Entwicklungsumgebungen & Tools
+* Freie Datenbanken (PostgreSQL, MariaDB) statt kommerzieller DBs (Oracle, MSSQL, SAP HANA, mySQL)
+* Verwendung von Open Source Frameworks (Spring Boot, Quarkus, Django, Angular, React)
+
+^ Open Source Frameworks erleichtern die Verwendung anderer Open Source Projekte
 
 ---
 
 ## Reduktion Technologischer Abhängigkeiten
 
-* Vermeide Vendor Lock-in: offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
+
+* Minimierung von Vendor Lock-in: offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
 * Cloud-Strategie prüfen: Multi-Cloud oder Hybrid-Ansätze statt nur AWS, Azure oder GCP
-* Portable Infrastruktur: Nutze Container (Docker, Podman) und Orchestrierung (Kubernetes, OpenShift) für Unabhängigkeit
-  von einzelnen Providern
-
-^ Multi-Cloud oder Hybrid-Ansätze verbesseren Verhandlungsposition.
-
----
-
-## Interoperabilität & Standards
-
-* Nutzung offene Datenformate (JSON, YAML, XML, CSV) statt proprietärer Formate.
-* Setze auf offene APIs und dokumentiere sie (OpenAPI/Swagger).
-* Infrastruktur-Definitionen mit Infrastructure as Code (in freien Formaten)
+* Einsatz von Container (Docker, Podman) und Orchestrierung (Kubernetes, OpenShift) in der Cloud
+* Multi-Cloud oder Hybrid-Ansätze verbesseren Verhandlungsposition
 
 ---
 
 ## Eigene Infrastruktur & Datenkontrolle
 
-* Abschied von Microsoft Office & Sharepoint - LibreOffice & NextCloud als Alternative
+* Nutzung offener Datenformate (JSON, YAML, XML, CSV) statt proprietärer Formate
+* Libre Office & NextCloud als Alternative zu Microsoft
 * Self-Hosting wichtiger Systeme (z. B. Git, CI/CD, Issue-Tracker) mit Tools wie GitLab CE, Gitea, Jenkins, SonarQube
 * Datenhaltung bevorzugt auf eigener Hardware oder in souveränen europäischen Clouds
 
@@ -128,7 +122,6 @@ theme: Merriweather,8
 |        **C#/.NET**        |          Trotz .NET Core Öffnung starke Microsoft-Bindung           |                                   Große Entwicklerbasis, freie Frameworks                                    |       Verlust des "First Class Supports" bei Verwendung anderer Sprachen        |
 
 ^ Umstieg auf eine andere Programmiersprache oft nicht möglich / sinnvoll
-
 - Kommerzielles Umfeld
 - Umstellen von Legacy Code?!
 - Umschulen der Mitarbeiter?
@@ -183,16 +176,14 @@ theme: Merriweather,8
 * Git für die Versionskontrolle (zusammen mit GitHub)
 * Sublime & Visual Code als Editor
 * IntelliJ Ultimate als IDE
-* Java, Maven & Spring für Projekte
-* Normalerweise PostgreSQL als Datenbank
+* Java, Maven & Spring
 
 ---
 
 ## Mein Techstack
 
-* MacBook Pro M1 als Arbeitsgerät
 * DbVisualizer für Datenbankankzugriff
-* AsciiDoc, PlantUML & C4 für Dokumentation
+* AsciiDoc & PlantUML für Dokumentation
 * [Joplien](https://joplinapp.org) & [Bear](https://bear.app) für Notizen
 * [Deckset](https://www.deckset.com) für Präsentation
 * Docker Client zum Ausführen von Containern
