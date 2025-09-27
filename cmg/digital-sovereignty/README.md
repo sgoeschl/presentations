@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Digitale Souveränität bedeutet für Softwareentwickler die Unabhängigkeit von teuren und/oder proprietären Tools und US-Konzernen durch strategische Technologieentscheidungen wie die Wahl der Programmiersprachen, Entwicklungs- und Produktionsumgebungen. Der Vortrag beleuchtet einige dieser möglichen Entscheidungen mit ihren Vorteilen & Nachteilen aus der Sicht eines Softwareentwicklers und die Herausvorderungen bei der Umsetzung.
+Digitale Souveränität bedeutet für Softwareentwickler die Unabhängigkeit von teuren und/oder proprietären Tools durch strategische Technologieentscheidungen wie die Wahl der Programmiersprachen, Entwicklungs- und Produktionsumgebungen. Der Vortrag beleuchtet einige dieser möglichen Entscheidungen mit ihren Vorteilen & Nachteilen aus der Sicht eines Softwareentwicklers und den Herausforderungen bei der Umsetzung.
 
 ## Keywords
 
@@ -22,6 +22,6 @@ Siegfried Göschl is an Austrian software engineer and consultant with extensive
 
 Throughout his career, Siegfried has contributed significantly to the open-source community. He is a member of the Apache Software Foundation (ASF), participating in the Project Management Committees (PMC) for Apache Turbine and JSPWiki. Over the past decade, he has also been involved with Apache Commons, working on projects like commons-email and commons-exec, as well as contributing to Apache XML-RPC and Apache Maven.
 
-Siegfried's professional journey includes roles such as Senior Software Engineer at Erste Group IT International GmbH and willhaben internet service GmbH & Co KG, where he led technical projects (such as DSA and GDPR) and developed infrastructure components. He has also served as a Solution Architect at Santander Consumer Bank GmbH, bridging business analysis, development, and operations teams across various projects.
+Siegfried's professional journey includes roles such as Senior Software Engineer at Erste Group IT and willhaben , where he led technical projects (such as DSA and GDPR) and developed infrastructure components. He has also served as a Solution Architect at Santander Consumer Bank GmbH, bridging business analysis, development, and operations teams across various projects.
 
 In addition to his technical roles, Siegfried actively engages with the local developer community in Vienna. He has been involved in organizing events like the GDG DevFest and contributes to the local Java User Group, sharing his knowledge and fostering community growth.

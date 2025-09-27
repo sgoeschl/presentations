@@ -1,4 +1,11 @@
 theme: Merriweather,8
+
+---
+
+![fit](./images/openapi-at-sunrise.jpg)
+
+---
+
 # Everything You Always Wanted To Know About OpenAPI
 #### Siegfried GOESCHL, ASCIIFISH
 
@@ -91,7 +98,7 @@ theme: Merriweather,8
 
 ## OpenAPI 3.X Basic Structure
 
-![inline](./images/openapi3structure.png)
+![inline](images/openapi-structure.png)
 
 --- 
 
@@ -288,7 +295,7 @@ components:
 
 ## Design First
 
-* Write OpenAPI spec from the scratch
+* Write OpenAPI spec from scratch
 * Implementation follows the OpenAPI spec
 * You may or may not create OpenAPI on the fly
 
@@ -302,7 +309,7 @@ components:
 * Early review of REST API design/changes
   * Use OpenAPI to define/refine the domain model?!
 
-^ Controller code is ugly - more annotations than source code.
+^ Controller code is ugly, more annotations than source code.
 willhaben uses OpenAPI to describe the domain model.
 
 ---
@@ -310,8 +317,8 @@ willhaben uses OpenAPI to describe the domain model.
 ## Design First - The Bad
 
 * Learning curve for developers
-  * Writing first OpenAPI spec is hard
-  * Having a good template helps
+  * Writing the first OpenAPI spec is hard
+  * Having good templates helps
 * Design & manual code can be out of sync
   * Code generation is (more or less) mandatory
 
@@ -335,7 +342,7 @@ willhaben uses OpenAPI to describe the domain model.
 ![inline](./images/intellij-openapi-integration.jpg)
 
 ^ Context-sensitive navigation.
-Manual reload of changes required.
+Manual reload of changes is required.
 
 ---
 
@@ -388,7 +395,7 @@ Best OpenAPI validation.
 * Plus interesting client options
   * Javascript, Typescript, Swift, ...
 * Review the generated source code
-  * Generators are from varying quality!!
+  * Generators are of varying quality!!
 * Put generated code under version control?
 
 ^ Swiss army knife for source code generation.
@@ -425,7 +432,7 @@ Best OpenAPI validation.
 * `useTags` is nice since it generates an interface per tag
 * `hideGenerationTimestamp` to keep you and Git
 
-^ Generated server code can used in production
+^ Generated server code can be used in production
 Generated code may be formatted and put under version control.
 
 ---
@@ -445,7 +452,7 @@ src/main/java/com/github/sgoeschl/openapi/demo/rest/api
 ```
 
 ^ Tag names are used for the API class name, e.g. "PetApi"
-"operatorId" for methods names within the API
+"operatorId" for method names within the API
 
 ---
 
@@ -505,7 +512,7 @@ public class ApplicationConfig {
 }
 ```
 
-^ I'm usually implement custom wiring of delegates.
+^ I usually implement custom wiring of delegates.
 
 ---
 
@@ -515,7 +522,7 @@ public class ApplicationConfig {
 * Your `XXXDelegate` implementation can be easily tested
 * Nested `XXXDelegate`  might help for cross-cutting concerns
   * Chain of Responsibility design pattern
-  * E.g. implement application-level security
+  * E.g., implement application-level security
 
 ---
 
@@ -561,7 +568,7 @@ nrOfPersons:
 
 ^ RTFM
 Checkout https://www.openapis.org
-Helps your writing OpenAPI specifications
+Helps your write OpenAPI specifications
 
 ---
 
@@ -622,7 +629,7 @@ Avoid duplication of creation request and resource
 ![inline](./images/combine.and-extemd-model-definitions.jpg)
 
 ^ You have a bunch of response pages
-Paging support adds a lot of boiler-plate code
+Paging support adds a lot of boilerplate code
 
 ---
 
@@ -678,8 +685,7 @@ components:
 
 ## Configure JWT Authentication 
 
-^ You want to provide interactive OpenAPI file
-Your endpoints
+^ You want to provide an interactive OpenAPI file 
 
 ---
 
@@ -748,21 +754,38 @@ paths:
   * WAF OpenAPI support by NGINX, F5
 * Configuration of Amazon API Gateway 
 * Swagger Parsers for custom integrations
-* Bootstrap Postman collection from OpenAPI import :skull:
+* Bootstrap Bruno collection from OpenAPI import
 * IntelliJ HTTP Clients can use OpenAPI to create requests
 
 ^ Advanced OpenAPI features might not be supported.
 
 --- 
 
+![inline](./images/postman-is-dead.jpg)
+
+---
+
+## Bruno Importing Of OpenAPI Specs
+
+* Helpful for bootstrapping a brand-new Bruno collection
+* Honors the *OpenAPI Tags* and *OpenAPI Endpoint Summaries*
+* Generated `POST` request only have body with empty parameters 
+* Environments are created based on *OpenAPI Servers Section*
+
+---
+
+![inline](./images/bruno-openapi-import.jpg)
+
+---
+
 # Conclusion
 
-* Open API is a widely-used technolgy
+* Open API is a widely used technology
   * Provides a lot of integration points
-* Design-first approach if possible
+* Design-first approach if highly recommended
   * Leads to better REST APIs
 * Code generation to sync between spec and code
-  * In a perfect world for client & server
+  * In a perfect world for client **and** server code
 
 ---
 
