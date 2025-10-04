@@ -1,6 +1,5 @@
 theme: Merriweather,8
 
----
 
 ![fit](./images/openapi-at-sunrise.jpg)
 
@@ -34,6 +33,7 @@ theme: Merriweather,8
 | 2016  | Renamed from Swagger to OpenAPI                           |
 | 2017  | OpenAPI 3.0.0 release                                     |
 | 2021  | OpenAPI 3.1.0 release                                     |
+| 2024  | OpenAPI 3.1.1 release                                     |
 
 ---
 

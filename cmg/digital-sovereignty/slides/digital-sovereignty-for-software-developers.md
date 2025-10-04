@@ -1,5 +1,9 @@
 theme: Merriweather,8
 
+![fit](images/title.jpg)
+
+---
+
 # Digitale Souveränität
 
 ## Für Europäische Softwareentwickler
@@ -39,17 +43,15 @@ theme: Merriweather,8
 
 * Linux und Macs werden nicht unterstützt - ist Company Policy
 * Outlook notwendig wegen Exchange Server
-* ZUm Arbeiten wird Microsoft Office verwendet
+* Zum Arbeiten wird Microsoft Office verwendet
 * Technische Dokumente in Confluence und Sharepoint
-
-^ - Fiktives (oder nicht so fiktives) Onboarding eines Software Entwicklers
 
 ---
 
 ## Fikitives Developer Onboarding
 
-* Bug Tracking in JIRA
-* Es gibt etliche Oracle Datenbanken im Haus
+* Bug Tracking in JIRA (what else)
+* Es gibt eine Firmenlizenz für Oracle Datenbanken
 * Die Produktion läuft auf AWS
 
 ---
@@ -62,12 +64,41 @@ theme: Merriweather,8
 
 ---
 
+![inline](images/forbes-01.jpg)
+
+---
+
+![inline](images/computer-woche-01.jpg)
+
+---
+
 ## Und Jetzt?!
 
 --- 
 
 > Wer etwas will, findet Wege. Wer etwas nicht will, findet Gründe.
 > -- Götz Werner, Gründer dm Drogerie Markt
+
+---
+
+![inline](images/bundesheer-01.jpg)
+
+---
+
+![inline](images/bundesheer-02.jpg)
+
+---
+
+## Bundesheer Migration
+
+* In 2020 war klar, daß Microsoft Office in die Cloud wandert
+* In 2023 wurde deutsches Unternehmen mit Support und externer Entwicklung beauftragt
+* Es wurden 16.000 Mitarbeiter auf LibreOffice umgeschult
+* Änderungen / Erweiterungen gehen zurück an LibreOffice
+* LibreOffice wird von einer Stiftung betrieben - [The Document Foundation](https://www.documentfoundation.org)
+
+^ 5 Mannjahre an Entwicklung contributed
+The Document Foundation hat den Sitz in Berlin
 
 ---
 
@@ -83,7 +114,7 @@ theme: Merriweather,8
 ## Priorisierung Von Open Source
 
 * Einsatz freier Entwicklungsumgebungen & Tools
-* Freie Datenbanken (PostgreSQL, MariaDB) statt kommerzieller DBs (Oracle, MSSQL, SAP HANA, mySQL)
+* Freie Datenbanken (PostgreSQL, MariaDB) statt kommerzieller Varianten (Oracle, MSSQL)
 * Verwendung von Open Source Frameworks (Spring Boot, Quarkus, Django, Angular, React)
 
 ^ Open Source Frameworks erleichtern die Verwendung anderer Open Source Projekte
@@ -95,24 +126,51 @@ theme: Merriweather,8
 
 * Minimierung von Vendor Lock-in: offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
 * Cloud-Strategie prüfen: Multi-Cloud oder Hybrid-Ansätze statt nur AWS, Azure oder GCP
-* Einsatz von Container (Docker, Podman) und Orchestrierung (Kubernetes, OpenShift) in der Cloud
-* Multi-Cloud oder Hybrid-Ansätze verbesseren Verhandlungsposition
+* Einsatz von Container (Docker, Podman) und Orchestrierung (Kubernetes) in der Cloud
+
+^ Multi-Cloud oder Hybrid-Ansätze ermöglichen Verhandlungsoptionen
 
 ---
 
 ## Eigene Infrastruktur & Datenkontrolle
 
 * Nutzung offener Datenformate (JSON, YAML, XML, CSV) statt proprietärer Formate
-* Libre Office & NextCloud als Alternative zu Microsoft
+* LibreOffice & NextCloud als Alternative zu Microsoft
 * Self-Hosting wichtiger Systeme (z. B. Git, CI/CD, Issue-Tracker) mit Tools wie GitLab CE, Gitea, Jenkins, SonarQube
 * Datenhaltung bevorzugt auf eigener Hardware oder in souveränen europäischen Clouds
 
 ---
 
+## Übersicht Open Source & kommerzielle Tools
+
+---
+
+## Linux Distributionen
+
+| Distribution     | Fokus-Bereiche                          | Vorteile                                                                 | Nachteile                                                                 |
+|------------------|-----------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Ubuntu**       | Desktop, Server, Cloud                  | - Sehr große Community & viele Tutorials<br>- Einsteigerfreundlich<br>- Breite Softwareunterstützung<br>- LTS-Versionen mit 5 Jahren Support | - Auf Canonical-Ökosystem ausgerichtet<br>- Teilweise konservative Paketversionen<br>- Telemetrie-Diskussionen |
+| **Debian**       | Server, Entwickler, Minimal-Desktop     | - Sehr stabil und zuverlässig<br>- Riesige Paketquellen<br>- Freiheitsfokus (DFSG)<br>- Weit verbreitet als Server-OS | - Pakete oft älter (konservativ)<br>- Weniger benutzerfreundlich <br>- Längere Release-Zyklen |
+| **Fedora**       | Entwickler, Desktop                     | - Sehr aktuell mit neuesten Features<br>- Community-getrieben, von Red Hat unterstützt<br>- Gute Integration moderner Technologien (Wayland, SELinux) | - Kürzerer Support-Zyklus (~13 Monate)<br>- Manchmal instabiler als Debian/Ubuntu<br>- Starker Fokus auf Red Hat-Ökosystem |
+| **RHEL (Red Hat Enterprise Linux)** | Enterprise-Server, Cloud, zertifizierte Systeme | - Enterprise-Support & Zertifizierungen<br>- Sehr stabil & langzeitunterstützt<br>- Weit verbreitet im Unternehmensumfeld | - Kostenpflichtiger Support<br>- Starke Bindung an Red Hat-Ökosystem<br>- Weniger aktuell bei Desktop-Paketen |
+
+---
+
+## Linux Distributionen
+| Distribution     | Fokus-Bereiche                          | Vorteile                                                                  | Nachteile                                                                 |
+|------------------|-----------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **CentOS Stream**| Server, Cloud, Testumgebungen           | - Rolling-Release nah an RHEL<br>- Stabilität durch RHEL-Upstream<br>- Gut für Testumgebungen von RHEL-Deployments | - Nicht mehr klassisch "Enterprise-stabil" wie früher CentOS<br>- Kürzere Support-Laufzeiten<br>- Stärker an Red Hat gebunden |
+| **openSUSE Leap**| Server, Enterprise-Desktop              | - Stabil & für Unternehmen geeignet<br>- YaST als mächtiges Admin-Tool<br>- Kombination aus Community & SUSE-Enterprise | - Weniger verbreitet als Ubuntu/Debian<br>- Kleinere Community<br>- Leap nicht so aktuell wie Tumbleweed |
+| **openSUSE Tumbleweed** | Entwickler, Desktop              | - Rolling Release mit neuesten Paketen<br>- Sehr aktuell, Entwicklerfreundlich<br>- Gute Stabilität trotz Rolling-Modell | - Höherer Wartungsaufwand (häufige Updates)<br>- Nicht ideal für Produktionsserver<br>- Kleinere Nutzerbasis |
+| **Arch Linux**   | Entwickler, Power-User-Desktop          | - Extrem flexibel und minimalistisch<br>- Rolling Release (immer aktuell)<br>- Riesige Community (Wiki!)<br>- Volle Kontrolle für Power-User | - Komplexe Installation<br>- Wartungsintensiv<br>- Updates können Systeme brechen<br>- Wenig geeignet für Einsteiger |
+| **Linux Mint**   | Desktop (Einsteiger, Umsteiger von Win) | - Einsteigerfreundlich (Windows-ähnliche Oberfläche)<br>- Auf Ubuntu/Debian basiert<br>- Sehr stabil<br>- Fokus auf Desktop-User | - Weniger innovativ<br>- Abhängig von Ubuntu/Debian-Ökosystem<br>- Kleinere Entwicklerbasis |
+
+---
+
 ## Programmiersprachen
 
-|        **Sprache**        |                          **Abhängigkeit**                           |                                        **Vorteile für Souveränität**                                         |                            **Nachteile / Verzicht**                             |
-|:-------------------------:|:-------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------:|
+|        Sprache            |                            Abhängigkeit                             |                                          Vorteile für Souveränität.                                          |                            Nachteile / Verzicht                                 |
+|---------------------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 |        **Python**         |              Community-getrieben, keine einzelne Firma              |  Enorm große Community, viele freie Tools, Plattformunabhängig, starker Fokus auf Wissenschaft, KI, DevOps   | Teilweise Performance (im Vergleich zu C/Go/Java), viele inkompatible Libraries |
 |         **Java**          |          Oracle (Historisch), Eclipse Foundation, OpenJDK           | Sehr viele Open-Source-Implementierungen (OpenJDK, Eclipse Temurin, Azul, Adoptium), große Community, stabil |          Teilweise Oracle-Politik bzgl. Lizenzen, „Enterprise-lastig“           |
 |         **C/C++**         |      ISO-Standard, Compiler vielfach Open-Source (GCC, Clang)       |                        Sehr souverän, extrem viele freie Werkzeuge, Industriestandard                        |                      Komplexe Toolchains, steile Lernkurve                      |
@@ -170,25 +228,28 @@ theme: Merriweather,8
 
 ---
 
-## Mein Techstack
+## Personal Techstack
 
-* MacBook Pro M1 als Arbeitsgerät
-* Git für die Versionskontrolle (zusammen mit GitHub)
-* Sublime & Visual Code als Editor
-* IntelliJ Ultimate als IDE
-* Java, Maven & Spring
+* MacBook Pro 
+* Git für die Versionskontrolle
+* Sublime (commercial) & Visual Code als Editor
+* IntelliJ Ultimate als IDE (commercial)
+* Backendentwicklung mit Java, Maven & Spring
+
+---
+
+## Personal Techstack
+
+* DbVisualizer für Datenbankankzugriff (commercial)
+* [AsciiDoc](https://asciidoc.org) & [PlantUML](https://plantuml.com) für Dokumentation
+* [Bear](https://bear.app) für Notizen (commercial)
+* [Deckset](https://www.deckset.com) für Präsentation (commercial)
 
 ---
 
-## Mein Techstack
+![fit](images/what-is-your-next-move.jpg)
 
-* DbVisualizer für Datenbankankzugriff
-* AsciiDoc & PlantUML für Dokumentation
-* [Joplien](https://joplinapp.org) & [Bear](https://bear.app) für Notizen
-* [Deckset](https://www.deckset.com) für Präsentation
-* Docker Client zum Ausführen von Containern
-
----
+--- 
 
 ![](./images/questions-and-answers.jpg)
 
@@ -196,8 +257,20 @@ theme: Merriweather,8
 
 ![](./images/pexels-vie-studio-4439457.jpg)
  
----
-
-## Work In Progress
 
 ---
+
+## Resources
+
+* [Criminal Court: Microsoft's email block a wake-up call for digital sovereignty](https://www.heise.de/en/news/Criminal-Court-Microsoft-s-email-block-a-wake-up-call-for-digital-sovereignty-10387383.html)
+* [Österreichs Bundesheer stellt auf LibreOffice um](https://www.heise.de/news/Oesterreichs-Bundesheer-stellt-auf-LibreOffice-um-10660756.html)
+* [EU cloud provider: Broadcom raised VMware license prices by 800 to 1500 percent](https://www.heise.de/en/news/EU-cloud-provider-Broadcom-raised-VMware-license-prices-by-800-to-1500-percent-10394974.html)
+* [Microsoft Can't Keep EU Data Safe From US Authorities](https://www.forbes.com/sites/emmawoollacott/2025/07/22/microsoft-cant-keep-eu-data-safe-from-us-authorities/)
+* [US-Provider würden Kundendaten aushändigen](https://www.cloudcomputing-insider.de/us-provider-wuerden-kundendaten-aushaendigen-a-364c44646df82831e3e471606bf122df/)
+
+---
+
+## Resources
+
+* [Trump befiehlt – Microsoft sperrt E-Mail-Account?](https://www.computerwoche.de/article/3989073/trump-befiehlt-microsoft-sperrt-e-mail-account.html)
+* [The Document Foundation](https://www.documentfoundation.org)
