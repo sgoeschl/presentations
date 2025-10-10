@@ -430,7 +430,7 @@ Best OpenAPI validation.
 * `delegatePattern` separates generated & written code
 * Skipping `openApiNullable` and additional Jackson library
 * `useTags` is nice since it generates an interface per tag
-* `hideGenerationTimestamp` to keep you and Git
+* `hideGenerationTimestamp` to keep you and Git happy
 
 ^ Generated server code can be used in production
 Generated code may be formatted and put under version control.
