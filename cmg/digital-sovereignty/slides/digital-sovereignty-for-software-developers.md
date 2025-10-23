@@ -9,6 +9,7 @@ theme: Merriweather,8
 ## Für Europäische Softwareentwickler
 
 ### Siegfried GÖSCHL
+### siegfried.goeschl@asciifish.net
 
 #### ASCIIFISH GmbH
 --- 
@@ -107,7 +108,6 @@ The Document Foundation hat den Sitz in Berlin
 
 * Priorisierung von Open Source
 * Reduktion technologischer Abhängigkeiten
-* Interoperabilität & Standards
 * Eigene Infrastruktur & Datenkontrolle
 
 ---
@@ -126,7 +126,7 @@ The Document Foundation hat den Sitz in Berlin
 ## Reduktion Technologischer Abhängigkeiten
 
 
-* Minimierung von Vendor Lock-in: offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
+* Offene Standards (z. B. OpenAPI, SQL, OAuth) statt proprietärer Technologien
 * Cloud-Strategie prüfen: Multi-Cloud oder Hybrid-Ansätze statt nur AWS, Azure oder GCP
 * Einsatz von Container (Docker, Podman) und Orchestrierung (Kubernetes) in der Cloud
 
@@ -145,12 +145,18 @@ The Document Foundation hat den Sitz in Berlin
 
 ## Open Source Lizenzen
 
+### Ein Überblick
+
+--- 
+
+## Open Source Lizenzen
+
 | Aspekt                       | Permissive Lizenz                                                            | Copyleft Lizenz                                                                         |
 |------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 | **Weiterverwendung**         | Quellcode darf in **proprietäre (geschlossene)** Software integriert werden. | Quellcode darf nur in **freie Software** integriert werden, die ebenfalls offen bleibt. |
 | **Pflichten bei Weitergabe** | Nur Urheberrechtshinweis und Lizenztext beibehalten.                         | Modifizierte Versionen müssen **unter derselben Lizenz** veröffentlicht werden.         |
 | **Kommerzielle Nutzung**     | Uneingeschränkt erlaubt, auch in geschlossenen Produkten.                    | Erlaubt, aber **Quellcode muss offengelegt** werden, wenn verteilt.                     |
-| **Beispiele**                | MIT, BSD, Apache 2.0                                                         | GPL, LGPL, MPL, EPL                                                                     |
+| **Beispiele**                | MIT, BSD, Apache 2.0                                                         | GPL, LGPL, MPL, EPL, GNU Affero GPL                                                     |
 | **Zielsetzung**              | Maximale Verbreitung und Flexibilität.                                       | Sicherstellung, dass Software **immer frei bleibt**.                                    |
 
 ---
@@ -164,6 +170,84 @@ The Document Foundation hat den Sitz in Berlin
 | **LGPLv3 (Lesser GPL)**                | Ja (schwaches Copyleft) | Offenlegungspflicht nur bei Änderungen an der Bibliothek selbst.                                    | - Gute Balance zwischen Offenheit & Nutzung<br>- Ideal für Libraries       | - Juristisch anspruchsvoll                                        | 🔹 Bibliotheken & Frameworks<br>🔹 Middleware-Komponenten                          |
 | **MPL 2.0 (Mozilla Public License)**   | Ja (schwaches Copyleft) | Copyleft gilt nur auf Datei-Ebene; erlaubt proprietäre Kombinationen.                               | - Feingranulares Copyleft<br>- Rechtlich ausgewogen                        | - Weniger verbreitet                                              | 🔹 Browser-nahe Projekte (Firefox)<br>🔹 Unternehmenssoftware mit Open-Core        |
 | **EPL 2.0 (Eclipse Public License)**   | Ja (schwaches Copyleft) | Unternehmensfreundlich; weit verbreitet in Java-Ökosystemen.                                        | - Klar und präzise<br>- Geeignet für Firmenkollaborationen                 | - Weniger bekannt außerhalb Eclipse                               | 🔹 Java-Ökosystem<br>🔹 Unternehmenssoftware<br>🔹 Open-Source-Plattformen         |
+
+---
+
+## Datenbanken
+
+### Vendor Lock-in Vermeidung
+
+---
+
+### Datenbanken
+
+| Datenbank                        | Typ                     | Vorteile                                                                                                                                                                                                                          | Nachteile                                                                                                                                        |
+|----------------------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Oracle Database**              | Kommerziell             | - Sehr leistungsfähig & hochskalierbar<br>- Umfassende Enterprise-Features (RAC, Data Guard, Partitionierung)<br>- Hohe Stabilität & Sicherheit<br>- Weltweit verbreitet in Großunternehmen<br>- Umfangreicher Hersteller-Support | - Sehr hohe Lizenz- und Supportkosten<br>- Komplexes Lizenzmodell<br>- Proprietär → starker Vendor Lock-in<br>- Administration komplex           |
+| **Microsoft SQL Server (MSSQL)** | Kommerziell             | - Gute Integration in Microsoft-Ökosystem (Windows, Azure, PowerBI)<br>- Leistungsfähige BI- und Reporting-Features<br>- Stabil, weit verbreitet im Enterprise<br>- Gute Tools für Entwickler (SSMS, Profiler)                    | - Proprietär, Vendor Lock-in<br>- Lizenzkosten hoch (Enterprise Edition)<br>- Primär auf Windows/Linux<br>- Abhängigkeit von Microsoft-Strategie |
+| **MySQL (Community Edition)** | Frei (Open Source, gehört Oracle)  | - Weit verbreitet, große Community<br>- Einfach zu installieren & zu administrieren<br>- Gute Performance für Webanwendungen<br>- Viele Hosting-Anbieter unterstützen MySQL nativ<br>- Kostenlos in Community Edition      | - Kommerzielle Versionen mit erweiterten Features proprietär<br>- Weniger standardkonform als PostgreSQL<br>- Eingeschränkte Enterprise-Funktionalitäten<br>- Teilweise Abhängigkeit von Oracle |
+
+---
+
+### Datenbanken
+
+| Datenbank                     | Typ                                | Vorteile                                                                                                                                                                                                                   | Nachteile                                                                                                                                                                                       |
+|-------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **PostgreSQL**                | Frei (Open Source)                 | - Vollständig Open Source & kostenlos<br>- Sehr leistungsfähig, stabil & erweiterbar<br>- Starke Standardkonformität (SQL, ACID)<br>- Erweiterungen (PostGIS, TimescaleDB, FDWs)<br>- Plattformunabhängig, große Community | - Weniger „Out-of-the-box“-Enterprise-Tools als Oracle<br>- Komplexere Administration im Vergleich zu MySQL/MariaDB<br>- Kein zentraler Hersteller-Support (nur Drittanbieter)                  |
+| **MariaDB**                   | Frei (Open Source, Fork von MySQL) | - Komplett Open Source<br>- Kompatibel zu MySQL (Drop-in Replacement)<br>- Flexibel durch viele Storage Engines<br>- Schnell & leichtgewichtig<br>- Plattformübergreifend                                                  | - Kleinere Community als MySQL/Postgres<br>- Weniger Enterprise-Features<br>- Weniger verbreitet im Enterprise-Sektor<br>- Für extreme Skalierung nicht so optimiert wie Oracle/PG              |
+
+---
+
+## Personal Techstack
+
+* MacBook Pro 
+* Git für die Versionskontrolle
+* [Sublime](https://www.sublimetext.com) (commercial) & Visual Code als Editor
+* IntelliJ Ultimate als IDE (commercial)
+* [DbVisualizer](https://www.dbvis.com) für Datenbankankzugriff (commercial)
+
+---
+
+## Personal Techstack
+
+* [Markdown](https://www.markdownguide.org/cheat-sheet/) & [AsciiDoc](https://asciidoc.org) für Dokumentation
+* [Mermaid](https://mermaid.js.org) für Diagramme
+* [Bear](https://bear.app) für Notizen mit Markdown (commercial)
+* [Deckset](https://www.deckset.com) für Präsentation mit Markdown (commercial)
+* Backendentwicklung mit Java, Maven & Spring
+
+---
+
+![fit](images/what-is-your-next-move.jpg)
+
+--- 
+
+![](./images/questions-and-answers.jpg)
+
+---
+
+![](./images/pexels-vie-studio-4439457.jpg)
+ 
+---
+
+## Resources
+
+* [Criminal Court: Microsoft's email block a wake-up call for digital sovereignty](https://www.heise.de/en/news/Criminal-Court-Microsoft-s-email-block-a-wake-up-call-for-digital-sovereignty-10387383.html)
+* [Österreichs Bundesheer stellt auf LibreOffice um](https://www.heise.de/news/Oesterreichs-Bundesheer-stellt-auf-LibreOffice-um-10660756.html)
+* [EU cloud provider: Broadcom raised VMware license prices by 800 to 1500 percent](https://www.heise.de/en/news/EU-cloud-provider-Broadcom-raised-VMware-license-prices-by-800-to-1500-percent-10394974.html)
+* [Microsoft Can't Keep EU Data Safe From US Authorities](https://www.forbes.com/sites/emmawoollacott/2025/07/22/microsoft-cant-keep-eu-data-safe-from-us-authorities/)
+* [US-Provider würden Kundendaten aushändigen](https://www.cloudcomputing-insider.de/us-provider-wuerden-kundendaten-aushaendigen-a-364c44646df82831e3e471606bf122df/)
+
+---
+
+## Resources
+
+* [Trump befiehlt – Microsoft sperrt E-Mail-Account?](https://www.computerwoche.de/article/3989073/trump-befiehlt-microsoft-sperrt-e-mail-account.html)
+* [The Document Foundation](https://www.documentfoundation.org)
+
+---
+
+## Unused Content
 
 ---
 
@@ -235,29 +319,9 @@ The Document Foundation hat den Sitz in Berlin
 
 ---
 
-### Datenbanken
-
-| Datenbank                        | Typ                     | Vorteile                                                                                                                                                                                                                          | Nachteile                                                                                                                                        |
-|----------------------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Oracle Database**              | Kommerziell             | - Sehr leistungsfähig & hochskalierbar<br>- Umfassende Enterprise-Features (RAC, Data Guard, Partitionierung)<br>- Hohe Stabilität & Sicherheit<br>- Weltweit verbreitet in Großunternehmen<br>- Umfangreicher Hersteller-Support | - Sehr hohe Lizenz- und Supportkosten<br>- Komplexes Lizenzmodell<br>- Proprietär → starker Vendor Lock-in<br>- Administration komplex           |
-| **Microsoft SQL Server (MSSQL)** | Kommerziell             | - Gute Integration in Microsoft-Ökosystem (Windows, Azure, PowerBI)<br>- Leistungsfähige BI- und Reporting-Features<br>- Stabil, weit verbreitet im Enterprise<br>- Gute Tools für Entwickler (SSMS, Profiler)                    | - Proprietär, Vendor Lock-in<br>- Lizenzkosten hoch (Enterprise Edition)<br>- Primär auf Windows/Linux<br>- Abhängigkeit von Microsoft-Strategie |
-| **SAP HANA**                     | Kommerziell (In-Memory) | - Sehr hohe Performance durch In-Memory-Architektur<br>- Echtzeit-Analytik & OLAP/OLTP kombiniert<br>- Optimiert für SAP-ERP/BI<br>- Starke Integrationsmöglichkeiten in SAP-Produkte                                             | - Extrem teuer (Lizenzen + Hardware)<br>- Proprietär, Vendor Lock-in mit SAP<br>- Hohe Hardware-Anforderungen<br>- Eher für SAP-Kunden sinnvoll  |
-
----
-
-### Datenbanken
-
-| Datenbank                     | Typ                                | Vorteile                                                                                                                                                                                                                   | Nachteile                                                                                                                                                                                       |
-|-------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **MySQL (Community Edition)** | Frei (Open Source, gehört Oracle)  | - Weit verbreitet, große Community<br>- Einfach zu installieren & zu administrieren<br>- Gute Performance für Webanwendungen<br>- Viele Hosting-Anbieter unterstützen MySQL nativ<br>- Kostenlos in Community Edition      | - Kommerzielle Versionen mit erweiterten Features proprietär<br>- Weniger standardkonform als PostgreSQL<br>- Eingeschränkte Enterprise-Funktionalitäten<br>- Teilweise Abhängigkeit von Oracle |
-| **PostgreSQL**                | Frei (Open Source)                 | - Vollständig Open Source & kostenlos<br>- Sehr leistungsfähig, stabil & erweiterbar<br>- Starke Standardkonformität (SQL, ACID)<br>- Erweiterungen (PostGIS, TimescaleDB, FDWs)<br>- Plattformunabhängig, große Community | - Weniger „Out-of-the-box“-Enterprise-Tools als Oracle<br>- Komplexere Administration im Vergleich zu MySQL/MariaDB<br>- Kein zentraler Hersteller-Support (nur Drittanbieter)                  |
-| **MariaDB**                   | Frei (Open Source, Fork von MySQL) | - Komplett Open Source<br>- Kompatibel zu MySQL (Drop-in Replacement)<br>- Flexibel durch viele Storage Engines<br>- Schnell & leichtgewichtig<br>- Plattformübergreifend                                                  | - Kleinere Community als MySQL/Postgres<br>- Weniger Enterprise-Features<br>- Weniger verbreitet im Enterprise-Sektor<br>- Für extreme Skalierung nicht so optimiert wie Oracle/PG              |
-
----
-
 ## Cloud Technologien
 
-### Vermeidung Des Vendor Lock-ins
+### Vendor Lock-in Vermeidung
 
 ---
 
@@ -287,52 +351,3 @@ The Document Foundation hat den Sitz in Berlin
 | **OpenTelemetry Support**          | CloudWatch supports OpenTelemetry | Cloud Operations supports OpenTelemetry | Azure Monitor supports OpenTelemetry | Unified tracing and metrics across vendors.           |
 | **Prometheus/Grafana Integration** | Managed Prometheus & Grafana      | Managed Prometheus & Grafana            | Managed Prometheus & Grafana         | Portable open-source monitoring stack.                |
 | **Log Export / Open APIs**         | CloudWatch Logs export            | Cloud Logging export                    | Log Analytics export                 | Export to neutral targets for cross-cloud visibility. |
-
----
-
-## Personal Techstack
-
-* MacBook Pro 
-* Git für die Versionskontrolle
-* Sublime (commercial) & Visual Code als Editor
-* IntelliJ Ultimate als IDE (commercial)
-* Backendentwicklung mit Java, Maven & Spring
-
----
-
-## Personal Techstack
-
-* DbVisualizer für Datenbankankzugriff (commercial)
-* [AsciiDoc](https://asciidoc.org) & [PlantUML](https://plantuml.com) für Dokumentation
-* [Bear](https://bear.app) für Notizen mit Markdown (commercial)
-* [Deckset](https://www.deckset.com) für Präsentation mit Markdown (commercial)
-
----
-
-![fit](images/what-is-your-next-move.jpg)
-
---- 
-
-![](./images/questions-and-answers.jpg)
-
----
-
-![](./images/pexels-vie-studio-4439457.jpg)
- 
-
----
-
-## Resources
-
-* [Criminal Court: Microsoft's email block a wake-up call for digital sovereignty](https://www.heise.de/en/news/Criminal-Court-Microsoft-s-email-block-a-wake-up-call-for-digital-sovereignty-10387383.html)
-* [Österreichs Bundesheer stellt auf LibreOffice um](https://www.heise.de/news/Oesterreichs-Bundesheer-stellt-auf-LibreOffice-um-10660756.html)
-* [EU cloud provider: Broadcom raised VMware license prices by 800 to 1500 percent](https://www.heise.de/en/news/EU-cloud-provider-Broadcom-raised-VMware-license-prices-by-800-to-1500-percent-10394974.html)
-* [Microsoft Can't Keep EU Data Safe From US Authorities](https://www.forbes.com/sites/emmawoollacott/2025/07/22/microsoft-cant-keep-eu-data-safe-from-us-authorities/)
-* [US-Provider würden Kundendaten aushändigen](https://www.cloudcomputing-insider.de/us-provider-wuerden-kundendaten-aushaendigen-a-364c44646df82831e3e471606bf122df/)
-
----
-
-## Resources
-
-* [Trump befiehlt – Microsoft sperrt E-Mail-Account?](https://www.computerwoche.de/article/3989073/trump-befiehlt-microsoft-sperrt-e-mail-account.html)
-* [The Document Foundation](https://www.documentfoundation.org)
