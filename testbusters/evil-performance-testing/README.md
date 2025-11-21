@@ -17,6 +17,14 @@ Attendees will gain an understanding of how such approaches hiodes latency probl
 
 performance testing, coordinated omission, workload models
 
+# Key Takeaways
+
+* Every time someone shows you 99th percentile charts, you should be worried what happened to the remaining 1% of the request
+* In real world applications forget response time and focus on service time
+* Understand the impact of "Open Workload Model" compared to a "Closed Workload Model"
+* Always remember Gil Tene: “The number one indicator you should never get rid of is the maximum value. That is not noise, that is the signal. The rest of it is noise.”
+
+
 ## Inspiration
 
 Inspired bi Gil Tene's presentations, I wondered if it is possible to come up with a nice-looking (and **real**) performance test report even if the SUT is completely broken and stalls repeatedly with a stop-the-world GC, e.g. stalling every 50 seconds for 10 seconds. I extended [StringBoot HTTPBin](https://github.com/dyrnq/springboot-httpbin) and used JMeter to create a "good" and a "bad" performance test report demonstrating the effect of coordinated omission, different workload models and the danger of percentile charts.
