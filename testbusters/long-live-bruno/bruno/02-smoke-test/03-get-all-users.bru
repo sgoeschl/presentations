@@ -1,0 +1,19 @@
+meta {
+  name: 03-get-all-users
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/users
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:post-response {
+  bru.setVar("ANY_USER_ID",res.body[0].id)
+}

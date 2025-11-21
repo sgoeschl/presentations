@@ -1,0 +1,15 @@
+meta {
+  name: 01-head-all-users
+  type: http
+  seq: 1
+}
+
+head {
+  url: {{baseUrl}}/users
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

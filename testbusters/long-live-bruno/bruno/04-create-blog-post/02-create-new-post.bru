@@ -1,0 +1,30 @@
+meta {
+  name: 02-create-new-post
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/posts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": {{ANY_USER_ID}},
+    "id": {{$timestamp}},
+    "title": "{{$randomLoremSentence}}",
+    "body": "{{$randomLoremText}}"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.headers['location']: isNotEmpty
+  res.body.id: gt 0
+}
+
+script:post-response {
+  bru.setVar("CURR_POST_ID",res.body.id)
+}

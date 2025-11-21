@@ -1,0 +1,15 @@
+meta {
+  name: 04-delete-post-by-id
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/posts/{{CURR_POST_ID}}
+  body: json
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

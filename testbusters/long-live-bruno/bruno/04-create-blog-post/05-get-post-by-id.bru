@@ -1,0 +1,23 @@
+meta {
+  name: 05-get-post-by-id
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/posts/{{CURR_POST_ID}}
+  body: json
+  auth: none
+}
+
+script:post-response {
+  test("should not find deleted blog post", function () {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(404);
+  });
+   
+  test("should return empty response", function () {
+    const data = res.getBody();
+    expect(res.getBody()).to.eql({});
+  });
+}

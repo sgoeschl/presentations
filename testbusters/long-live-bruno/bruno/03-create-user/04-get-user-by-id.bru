@@ -1,0 +1,20 @@
+meta {
+  name: 04-get-user-by-id
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/users/{{CURR_USER_ID}}
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 404
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

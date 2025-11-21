@@ -1,0 +1,15 @@
+meta {
+  name: 06-get-all-todo-by-user
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/users/{{ANY_USER_ID}}/todos
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

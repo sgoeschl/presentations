@@ -1,0 +1,49 @@
+headers {
+  X-CORRLEATION-ID: {{xCorrelationId}}
+  X-REQUEST-ID: {{$guid}}
+  X-API-KEY: {{xApiKey}}
+}
+
+script:pre-request {
+  const { v4: uuidv4 } = require('uuid');
+  
+  // Only set X-CORRELATION-ID once for the whole collection
+  if (!bru.getVar('xCorrelationId')) {
+    bru.setVar('xCorrelationId', uuidv4());
+  }
+}
+
+script:post-response {
+  // Log all requests to console window
+  // console.log(`${req.getMethod()} ${req.getUrl()} ==> ${res.getStatus()} / ${res.getStatusText()}`)
+}
+
+docs {
+  # Postman Is Dead, Long Live Bruno
+  
+  ## Introduction
+  
+  This is an example Bruno collection showing off some features of the [Bruno API Client](https://docs.usebruno.com)
+  
+  - Usage of folders to structure tests
+  - Support of multiple test environments
+  - Sending custom HTTP request headers for each request
+  - Using assertions to validate HTTP responses
+  
+  ## Running This Collecetion
+  
+  The following servers are preconfigured provding [{JSON} Placeholder](https://jsonplaceholder.typicode.com) REST API
+  
+  | Environment | baseUrl                              |
+  | ----------- | ------------------------------------ |
+  | dev         | http://127.0.0.1:3000                |
+  | prod        | https://jsonplaceholder.typicode.com |
+  
+  Using the `dev` collection environment required running a Docker container, e.g.
+  
+  ```
+  > docker run -d -p 3000:3000 svenwal/jsonplaceholder
+  ```
+  
+  
+}

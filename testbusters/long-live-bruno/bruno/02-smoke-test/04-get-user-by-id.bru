@@ -1,0 +1,11 @@
+meta {
+  name: 04-get-user-by-id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/users/{{ANY_USER_ID}}
+  body: none
+  auth: none
+}

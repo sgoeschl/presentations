@@ -1,0 +1,19 @@
+meta {
+  name: 02-get-all-posts
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/posts
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:post-response {
+  bru.setVar("ANY_USER_ID",res.body[0].id)
+}

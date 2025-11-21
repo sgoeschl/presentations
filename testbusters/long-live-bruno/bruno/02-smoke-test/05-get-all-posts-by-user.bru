@@ -1,0 +1,15 @@
+meta {
+  name: 05-get-all-posts-by-user
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/users/{{ANY_USER_ID}}/posts
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

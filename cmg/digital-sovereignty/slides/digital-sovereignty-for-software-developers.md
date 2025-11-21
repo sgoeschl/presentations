@@ -201,6 +201,7 @@ The Document Foundation hat den Sitz in Berlin
 ## Personal Techstack
 
 * MacBook Pro 
+* Backendentwicklung mit Java, Maven & Spring
 * Git für die Versionskontrolle
 * [Sublime](https://www.sublimetext.com) (commercial) & Visual Code als Editor
 * IntelliJ Ultimate als IDE (commercial)
@@ -214,7 +215,6 @@ The Document Foundation hat den Sitz in Berlin
 * [Mermaid](https://mermaid.js.org) für Diagramme
 * [Bear](https://bear.app) für Notizen mit Markdown (commercial)
 * [Deckset](https://www.deckset.com) für Präsentation mit Markdown (commercial)
-* Backendentwicklung mit Java, Maven & Spring
 
 ---
 
