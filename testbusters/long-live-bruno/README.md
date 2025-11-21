@@ -2,7 +2,7 @@
 
 ## Abstract
 
-For many years, Postman (the free edition) was my customer's tool of choice when doing REST API testing - until the company behind Postman forcefully moved all Postman collections to the cloud in 2023. Cool marketing move but CISOs (Chief Information Security Officer) banned the usage of Postman. We migrated to IntelliJ HTTP client over night but settled for Bruno (https://www.usebruno.com) in the long run. And now it is time to share the experience and discuss more advanced Bruno feature such as scripting, dynamic values, request assertions and credential handling along the way.
+For many years, Postman (the free edition) was my customer's tool of choice when doing REST API testing - until the company behind Postman forcefully moved all Postman collections to the cloud in 2023. Cool marketing move, but many CISOs (Chief Information Security Officer) banned the usage of Postman. We migrated to the IntelliJ HTTP client overnight but settled for Bruno (https://www.usebruno.com) in the long run. And now it is time to share the experience and discuss more advanced Bruno feature such as scripting, dynamic values, request assertions and credential handling along the way.
   
 ## Keywords
 

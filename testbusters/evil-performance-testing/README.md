@@ -30,7 +30,7 @@ Inspired bi Gil Tene's presentations, I wondered if it is possible to come up wi
 
 ## About The Speaker
 
-Siegfried is a grumpy Senior Software Engineer and infamous for his motivation skills and management presentations. He also spent too much time in the Open Source community such as Apache Turbine, Apache Commons, Apache JSPWiki and Apache Freemarker but decided to become an ASF emeritus member in 03/2025. When not writing Java backend code he tinkers with performance testing & engineering, helps at the Java Meetup Vienna & DevFest Vienna and never spend enough time on the bicycle.
+Siegfried is a grumpy Senior Software Engineer and infamous for his motivation skills and management presentations. He also spent too much time in the Open Source community such as Apache Turbine, Apache Commons, Apache JSPWiki and Apache Freemarker but decided to become an ASF emeritus member in 03/2025. When not writing Java backend code he tinkers with performance testing & engineering, helps at the Java Meetup Vienna & DevFest Vienna and never spends enough time on the bicycle.
 
 * [LinkedIn Profile](https://www.linkedin.com/in/siegfried-goeschl-0410432/)
 * [XING Profile](https://www.xing.com/profile/Siegfried_Goeschl)
