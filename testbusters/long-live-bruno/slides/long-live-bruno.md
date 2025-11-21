@@ -109,10 +109,6 @@ theme: Merriweather,8
 
 ---
 
-![inline](images/make-your-ciso-happy.jpg)
-
----
-
 ## Bruno Scripting
 
 * Bruno supports Javascript execution to enrich collections
@@ -128,6 +124,10 @@ theme: Merriweather,8
 ---
 
 ![fit](images/bruno-scripting-02.jpg)
+
+---
+
+![inline](images/make-your-ciso-happy.jpg)
 
 ---
 
@@ -200,6 +200,14 @@ theme: Merriweather,8
 
 ---
 
+![fit](images/bruno-html-report-01.jpg)
+
+---
+
+![fit](images/bruno-html-report-02.jpg)
+
+---
+
 ![fit](images/open-source-truth.jpg)
 
 --- 
@@ -211,9 +219,9 @@ theme: Merriweather,8
 ## Summary
 
 * Bruno is the new kid on the block replacing Postman
-* The "Open Source" tier is suitable for real-world testing
-  * But you should still shell out some bucks
-* And there is a dedicated [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
+* The "Free / Open Source" tier is suitable for real-world testing
+* But you may / should shell out some bucks - for the good karma ;-)
+* Checkout the official [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
 
 ---
 
@@ -237,3 +245,4 @@ theme: Merriweather,8
 * [Bruno with GitHub Actions](https://medium.com/@mustafabawany204/bruno-with-github-actions-eab7300af362)
 * [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
 * [Technology Radar](https://www.thoughtworks.com/radar/tools/bruno)
+* [6 Game-Changing Postman Alternatives That Will Revolutionize Your API Development in 2025](https://dev.to/rihpig/6-game-changing-postman-alternatives-that-will-revolutionize-your-api-development-in-2025-4fll?utm_source=chatgpt.com)

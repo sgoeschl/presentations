@@ -17,13 +17,12 @@ Attendees will gain an understanding of how such approaches hiodes latency probl
 
 performance testing, coordinated omission, workload models
 
-# Key Takeaways
+## Key Takeaways
 
 * Every time someone shows you 99th percentile charts, you should be worried what happened to the remaining 1% of the request
 * In real world applications forget response time and focus on service time
 * Understand the impact of "Open Workload Model" compared to a "Closed Workload Model"
 * Always remember Gil Tene: “The number one indicator you should never get rid of is the maximum value. That is not noise, that is the signal. The rest of it is noise.”
-
 
 ## Inspiration
 
