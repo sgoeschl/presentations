@@ -1,6 +1,6 @@
 # Overview
 
-A collection of presentations given by Siegfried Goeschl - presentation are either written in AsciiDoc or Markdown
+A collection of presentations from the last few years — presentations are either written in AsciiDoc or Markdown.
 
 | Year | Event                              | Presentation                                                                                                                                                                                    |
 |------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

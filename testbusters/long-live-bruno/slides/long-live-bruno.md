@@ -1,8 +1,8 @@
 theme: Merriweather,8
 # Postman Is Dead
 ## Long Live Bruno
-#### Siegfried GOESCHL
-#### ASCIIFISH
+#### Siegfried Göschl
+#### ASCIIFISH SOFTWARE CONSULTING
 
 ---
 
@@ -20,6 +20,15 @@ theme: Merriweather,8
 
 [.column]
 ![inline](./images/portrait.jpg)
+
+---
+
+## Overview
+
+* Have a look at Postman's and Bruno's history
+* Short introduction to Bruno and its main features
+* Secret handling in Bruno's free edition
+* Run Bruno collections in your CI/CD pipeline
 
 ---
 
@@ -56,7 +65,7 @@ theme: Merriweather,8
 
 --- 
 
-## Main Reasons To Use Bruno
+## Reasons To Use Bruno
 
 * Free version is suitable for real-world testing
 * Local-first approach, no cloud login / lock-in
@@ -111,11 +120,12 @@ theme: Merriweather,8
 
 ## Bruno Scripting
 
-* Bruno supports Javascript execution to enrich collections
+* Bruno supports Javascript execution to help with testing
 * Allows to execute actions before and after each test
   * Collection scripts
   * Folder scripts
   * Request scripts
+* Default ordering is **Sandwich Flow** - upside down and back
 
 ---
 
@@ -158,27 +168,27 @@ theme: Merriweather,8
 
 ---
 
-![fill](images/bruno-secret-management-00.jpg)
+![fit](images/bruno-secret-management-00.jpg)
 
 ---
 
-![fill](images/bruno-secret-management-01.jpg)
+![fit](images/bruno-secret-management-01.jpg)
 
 ---
 
-![fill](images/bruno-secret-management-02.jpg)
+![fit](images/bruno-secret-management-02.jpg)
 
 ---
 
-![fill](images/bruno-secret-management-03.jpg)
+![fit](images/bruno-secret-management-03.jpg)
 
 ---
 
-![fill](images/bruno-secret-management-04.jpg)
+![fit](images/bruno-secret-management-04.jpg)
 
 ---
 
-![fill](images/bruno-secret-management-05.jpg)
+![fit](images/bruno-secret-management-05.jpg)
 
 ---
 
@@ -205,6 +215,32 @@ theme: Merriweather,8
 ---
 
 ![fit](images/bruno-html-report-02.jpg)
+
+---
+
+## Bruno Tags
+
+* Let's assume that not all of your environments are created equal
+  * DEV environment has a newer application version
+  * PROD smoke tests shall be read-only
+* One or more tags can be assigned to a request, e.g. *smoke*
+* Test runner execution supports including / excluding tags
+
+---
+
+![fit](images/bruno-tags-01.jpg)
+
+---
+
+![fit](images/bruno-tags-02.jpg)
+
+---
+
+![fit](images/bruno-tags-03.jpg)
+
+---
+
+![fit](images/bruno-tags-04.jpg)
 
 ---
 
