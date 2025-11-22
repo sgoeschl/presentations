@@ -196,13 +196,13 @@ theme: Merriweather,8
 
 ---
 
-## Regression Testing
+## Automated Testing
 
 * You just finished your new & shiny Bruno collection
-* Manual testing is soo old-school - even I don't do it
+* But manual testing is old-school - even I don't do it
 * Run your collections in GitHub or Jenkins
-* Under the hood the **bru** CLI tool is used
-* See [Bruno CLI](https://docs.usebruno.com/bru-cli/overview) for more information
+  * Under the hood the **bru** CLI tool is used
+  * See [Bruno CLI](https://docs.usebruno.com/bru-cli/overview) for more information
 
 ---
 
@@ -255,9 +255,11 @@ theme: Merriweather,8
 ## Summary
 
 * Bruno is the new kid on the block replacing Postman
+  * See [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
 * The "Free / Open Source" tier is suitable for real-world testing
-* But you may / should shell out some bucks - for the good karma ;-)
-* Checkout the official [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
+  * But you may / should shell out some bucks
+* Bruno is rapidly adding features - see [Roadmap](https://www.usebruno.com/roadmap)
+* You will very likely see Bruno in your current or next company :-)
 
 ---
 
@@ -280,5 +282,5 @@ theme: Merriweather,8
 * [Bruno - Opensource, Sustainability, Privacy, Freedom and Incentive](https://github.com/usebruno/bruno/discussions/269)
 * [Bruno with GitHub Actions](https://medium.com/@mustafabawany204/bruno-with-github-actions-eab7300af362)
 * [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
-* [Technology Radar](https://www.thoughtworks.com/radar/tools/bruno)
-* [6 Game-Changing Postman Alternatives That Will Revolutionize Your API Development in 2025](https://dev.to/rihpig/6-game-changing-postman-alternatives-that-will-revolutionize-your-api-development-in-2025-4fll?utm_source=chatgpt.com)
+* [Thoughtworks Technology Radar](https://www.thoughtworks.com/radar/tools/bruno)
+* [6 Game-Changing Postman Alternatives](https://dev.to/rihpig/6-game-changing-postman-alternatives-that-will-revolutionize-your-api-development-in-2025-4fll?utm_source=chatgpt.com)
