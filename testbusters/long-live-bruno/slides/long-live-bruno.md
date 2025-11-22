@@ -41,8 +41,8 @@ theme: Merriweather,8
 | 2017 | Corporate headquarters moved from Bangalore to San Francisco                                                        |
 | 2021 | Raised a $225 million at a $5.6 billion valuation                                                                   |
 | 2023 | Postman allows only 25 manual collection runs per month with Free and Basic plans                                   |
-| 2023 | Postman has discontinued option to have Collections locally and forcing people to move all the data into your cloud |
-| 2024 | Public Postman collections considered as security risk                                                              |
+| 2023 | Postman has discontinued option to have Collections locally and forcing people to move all the data into their cloud |
+| 2024 | Public Postman collections considered a security risk                                                              |
 
 --- 
 
@@ -72,7 +72,7 @@ theme: Merriweather,8
 * File-based storage is easily integrated with Git
 * CLI Support for CI/CD using **bru**
 * Secrets handling available in free version
-* Supports HTTP, gRPC & GraphQL
+* Supports HTTP/HTTPS, gRPC & GraphQL
 
 ---
 
@@ -90,7 +90,7 @@ theme: Merriweather,8
 
 ![fit](images/bruno-file-view.jpg)
 
-^ Bruno collections are mapped 1:1 to the file system
+^ Bruno collections are mapped 1:1 in the file system
 
 ---
 
@@ -255,7 +255,7 @@ theme: Merriweather,8
 ## Summary
 
 * Bruno is the new kid on the block replacing Postman
-* The "Free / Open Source" tier is suitable for real-world testing
+* The "Free" / "Open Source" tier is suitable for real-world testing
 * But you may / should shell out some bucks - for the good karma ;-)
 * Checkout the official [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
 
