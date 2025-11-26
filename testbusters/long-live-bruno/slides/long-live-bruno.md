@@ -1,12 +1,6 @@
 theme: Merriweather,8
-# Postman Is Dead
-## Long Live Bruno
-#### Siegfried Göschl
-#### ASCIIFISH SOFTWARE CONSULTING
 
----
-
-![inline](./images/postman-is-dead.jpg)
+![fill](./images/frontpage.jpg)
 
 --- 
 
@@ -14,8 +8,8 @@ theme: Merriweather,8
 
 [.column]
 * Writing Java backend code
-* Infamous for motivation skills & management presentations
-* Likes performance testing & engineering
+* Infamous for motivational skills and management presentations
+* Likes performance testing and engineering
 * Helps at the Java Meetup Vienna & DevFest Vienna
 
 [.column]
@@ -25,7 +19,7 @@ theme: Merriweather,8
 
 ## Overview
 
-* Have a look at Postman's and Bruno's history
+* Have a look at Postman's and Bruno's histories
 * Short introduction to Bruno and its main features
 * Secret handling in Bruno's free edition
 * Run Bruno collections in your CI/CD pipeline
@@ -69,9 +63,9 @@ theme: Merriweather,8
 
 * Free version is suitable for real-world testing
 * Local-first approach, no cloud login / lock-in
-* File-based storage is easily integrated with Git
+* File-based storage integrates seamlessly with Git
 * CLI Support for CI/CD using **bru**
-* Secrets handling available in free version
+* Secrets handling is available in the free version
 * Supports HTTP, gRPC & GraphQL
 
 ---
@@ -108,9 +102,10 @@ theme: Merriweather,8
 ## Generate Code From HTTP Request
 
 * Supports multiple CLI tools, e.g. curl or httpie
-* Useful if your want to add a curl request to JIRA ticket
+* Useful if you want to add a curl request to a JIRA ticket.
 * Supports code snippets for various programming languages
-  * If you ever want to see OCaml code, this is your chance
+
+^ If you ever want to see OCaml code, this is your chance
 
 ---
 
@@ -121,11 +116,11 @@ theme: Merriweather,8
 ## Bruno Scripting
 
 * Bruno supports Javascript execution to help with testing
-* Allows to execute actions before and after each test
+* Allows executing actions before and after each test
   * Collection scripts
   * Folder scripts
   * Request scripts
-* Default ordering is **Sandwich Flow** - upside down and back
+* Default ordering is *Sandwich Flow** - upside down and back
 
 ---
 
@@ -144,7 +139,7 @@ theme: Merriweather,8
 ## Secret Management
 
 * Plain-text secrets stored in test scripts are a major pain point
-* Things are even worse when plain-text secrets are found in Git
+* Things are even worse for  plain-text secrets in Git
 * You, security scanners, SonarQube and your CISO will be unhappy
 * Bruno's free version supports two options
   * Secret Variables - encrypted & stored locally
@@ -160,11 +155,11 @@ theme: Merriweather,8
 
 ## Secret Management
 
-* The **.env** file contains secrets as key/value pairs
-* The **.env** file is exclude from Git by **.gitignore** 
-* Your local secrets file **is not** under version control
+* The *.env** file contains secrets as key/value pairs
+* The *.env** file is excluded from Git by .gitignore 
+* Your local secrets file *is not** under version control
 * The secrets are used in Bruno's environment configuration
-* Switching environment picks up the matching secret
+* Switching the environment picks up the matching secret
 
 ---
 
@@ -198,7 +193,7 @@ theme: Merriweather,8
 
 ## Automated Testing
 
-* You just finished your new & shiny Bruno collection
+* You finished your new & shiny Bruno collection
 * But manual testing is old-school - even I don't do it
 * Run your collections in GitHub or Jenkins
   * Under the hood the **bru** CLI tool is used
@@ -220,10 +215,10 @@ theme: Merriweather,8
 
 ## Bruno Tags
 
-* Let's assume that not all of your environments are created equal
+* Let's assume that not all your environments are created equal
   * DEV environment has a newer application version
-  * PROD smoke tests shall be read-only
-* One or more tags can be assigned to a request, e.g. *smoke*
+  * PROD smoke tests must be read-only
+* You can assign one or more tags to a request, e.g. *smoke*
 * Test runner execution supports including / excluding tags
 
 ---
