@@ -10,6 +10,13 @@ docker run -d -p 3000:3000 svenwal/jsonplaceholder
 4fac559f76211ba23748d3f3d290505e0db2933e177c4baa73bf56b600904e0b
 ```
 
+You need to create the **.env** file yourself because the file is deliberately NOT under version control
+
+```
+dev.X-API-Key=00000000-0000-0000-0000-000000000000
+prod.X-API-Key=12e43cce-1221-4467-9983-a57b3b62360c
+```
+
 Please note that the remote [{JSON} Placeholder](https://jsonplaceholder.typicode.com) is a read-only API where no changes are supported while the Docker Container allows modifying the data set.
 
 ## Command Line Execution
