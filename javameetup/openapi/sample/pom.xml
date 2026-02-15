@@ -19,8 +19,8 @@
 
     <properties>
         <java.version>21</java.version>
-        <fmt-maven-plugin.version>2.25</fmt-maven-plugin.version>
-        <openapi-generator-maven-plugin.version>7.9.0</openapi-generator-maven-plugin.version>
+        <fmt-maven-plugin.version>2.29</fmt-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.19.0</openapi-generator-maven-plugin.version>
         <spring-doc.version>2.6.0</spring-doc.version>
     </properties>
 

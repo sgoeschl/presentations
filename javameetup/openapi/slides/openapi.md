@@ -782,10 +782,10 @@ paths:
 
 * Open API is a widely used technology
   * Provides a lot of integration points
-* Design-first approach if highly recommended
+* Design-first approach is highly recommended
   * Leads to better REST APIs
 * Code generation to sync between spec and code
-  * In a perfect world for client **and** server code
+  * You can generate client **and** server code
 
 ---
 
