@@ -103,6 +103,41 @@ Wrote html results to report.html
 
 ## Bruno Meets Jenkins
 
+Using Jenkins LTS (`jenkins-lts`) installed via Homebrew and added the following plugins
+
+* AnsiColor
+* Docker Pipeline
+* HTML Publisher plugin
+
+```text
+➜  ~ jenkins-lts
+Running from: /opt/homebrew/Cellar/jenkins-lts/2.541.2/libexec/jenkins.war
+webroot: /Users/sgoeschl/.jenkins/war
+2026-02-26 22:11:25.203+0000 [id=1]	INFO	winstone.Logger#logInternal: Beginning extraction from war file
+2026-02-26 22:11:25.235+0000 [id=1]	WARNING	o.e.j.ee9.nested.ContextHandler#setContextPath: Empty contextPath
+2026-02-26 22:11:25.264+0000 [id=1]	INFO	org.eclipse.jetty.server.Server#doStart: jetty-12.1.5; built: 2025-12-03T22:18:24.732Z; git: 4905d09d7b6801e792d7b73946cf7b66e4be25d6; jvm 21.0.2+13-58
+2026-02-26 22:11:25.469+0000 [id=1]	INFO	o.e.j.e.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.ee9.jsp.JettyJspServlet
+2026-02-26 22:11:25.494+0000 [id=1]	INFO	o.e.j.s.DefaultSessionIdManager#doStart: Session workerName=node0
+2026-02-26 22:11:25.666+0000 [id=1]	INFO	hudson.WebAppMain#contextInitialized: Jenkins home directory: /Users/sgoeschl/.jenkins found at: $user.home/.jenkins
+2026-02-26 22:11:26.056+0000 [id=1]	INFO	o.e.j.s.handler.ContextHandler#doStart: Started oeje9n.ContextHandler$CoreContextHandler@70d2e40b{Jenkins v2.541.2,/,b=file:///Users/sgoeschl/.jenkins/war/,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@120f38e6{STARTED}}
+2026-02-26 22:11:26.063+0000 [id=1]	INFO	o.e.j.server.AbstractConnector#doStart: Started oejs.ServerConnector@750fe12e{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-02-26 22:11:26.063+0000 [id=1]	INFO	org.eclipse.jetty.server.Server#doStart: Started oejs.Server@f8908f6{STARTING}[12.1.5,sto=0] @800ms
+2026-02-26 22:11:26.063+0000 [id=41]	INFO	winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+2026-02-26 22:11:26.114+0000 [id=40]	INFO	jenkins.model.Jenkins#<init>: Starting version 2.541.2
+2026-02-26 22:11:26.147+0000 [id=48]	INFO	jenkins.InitReactorRunner$1#onAttained: Started initialization
+2026-02-26 22:11:26.193+0000 [id=60]	INFO	jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+2026-02-26 22:11:27.586+0000 [id=49]	INFO	jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+2026-02-26 22:11:27.592+0000 [id=47]	INFO	jenkins.InitReactorRunner$1#onAttained: Started all plugins
+2026-02-26 22:11:27.593+0000 [id=57]	INFO	jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+2026-02-26 22:11:27.678+0000 [id=47]	INFO	h.p.b.g.GlobalTimeOutConfiguration#load: global timeout not set
+2026-02-26 22:11:28.040+0000 [id=51]	INFO	jenkins.InitReactorRunner$1#onAttained: System config loaded
+2026-02-26 22:11:28.040+0000 [id=51]	INFO	jenkins.InitReactorRunner$1#onAttained: System config adapted
+2026-02-26 22:11:28.063+0000 [id=48]	INFO	jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+2026-02-26 22:11:28.067+0000 [id=64]	INFO	jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+2026-02-26 22:11:28.085+0000 [id=63]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
+2026-02-26 22:11:28.110+0000 [id=40]	INFO	hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+```
+
 The `Jenkinsfile` allows to easily run the Bruno collection in Jenkins
  
 | Parameter                                                   | Value                                           |
