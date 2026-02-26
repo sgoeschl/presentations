@@ -1,2 +1,20 @@
+# Environment and generated assets
 .env
 *.html
+
+# Bruno artifacts (local cache, history, locks)
+.bruno/
+bruno-history/
+bruno.db
+bruno.lock
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+out/
+.idea_modules/
+*.ipr
+*.iws
+
+# macOS Finder
+.DS_Store
