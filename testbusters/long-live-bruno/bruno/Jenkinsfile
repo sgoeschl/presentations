@@ -56,28 +56,32 @@ pipeline {
     }
 
     stage('Run Bruno Collection') {
-      steps {
-        // Run the whole collection with the selected environment and produce an HTML report
-        sh "bru run --env ${params.ENV} --reporter-html report.html"
-      }
+      dir('testbusters/long-live-bruno/bruno') {
+        steps {
+          // Run the whole collection with the selected environment and produce an HTML report
+          sh "bru run --env ${params.ENV} --reporter-html report.html"
+        }
+       }
     }
 
     stage('Archive Report') {
       steps {
         archiveArtifacts artifacts: 'report.html', allowEmptyArchive: true, fingerprint: true
-        script {
-          // If the HTML Publisher plugin is installed, publish the report nicely.
-          try {
-            publishHTML(target: [
-              reportName: 'Bruno Report',
-              reportDir: '.',
-              reportFiles: 'report.html',
-              keepAll: true,
-              alwaysLinkToLastBuild: true,
-              allowMissing: true
-            ])
-          } catch (err) {
-            echo "HTML Publisher not available or failed: ${err}"
+        dir('testbusters/long-live-bruno/bruno') {
+          script {
+            // If the HTML Publisher plugin is installed, publish the report nicely.
+            try {
+              publishHTML(target: [
+                reportName: 'Bruno Report',
+                reportDir: '.',
+                reportFiles: 'report.html',
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: true
+              ])
+            } catch (err) {
+              echo "HTML Publisher not available or failed: ${err}"
+            }
           }
         }
       }
