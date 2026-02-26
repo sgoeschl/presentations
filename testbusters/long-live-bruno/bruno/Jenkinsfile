@@ -67,21 +67,19 @@ pipeline {
     stage('Archive Report') {
       steps {
         archiveArtifacts artifacts: 'report.html', allowEmptyArchive: true, fingerprint: true
-        dir('testbusters/long-live-bruno/bruno') {
-          script {
-            // If the HTML Publisher plugin is installed, publish the report nicely.
-            try {
-              publishHTML(target: [
-                reportName: 'Bruno Report',
-                reportDir: '.',
-                reportFiles: 'report.html',
-                keepAll: true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: true
-              ])
-            } catch (err) {
-              echo "HTML Publisher not available or failed: ${err}"
-            }
+        script {
+          // If the HTML Publisher plugin is installed, publish the report nicely.
+          try {
+            publishHTML(target: [
+              reportName: 'Bruno Report',
+              reportDir: '.',
+              reportFiles: 'report.html',
+              keepAll: true,
+              alwaysLinkToLastBuild: true,
+              allowMissing: true
+            ])
+          } catch (err) {
+            echo "HTML Publisher not available or failed: ${err}"
           }
         }
       }
