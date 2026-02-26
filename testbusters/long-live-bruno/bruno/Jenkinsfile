@@ -28,18 +28,21 @@ pipeline {
     stage('Prepare .env (optional)') {
       steps {
         script {
-          // If Jenkins provides BRUNO_DEV_API_KEY / BRUNO_PROD_API_KEY as environment variables
-          // (e.g., via "Environment Variables" or withCredentials), create a .env file for Bruno.
-          def devKey = env.BRUNO_DEV_API_KEY ?: '00000000-0000-0000-0000-000000000000'
-          def prodKey = env.BRUNO_PROD_API_KEY ?: '12e43cce-1221-4467-9983-a57b3b62360c'
-          if (devKey || prodKey) {
-            writeFile file: '.env', text: """
+        dir('testbusters/long-live-bruno/bruno') {
+          script {
+            // If Jenkins provides BRUNO_DEV_API_KEY / BRUNO_PROD_API_KEY as environment variables
+            // (e.g., via "Environment Variables" or withCredentials), create a .env file for Bruno.
+            def devKey = env.BRUNO_DEV_API_KEY ?: '00000000-0000-0000-0000-000000000000'
+            def prodKey = env.BRUNO_PROD_API_KEY ?: '12e43cce-1221-4467-9983-a57b3b62360c'
+            if (devKey || prodKey) {
+              writeFile file: '.env', text: """
  dev.X-API-Key=${devKey}
  prod.X-API-Key=${prodKey}
 """.trim() + "\n"
-            echo 'Wrote .env from Jenkins-provided environment variables.'
-          } else {
-            echo 'No BRUNO_* API keys provided; expecting a pre-existing .env in the repo workspace or public endpoint access.'
+              echo 'Wrote .env from Jenkins-provided environment variables.'
+            } else {
+              echo 'No BRUNO_* API keys provided; expecting a pre-existing .env in the repo workspace or public endpoint access.'
+            }
           }
         }
       }
