@@ -56,12 +56,12 @@ pipeline {
     }
 
     stage('Run Bruno Collection') {
-      dir('testbusters/long-live-bruno/bruno') {
-        steps {
+      steps {
+        dir('testbusters/long-live-bruno/bruno') {
           // Run the whole collection with the selected environment and produce an HTML report
           sh "bru run --env ${params.ENV} --reporter-html report.html"
         }
-       }
+      }
     }
 
     stage('Archive Report') {
