@@ -27,7 +27,6 @@ pipeline {
 
     stage('Prepare .env (optional)') {
       steps {
-        script {
         dir('testbusters/long-live-bruno/bruno') {
           script {
             // If Jenkins provides BRUNO_DEV_API_KEY / BRUNO_PROD_API_KEY as environment variables
