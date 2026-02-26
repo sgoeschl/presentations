@@ -1,0 +1,90 @@
+pipeline {
+  agent {
+    docker {
+      image 'node:20-alpine'
+      args '-u root'
+    }
+  }
+
+  parameters {
+    choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Bruno environment to run')
+  }
+
+  options {
+    ansiColor('xterm')
+    timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '20'))
+    timeout(time: 30, unit: 'MINUTES')
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+        sh 'ls -la'
+      }
+    }
+
+    stage('Prepare .env (optional)') {
+      steps {
+        script {
+          // If Jenkins provides BRUNO_DEV_API_KEY / BRUNO_PROD_API_KEY as environment variables
+          // (e.g., via "Environment Variables" or withCredentials), create a .env file for Bruno.
+          def devKey = env.BRUNO_DEV_API_KEY ?: '00000000-0000-0000-0000-000000000000'
+          def prodKey = env.BRUNO_PROD_API_KEY ?: '12e43cce-1221-4467-9983-a57b3b62360c'
+          if (devKey || prodKey) {
+            writeFile file: '.env', text: """
+ dev.X-API-Key=${devKey}
+ prod.X-API-Key=${prodKey}
+""".trim() + "\n"
+            echo 'Wrote .env from Jenkins-provided environment variables.'
+          } else {
+            echo 'No BRUNO_* API keys provided; expecting a pre-existing .env in the repo workspace or public endpoint access.'
+          }
+        }
+      }
+    }
+
+    stage('Install Bruno CLI') {
+      steps {
+        sh 'node --version && npm --version'
+        sh 'npm install -g @usebruno/cli@latest'
+        sh 'bru --version'
+      }
+    }
+
+    stage('Run Bruno Collection') {
+      steps {
+        // Run the whole collection with the selected environment and produce an HTML report
+        sh "bru run --env ${params.ENV} --reporter-html report.html"
+      }
+    }
+
+    stage('Archive Report') {
+      steps {
+        archiveArtifacts artifacts: 'report.html', allowEmptyArchive: true, fingerprint: true
+        script {
+          // If the HTML Publisher plugin is installed, publish the report nicely.
+          try {
+            publishHTML(target: [
+              reportName: 'Bruno Report',
+              reportDir: '.',
+              reportFiles: 'report.html',
+              keepAll: true,
+              alwaysLinkToLastBuild: true,
+              allowMissing: true
+            ])
+          } catch (err) {
+            echo "HTML Publisher not available or failed: ${err}"
+          }
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      echo "Build finished with status: ${currentBuild.currentResult}"
+    }
+  }
+}
