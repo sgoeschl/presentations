@@ -72,8 +72,8 @@ pipeline {
           try {
             publishHTML(target: [
               reportName: 'Bruno Report',
-              reportDir: '.',
-              reportFiles: 'testbusters/long-live-bruno/bruno/report.html',
+              reportDir: 'testbusters/long-live-bruno/bruno/',
+              reportFiles: 'report.html',
               keepAll: true,
               alwaysLinkToLastBuild: true,
               allowMissing: true
