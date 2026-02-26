@@ -66,7 +66,7 @@ pipeline {
 
     stage('Archive Report') {
       steps {
-        archiveArtifacts artifacts: 'report.html', allowEmptyArchive: true, fingerprint: true
+        archiveArtifacts artifacts: 'testbusters/long-live-bruno/bruno/report.html', allowEmptyArchive: false, fingerprint: true
         script {
           // If the HTML Publisher plugin is installed, publish the report nicely.
           try {
