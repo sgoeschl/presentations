@@ -6,10 +6,18 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
+      <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Request Counter">
+        <stringProp name="CounterConfig.start">0</stringProp>
+        <stringProp name="CounterConfig.end"></stringProp>
+        <stringProp name="CounterConfig.incr">1</stringProp>
+        <stringProp name="CounterConfig.name">CURR_REQUEST_COUNTER</stringProp>
+        <stringProp name="CounterConfig.format">000000000</stringProp>
+        <boolProp name="CounterConfig.per_user">true</boolProp>
+        <stringProp name="TestPlan.comments">Track of the overall request number for debugging</stringProp>
+      </CounterConfig>
+      <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="server.base.name" elementType="Argument">
@@ -76,7 +84,7 @@
         <stringProp name="TestPlan.comments">Important configuration settings to be overwritten</stringProp>
       </Arguments>
       <hashTree/>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="SetUp Thread Group" enabled="true">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="SetUp Thread Group">
         <stringProp name="TestPlan.comments">Setup test environment</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -158,7 +166,7 @@ Connect to 5s</stringProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="User-Agent" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -176,10 +184,18 @@ Connect to 5s</stringProp>
               <stringProp name="Header.name">Accept-Encoding</stringProp>
               <stringProp name="Header.value">gzip, deflate</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Correlation-Id</stringProp>
+              <stringProp name="Header.value">${__UUID}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Request-Id</stringProp>
+              <stringProp name="Header.value">JMETER-HTTPBIN-${CURR_REQUEST_COUNTER}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <PreciseThroughputTimer guiclass="TestBeanGUI" testclass="PreciseThroughputTimer" testname="Precise Throughput Timer">
+        <PreciseThroughputTimer guiclass="TestBeanGUI" testclass="PreciseThroughputTimer" testname="Precise Throughput Timer" enabled="true">
           <doubleProp>
             <name>allowedThroughputSurplus</name>
             <value>1.0</value>
@@ -194,7 +210,7 @@ Connect to 5s</stringProp>
           <intProp name="throughputPeriod">60</intProp>
         </PreciseThroughputTimer>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Test" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Test"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send Transaction" enabled="true">
             <stringProp name="HTTPSampler.path">/performance/gc-pause</stringProp>
@@ -238,7 +254,7 @@ Connect to 5s</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="OpenModelThreadGroupController"/>
       </OpenModelThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
           <stringProp name="TestPlan.comments">Notice Timeouts:
 Read to 30s
 Connect to 5s</stringProp>
@@ -253,13 +269,13 @@ Connect to 5s</stringProp>
           <stringProp name="HTTPSampler.implementation"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="User-Agent" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -277,6 +293,14 @@ Connect to 5s</stringProp>
               <stringProp name="Header.name">Accept-Encoding</stringProp>
               <stringProp name="Header.value">gzip, deflate</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Correlation-Id</stringProp>
+              <stringProp name="Header.value">${__UUID}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Request-Id</stringProp>
+              <stringProp name="Header.value">JMETER-HTTPBIN-${CURR_REQUEST_COUNTER}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -286,7 +310,7 @@ Connect to 5s</stringProp>
         <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Test" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send Transaction">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send Transaction" enabled="true">
             <stringProp name="HTTPSampler.path">/performance/gc-pause</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -343,7 +367,7 @@ Connect to 5s</stringProp>
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
