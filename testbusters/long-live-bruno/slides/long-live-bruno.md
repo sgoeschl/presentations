@@ -151,8 +151,8 @@ theme: Merriweather,8
 ## Secret Management
 
 * Plain-text secrets stored in test scripts are a major pain point
-* Things are even worse for  plain-text secrets in Git
-* You, security scanners, SonarQube and your CISO will be unhappy
+* Things are even worse for when using Git
+* Security scanners, SonarQube and your CISO will be unhappy
 * Bruno's free version supports two options
   * Secret Variables - encrypted & stored locally
   * DotEnv File - local & excluded from version control
@@ -168,8 +168,8 @@ theme: Merriweather,8
 ## Secret Management
 
 * The **.env** file contains secrets as key/value pairs
-* The **.env** file is excluded from Git by .gitignore 
-* Your local secrets file **is not** under version control
+* The **.env** file is excluded by a `.gitignore` file
+* So your local secrets file **is not** under version control
 * The secrets are used in Bruno's environment configuration
 * Switching the environment picks up the matching secret
 
@@ -286,13 +286,13 @@ theme: Merriweather,8
 
 ---
 
-## Bruno Musings
+## Some More Features
 
 * OAuth2 integration is well done and supports troubleshooting
-* Bruno supports import of OpenAOI files, works but is rather basic
+* Bruno supports import of OpenAPI files, it works but is rather basic
 * Documentation of Bruno collections uses Markdown
 * Bruno provides some "Dev Tools" to support request debugging
-* PDFs are directly rendered in Bruno response pag
+* PDFs are directly rendered in Bruno response page
 
 ---
 
@@ -317,7 +317,7 @@ theme: Merriweather,8
   * Makes hard to use for non-developers
   * There is **JetBrains HTTP Client CLI** 
 * IntelliJ HTTP Client is text based while Bruno uses GUI
-  * Developers can of course write **bru** files :-)
+  * Developers can of course change **bru** files directly :-)
 
 ---
 
