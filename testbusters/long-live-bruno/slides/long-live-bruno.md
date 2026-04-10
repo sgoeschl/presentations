@@ -212,6 +212,61 @@ theme: Merriweather,8
 
 ---
 
+![fit](images/columbo-one-more-thing.jpg)
+
+---
+
+> When there is no **.env** file, 
+> there are no secrets?!
+
+--- 
+
+## One More Thing
+
+* Put the encrypted **.env** files under version control
+* Use **age** CLI tool to decrypt/encrypt the **.env** file
+  * Using public / private key cryptography
+  * Private key is provided by user or CI Pipeline
+
+---
+
+## AGE Private Key
+
+![inline](images/age-private-key-file.jpg)
+
+---
+
+## AGE In Action
+
+```
+➜  bruno git:(master) ✗ ./decrypt-dotenv.sh 
+Decrypting ./env.age.txt to ./.env
+➜  bruno git:(master) ✗ ./encrypt-dotenv.sh 
+Encrypting ./.env to ./env.age.txt
+```
+
+---
+
+## decrypt-dotenv.sh 
+
+```sh
+#!/usr/bin/env bash
+# Decrypt the env.age.text files recursively using age and an identity file
+if ! command -v age >/dev/null 2>&1; then
+  err "'age' CLI is not installed or not on PATH."
+  exit 1
+fi
+export AGE_IDENTITY_FILE=".key"
+find . -type f -name 'env.age.txt' -exec sh -c '
+  f="$1"
+  dir=${f%/*}
+  echo "Decrypting $f to $dir/.env"
+  age --decrypt --identity ${AGE_IDENTITY_FILE:-.key} --output "$dir/.env" "$f"
+' sh {} \;
+```
+
+---
+
 ![fit](images/running-regression-tests.png)
 
 ---
