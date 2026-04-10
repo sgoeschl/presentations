@@ -230,13 +230,13 @@ theme: Merriweather,8
 
 ---
 
-## AGE Private Key
+## Using age CLI
 
 ![inline](images/age-private-key-file.jpg)
 
 ---
 
-## AGE In Action
+## Using age CLI
 
 ```
 ➜  bruno git:(master) ✗ ./decrypt-dotenv.sh 
