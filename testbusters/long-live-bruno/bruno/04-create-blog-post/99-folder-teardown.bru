@@ -1,0 +1,20 @@
+meta {
+  name: 99-folder-teardown
+  type: http
+  seq: 7
+}
+
+options {
+  url: {{baseUrl}}/
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  console.log(`<<< 04-create-blog-post / 99-folder-teardown`)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

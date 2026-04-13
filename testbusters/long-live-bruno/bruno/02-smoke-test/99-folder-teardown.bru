@@ -1,0 +1,20 @@
+meta {
+  name: 99-folder-teardown
+  type: http
+  seq: 9
+}
+
+options {
+  url: {{baseUrl}}/
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  console.log(`<<< 02-smoke-test / 99-folder-teardown`)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

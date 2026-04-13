@@ -15,7 +15,7 @@ script:pre-request {
 
 script:post-response {
   // Log all requests to console window
-  // console.log(`${req.getMethod()} ${req.getUrl()} ==> ${res.getStatus()} / ${res.getStatusText()}`)
+  console.log(`${req.getMethod()} ${req.getUrl()} ==> ${res.getStatus()} / ${res.getStatusText()}`)
 }
 
 docs {

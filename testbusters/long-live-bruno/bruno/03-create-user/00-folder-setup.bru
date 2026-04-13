@@ -1,0 +1,20 @@
+meta {
+  name: 00-folder-setup
+  type: http
+  seq: 1
+}
+
+options {
+  url: {{baseUrl}}/
+  body: none
+  auth: inherit
+}
+
+script:pre-request {
+  console.log(`>>> 03-create-user / 00-folder-setup`)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

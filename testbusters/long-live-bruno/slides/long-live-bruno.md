@@ -343,11 +343,17 @@ find . -type f -name 'env.age.txt' -exec sh -c '
 
 ## Some More Features
 
-* OAuth2 integration is well done and supports troubleshooting
-* Bruno supports import of OpenAPI files, it works but is rather basic
+* OAuth2 integration is works well and allows JWT introspection
+* Bruno supports basic import of OpenAPI files
 * Documentation of Bruno collections uses Markdown
 * Bruno provides some "Dev Tools" to support request debugging
-* PDFs are directly rendered in Bruno response page
+
+---
+
+## Some More Features
+
+* PDFs are directly rendered in Bruno response page (nice)
+* No folder-level scripts - simulate with **00-folder-setup** and **99-folder-teardown**
 
 ---
 
@@ -372,7 +378,7 @@ find . -type f -name 'env.age.txt' -exec sh -c '
   * Makes hard to use for non-developers
   * There is **JetBrains HTTP Client CLI** 
 * IntelliJ HTTP Client is text based while Bruno uses GUI
-  * Developers can of course change **bru** files directly :-)
+  * Developers may edit **bru** files directly :-)
 
 ---
 
@@ -383,7 +389,7 @@ find . -type f -name 'env.age.txt' -exec sh -c '
   * But you may / should shell out some bucks
 * Bruno is rapidly adding features (see [Roadmap](https://www.usebruno.com/roadmap))
 * You might work with Bruno in the next few years :-)
-* Be prepared to move to another tool in 10 years
+* Safe credential handling is possible with open-source Bruno 
 
 ---
 
@@ -408,3 +414,30 @@ find . -type f -name 'env.age.txt' -exec sh -c '
 * [Postman Migration documentation](https://docs.usebruno.com/get-started/import-export-data/postman-migration)
 * [Thoughtworks Technology Radar](https://www.thoughtworks.com/radar/tools/bruno)
 * [6 Game-Changing Postman Alternatives](https://dev.to/rihpig/6-game-changing-postman-alternatives-that-will-revolutionize-your-api-development-in-2025-4fll?utm_source=chatgpt.com)
+
+---
+
+## References
+
+* [Securely storing secrets in Git](https://medium.com/@slimm609/securely-storing-secrets-in-git-542771d3ed8c)
+* [age File Encryption](https://github.com/FiloSottile/age)
+* [Using SOPS with Age and Git like a Pro](https://devops.datenkollektiv.de/using-sops-with-age-and-git-like-a-pro.html)
+  
+---
+
+## age Encryption Tool
+
+* A simple and secure encryption tool for files and streams. 
+* User‑friendly alternative to GnuPG for file encryption
+* Supports two main encryption modes
+  * Public-key encryption (using recipients’ public keys)
+  * Passphrase-based encryption
+
+---
+
+## Mozilla SOPS
+
+* Securely managing secrets inside structured configuration files
+  * YAML, JSON, ENV, and INI—especially in Git-based workflows.
+* SOPS lets you encrypt only the sensitive values inside a file
+* Can be combined with age encryption tool
