@@ -60,6 +60,7 @@ theme: Merriweather,8
 | 2022 | Bruno was open-sourced on GitHub under the MIT license                                                              |
 | 2024 | The Bruno company was founded in Bangalore                                                                          |
 | 2024 | Bruno appears on Thoughtwork's Technology Radar.                                                                    |
+| 2026 | Bruno V3 and V4 preview released                                                                                    |
 
 --- 
 
@@ -169,7 +170,7 @@ theme: Merriweather,8
 
 * The **.env** file contains secrets as key/value pairs
 * The **.env** file is excluded by a `.gitignore` file
-* So your local secrets file **is not** under version control
+* So your **local secrets file is not under version control**
 * The secrets are used in Bruno's environment configuration
 * Switching the environment picks up the matching secret
 
@@ -216,8 +217,8 @@ theme: Merriweather,8
 
 ---
 
-> When there is no **.env** file, 
-> there are no secrets?!
+> How To Share The Secrets? 
+> Sending **.env** File Around?!
 
 --- 
 
@@ -227,6 +228,7 @@ theme: Merriweather,8
 * Use **age** CLI tool to decrypt/encrypt the **.env** file
   * Using public / private key cryptography
   * Private key is provided by user or CI Pipeline
+* Private key is excluded from version control
 
 ---
 
@@ -247,7 +249,7 @@ Encrypting ./.env to ./env.age.txt
 
 ---
 
-## decrypt-dotenv.sh 
+## decrypt-dotenv.sh
 
 ```sh
 #!/usr/bin/env bash
@@ -303,7 +305,7 @@ find . -type f -name 'env.age.txt' -exec sh -c '
 
 * Not all test environments are created equal
   * DEV environment run all tests
-  * PROD smoke tests should be read-only
+  * PROD smoke tests could be read-only
 * You can assign one or more tags to a request, e.g. *readonly*
 * Test runner execution supports including / excluding tags
 

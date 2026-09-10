@@ -1,5 +1,6 @@
 # Environment and generated assets
 .env
+.key
 *.html
 
 # Bruno artifacts (local cache, history, locks)
